@@ -1,32 +1,32 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import * as serviceWorker from "./serviceWorker";
-import * as firebase from "firebase";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import * as firebase from 'firebase';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
 
-//using dotenv to manage env variable
+// using dotenv to manage env variable
 
-require("dotenv").config();
+require('dotenv').config();
 
-let apiKey = process.env.REACT_APP_APIKEY;
-let authDomain = process.env.REACT_APP_AUTHDOMAIN;
-let databaseURL = process.env.REACT_APP_DATABASEURL;
-let projectId = process.env.REACT_APP_PROJECTID;
-let storageBucket = process.env.REACT_APP_STORAGEBUCKET;
-let messagingSenderId = process.env.REACT_APP_MESSAGINGSENDERID;
-let appId = process.env.REACT_APP_APPID;
-let measurementId = process.env.REACT_APP_MEASUREMENTID;
+const apiKey = process.env.REACT_APP_APIKEY;
+const authDomain = process.env.REACT_APP_AUTHDOMAIN;
+const databaseURL = process.env.REACT_APP_DATABASEURL;
+const projectId = process.env.REACT_APP_PROJECTID;
+const storageBucket = process.env.REACT_APP_STORAGEBUCKET;
+const messagingSenderId = process.env.REACT_APP_MESSAGINGSENDERID;
+const appId = process.env.REACT_APP_APPID;
+const measurementId = process.env.REACT_APP_MEASUREMENTID;
 
 const config = {
-  apiKey: apiKey,
-  authDomain: authDomain,
-  databaseURL: databaseURL,
-  projectId: projectId,
-  storageBucket: storageBucket,
-  messagingSenderId: messagingSenderId,
-  appId: appId,
-  measurementId: measurementId,
+  apiKey,
+  authDomain,
+  databaseURL,
+  projectId,
+  storageBucket,
+  messagingSenderId,
+  appId,
+  measurementId,
 };
 
 firebase.initializeApp(config);
@@ -35,7 +35,7 @@ ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change

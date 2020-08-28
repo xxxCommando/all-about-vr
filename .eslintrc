@@ -24,5 +24,6 @@
       }
     ],
     "linebreak-style": 0
-  }
+  },
+  "ignorePatterns": ["*.test.js"]
 }
