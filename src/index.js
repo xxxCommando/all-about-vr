@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
 import * as firebase from 'firebase';
-import App from './App';
+import App from './app';
 import * as serviceWorker from './serviceWorker';
 
 // using dotenv to manage env variable
