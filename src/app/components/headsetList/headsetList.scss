@@ -1,0 +1,41 @@
+@import '../../../assets/scss/global.scss';
+@import '../../../assets/scss/mixin.scss';
+
+.ant-row {
+  &.headsets {
+    margin-left: -8px; margin-right: -8px;
+    >div {
+      padding-left: 8px; padding-right: 8px;
+      &.normal-mode {
+        width: 25%;
+        @include lg {
+          width: 33%;
+        }
+        @include sm {
+          width: 50%;
+        }
+      }
+      &.compare-mode {
+        transition: width 1s ease-out;
+        transition-delay: 300ms;
+        width: 50%;
+      }
+    }
+  }
+}
+
+.fade-headsets-enter {
+  opacity: 0.01;
+  &.fade-headsets-enter-active {
+    opacity: 1;
+    transition: opacity 700ms ease-in;
+  }
+}
+
+.fade-headsets-leave {
+  opacity: 1;
+  &.fade-headsets-leave-active{
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+  }
+}

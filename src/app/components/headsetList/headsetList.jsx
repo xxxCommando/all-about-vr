@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './headsetList.scss';
+import { List } from 'antd';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import { List, Card, Image } from 'antd';
-import { PlusCircleOutlined, MinusCircleOutlined } from '@ant-design/icons';
+import './headsetList.scss';
+import { HeadsetShape } from '../../../shape';
+
+import HeadsetCard from '../headsetCard';
 
 class HeadsetList extends React.Component {
   constructor(props) {
@@ -14,6 +17,12 @@ class HeadsetList extends React.Component {
     };
   }
 
+  filterSelected = () => {
+    const { items } = this.props;
+    const { selected } = this.state;
+    return items.filter((item) => selected.includes(item.id));
+  }
+
   toggleSelected(id) {
     const { selected } = this.state;
     const selectedIndex = selected.indexOf(id);
@@ -22,7 +31,10 @@ class HeadsetList extends React.Component {
       this.setState({ selected, compareMode: false });
     } else {
       const newSelected = [...selected, id];
-      this.setState({ selected: newSelected, compareMode: newSelected.length === 2 });
+      this.setState({
+        selected: newSelected,
+        compareMode: newSelected.length === 2,
+      });
     }
   }
 
@@ -30,48 +42,46 @@ class HeadsetList extends React.Component {
     const { items } = this.props;
     const { selected, compareMode } = this.state;
     return (
-      <div>
-        <h1>{ compareMode ? 'Compare' : 'List' }</h1>
-        <List
-          grid={{
-            gutter: 16,
-            column: compareMode ? 2 : 4,
-          }}
-          dataSource={items}
-          renderItem={(item) => (
-            <List.Item>
-              <Card
-                hoverable
-                bordered
-                style={selected.includes(item.id) ? { backgroundColor: 'grey' } : {}}
-                cover={<Image src={item.img} preview={false} />}
-                actions={[
-                  selected.includes(item.id) ? (
-                    <MinusCircleOutlined
-                      key="compare"
-                      onClick={() => this.toggleSelected(item.id)}
-                    />
-                  ) : (
-                    <PlusCircleOutlined
-                      key="compare"
-                      onClick={() => this.toggleSelected(item.id)}
-                      disabled={compareMode}
-                    />
-                  ),
-                ]}
-              >
-                <Card.Meta title={item.name} description={`${item.price} $`} />
-              </Card>
-            </List.Item>
-          )}
-        />
-      </div>
+      <List
+        grid={{
+          gutter: 16,
+          column: compareMode ? 2 : 4,
+          sm: 2,
+          lg: compareMode ? 2 : 3,
+        }}
+      >
+        <ReactCSSTransitionGroup
+          transitionName="fade-headsets"
+          transitionEnterTimeout={700}
+          transitionLeaveTimeout={300}
+          className="ant-row headsets"
+        >
+          {
+              items.map((item) => (
+                compareMode && !selected.includes(item.id)
+                  ? undefined
+                  : (
+                    <div className={compareMode ? 'compare-mode' : 'normal-mode'}>
+                      <List.Item>
+                        <HeadsetCard
+                          selectForCompare={selected.includes(item.id)}
+                          item={item}
+                          compareMode={compareMode}
+                          toggleSelected={(id) => this.toggleSelected(id)}
+                        />
+                      </List.Item>
+                    </div>
+                  )
+              ))
+            }
+        </ReactCSSTransitionGroup>
+      </List>
     );
   }
 }
 
 HeadsetList.propTypes = {
-  items: PropTypes.arrayOf,
+  items: PropTypes.arrayOf(HeadsetShape),
 };
 
 HeadsetList.defaultProps = {

@@ -1,2 +1,20 @@
-@mixin hello-world {
+// Small devices
+@mixin sm {
+  @media (max-width: #{$breakpoint-sm}) {
+      @content;
+  }
+}
+
+// Medium devices
+@mixin md {
+  @media (max-width: #{$breakpoint-md}) {
+      @content;
+  }
+}
+
+// Large devices
+@mixin lg {
+  @media (max-width: #{$breakpoint-lg}) {
+      @content;
+  }
 }
