@@ -15,6 +15,7 @@
     "react": "^16.13.1",
     "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3"
   },
   "scripts": {
