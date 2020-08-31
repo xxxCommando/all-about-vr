@@ -1,5 +1,14 @@
+@import '../assets/scss/light-default.scss';
+@import '../assets/scss/dark-default.scss';
+
 .App {
   text-align: center;
+
+  .layout-content {
+    margin: 24px 16px;
+    padding: 24px;
+    height: 100%;
+  }
 }
 
 .App-logo {

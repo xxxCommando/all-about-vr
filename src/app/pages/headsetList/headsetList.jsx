@@ -6,7 +6,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import './headsetList.scss';
 import { HeadsetShape } from '../../../shape';
 
-import HeadsetCard from '../headsetCard';
+import HeadsetCard from '../../components/headsetCard';
 
 class HeadsetList extends React.Component {
   constructor(props) {
