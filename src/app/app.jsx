@@ -1,6 +1,8 @@
 import React from 'react';
 import * as firebase from 'firebase';
 import { Layout } from 'antd';
+import { instanceOf } from 'prop-types';
+import { withCookies, Cookies } from 'react-cookie';
 
 import './app.scss';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -12,10 +14,12 @@ import Footer from './components/footer';
 class App extends React.Component {
   constructor(props) {
     super(props);
+
+    const { cookies } = props;
     this.state = {
       headsetsRef: [],
       headsetsLoaded: false,
-      darkMode: false,
+      darkMode: cookies.get('all-about-vr-dark-mode') || false,
     };
   }
 
@@ -42,7 +46,13 @@ class App extends React.Component {
   };
 
   toggleNightMode = () => {
+    const { cookies } = this.props;
     const { darkMode } = this.state;
+    if (!darkMode) {
+      cookies.set('all-about-vr-dark-mode', 'activate');
+    } else {
+      cookies.remove('all-about-vr-dark-mode');
+    }
     this.setState({ darkMode: !darkMode });
   }
 
@@ -69,4 +79,8 @@ class App extends React.Component {
   }
 }
 
-export default App;
+App.propTypes = {
+  cookies: instanceOf(Cookies).isRequired,
+};
+
+export default withCookies(App);

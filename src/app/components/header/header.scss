@@ -1,27 +1,46 @@
+@import "../../../assets/scss/global.scss";
+
 .App {
+  &.dark {
+    .nav-menu {
+      >.ant-menu-item {
+        &-selected {
+          background-color: $dark-main-hover;
+        }
+        &:hover {
+          background-color: $dark-main-hover;
+        }
+      }
+    }
+  }
+
   .logo {
     width: 120px;
     height: 31px;
-    background: rgba(255, 255, 255, 0.2);
+    background: $dark-main-hover;
     margin: 16px 24px 16px 0;
     float: left;
   }
 
-  .night-mode {
-    &.dark {
-      color: #1f1f1f;
-      border: none;
-      background-color: #f0f2f5;
-      padding: 0;
-      float: right;
-      margin: 12px;
-    }
-    &.light {
-      color: #f0f2f5;
-      border: 2px solid;
-      padding: 0;
-      float: right;
-      margin: 12px;
+  .nav-menu {
+    font-size: 16px;
+    .night-mode {
+      &.dark {
+        color: $dark-main;
+        border: none;
+        background-color: #f0f2f5;
+        padding: 0;
+        float: right;
+        margin: 12px;
+      }
+      &.light {
+        color: #f0f2f5;
+        border: 2px solid;
+        padding: 0;
+        float: right;
+        margin: 12px;
+      }
     }
   }
+
 }
