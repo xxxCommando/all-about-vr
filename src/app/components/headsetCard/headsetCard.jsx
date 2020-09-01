@@ -9,11 +9,13 @@ import './headsetCard.scss';
 
 const HeadsetCard = (props) => {
   const {
-    selectForCompare, item, compareMode, toggleSelected,
+    selectForCompare, item, compareMode, onClick,
   } = props;
   return (
     <Card
-      onClick={compareMode && !selectForCompare ? () => {} : () => toggleSelected(item.id)}
+      onClick={
+        compareMode && !selectForCompare ? () => {} : () => onClick(item.id)
+      }
       hoverable
       bordered
       className={selectForCompare ? 'selected' : ''}
@@ -35,14 +37,14 @@ HeadsetCard.propTypes = {
   selectForCompare: PropTypes.bool,
   item: HeadsetShape,
   compareMode: PropTypes.bool,
-  toggleSelected: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 HeadsetCard.defaultProps = {
   selectForCompare: false,
   item: {},
   compareMode: false,
-  toggleSelected: () => console.warn('toggleSelected is not defined'),
+  onClick: () => console.warn('onClick is not defined'),
 };
 
 export default HeadsetCard;

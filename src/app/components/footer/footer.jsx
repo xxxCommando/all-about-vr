@@ -1,4 +1,5 @@
 import React from "react";
+import "./footer.scss";
 
 class Footer extends React.Component {
   constructor() {
@@ -7,11 +8,7 @@ class Footer extends React.Component {
   }
 
   render() {
-    return (
-      <footer>
-        <h3>Je suis dans le footer</h3>
-      </footer>
-    );
+    return <footer>AllAboutVR©2020 Created by Bleuh and xxCommando</footer>;
   }
 }
 

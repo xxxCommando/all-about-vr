@@ -5,6 +5,7 @@ import { instanceOf } from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
 
 import './app.scss';
+
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import HeadsetList from './pages/headsetList';
@@ -58,7 +59,7 @@ class App extends React.Component {
       document.body.classList = ['light'];
     }
     this.setState({ darkMode: !darkMode });
-  }
+  };
 
   render() {
     const { headsetsRef, darkMode } = this.state;
