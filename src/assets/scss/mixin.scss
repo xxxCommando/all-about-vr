@@ -18,3 +18,10 @@
       @content;
   }
 }
+
+// apply for theme
+@mixin theme {
+  body {
+    @content;
+  }
+}

@@ -1,4 +1,7 @@
-.App {
+
+@import '../../../assets/scss/mixin.scss';
+
+@include theme {
   &.dark {
     .ant-card {
       &.selected, &:hover {

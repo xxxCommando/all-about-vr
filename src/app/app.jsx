@@ -24,6 +24,8 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
+    const { darkMode } = this.state;
+    document.body.classList = darkMode ? ['dark'] : ['light'];
     const collection = await firebase
       .firestore()
       .collection('headsets')
@@ -50,8 +52,10 @@ class App extends React.Component {
     const { darkMode } = this.state;
     if (!darkMode) {
       cookies.set('all-about-vr-dark-mode', 'activate');
+      document.body.classList = ['dark'];
     } else {
       cookies.remove('all-about-vr-dark-mode');
+      document.body.classList = ['light'];
     }
     this.setState({ darkMode: !darkMode });
   }
@@ -59,22 +63,20 @@ class App extends React.Component {
   render() {
     const { headsetsRef, darkMode } = this.state;
     return (
-      <div className={`App ${darkMode ? 'dark' : 'light'}`}>
-        <Layout>
-          <Router>
-            <Header toggleNightMode={this.toggleNightMode} darkMode={darkMode} />
-            <Layout.Content className="layout-content">
-              <Switch>
-                <Route path="/" exact>
-                  <HeadsetList items={this.formatHeadset(headsetsRef)} />
-                </Route>
-                {/* <Route path="/about" component={About} /> */}
-              </Switch>
-            </Layout.Content>
-          </Router>
-          <Footer />
-        </Layout>
-      </div>
+      <Layout className="App">
+        <Router>
+          <Header toggleNightMode={this.toggleNightMode} darkMode={darkMode} />
+          <Layout.Content className="layout-content">
+            <Switch>
+              <Route path="/" exact>
+                <HeadsetList items={this.formatHeadset(headsetsRef)} />
+              </Route>
+              {/* <Route path="/about" component={About} /> */}
+            </Switch>
+          </Layout.Content>
+        </Router>
+        <Footer />
+      </Layout>
     );
   }
 }

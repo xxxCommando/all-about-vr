@@ -1,8 +1,9 @@
 @import "../../../assets/scss/global.scss";
+@import '../../../assets/scss/mixin.scss';
 
-.App {
+@include theme {
   &.dark {
-    .nav-menu {
+    .ant-menu.ant-menu-dark.nav-menu {
       >.ant-menu-item {
         &-selected {
           background-color: $dark-main-hover;
