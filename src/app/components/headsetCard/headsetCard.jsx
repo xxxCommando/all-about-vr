@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link, withRouter } from 'react-router-dom';
 
 import { Card, Image } from 'antd';
 import { FileSearchOutlined } from '@ant-design/icons';
@@ -27,11 +28,13 @@ const HeadsetCard = (props) => {
           children || <Card.Meta description={item.summary} title={`${item.price} $`} />
         }
       </Card>
-      <FileSearchOutlined
-        key="information"
-        onClick={() => console.log('router vers la page')}
-        className="card-information-link"
-      />
+      <Link to={`/headsets/${item.id}`} className="card-link">
+        <FileSearchOutlined
+          key="information"
+          onClick={() => console.log('router vers la page')}
+
+        />
+      </Link>
     </div>
   );
 };

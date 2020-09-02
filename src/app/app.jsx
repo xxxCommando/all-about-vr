@@ -8,9 +8,11 @@ import './app.scss';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+import { FilterFilled } from '@ant-design/icons';
 import HeadsetList from './pages/headsetList';
 import Header from './components/header';
 import Footer from './components/footer';
+import HeadsetDetails from './components/headsetDetails';
 
 class App extends React.Component {
   constructor(props) {
@@ -38,15 +40,21 @@ class App extends React.Component {
     });
   }
 
-  formatHeadset = (headsetsRef) => {
+  formatHeadsets = (headsetsRef) => {
     const { headsetsLoaded } = this.state;
     return headsetsLoaded
-      ? headsetsRef.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }))
-      : [];
+      ? headsetsRef.docs.map((doc) => (this.formatHeadset(doc))) : [];
   };
+
+  formatHeadset = (doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  });
+
+headset = (id) => {
+  const { headsetsRef } = this.state;
+  return this.formatHeadset(headsetsRef.docs.find((headset) => headset.id === id));
+};
 
   toggleNightMode = () => {
     const { cookies } = this.props;
@@ -62,7 +70,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { headsetsRef, darkMode } = this.state;
+    const { headsetsRef, darkMode, headsetsLoaded } = this.state;
     return (
       <Layout className="App">
         <Router>
@@ -70,8 +78,9 @@ class App extends React.Component {
           <Layout.Content className="layout-content">
             <Switch>
               <Route path="/" exact>
-                <HeadsetList items={this.formatHeadset(headsetsRef)} />
+                <HeadsetList items={this.formatHeadsets(headsetsRef)} />
               </Route>
+              <Route path="/headsets/:id" component={({ match }) => (headsetsLoaded ? <HeadsetDetails item={this.headset(match.params.id)} /> : null)} />
               {/* <Route path="/about" component={About} /> */}
             </Switch>
           </Layout.Content>
