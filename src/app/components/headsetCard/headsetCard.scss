@@ -1,16 +1,7 @@
-
+@import "../../../assets/scss/global.scss";
 @import '../../../assets/scss/mixin.scss';
 
 @include theme {
-  &.dark {
-    .ant-card {
-      &.selected, &:hover {
-        box-shadow: 0 1px 2px -2px rgba(48, 48, 48, 0.32),
-          0 3px 6px 0 rgba(48, 48, 48, 0.24), 0 5px 12px 4px rgba(48, 48, 48, 0.18);
-        border: 1px solid #303030;
-      }
-    }
-  }
   .ant-card {
     text-align: center;
     &.selected {
@@ -22,6 +13,30 @@
       img {
         height: 200px;
         object-fit: contain;
+      }
+    }
+  }
+  .card-information-link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 22px;
+    transition: color 0.7s ease;
+    &:hover {
+      color: $light-main-hover;
+    }
+  }
+  &.dark {
+    .ant-card {
+      &.selected, &:hover {
+        box-shadow: 0 1px 2px -2px rgba(48, 48, 48, 0.32),
+          0 3px 6px 0 rgba(48, 48, 48, 0.24), 0 5px 12px 4px rgba(48, 48, 48, 0.18);
+        border: 1px solid #303030;
+      }
+    }
+    .card-information-link {
+      &:hover {
+        color: $dark-main-hover;
       }
     }
   }
