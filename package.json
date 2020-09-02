@@ -25,7 +25,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "precommit": "pretty-quick --staged",
-    "lint": "eslint ./"
+    "lint": "eslint ./",
+    "add-headset": "node src/add-empty-headset.js"
   },
   "eslintConfig": {
     "extends": "react-app"
