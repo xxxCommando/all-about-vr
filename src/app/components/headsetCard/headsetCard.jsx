@@ -9,7 +9,7 @@ import './headsetCard.scss';
 
 const HeadsetCard = (props) => {
   const {
-    selectForCompare, item, compareMode, onClick,
+    selectForCompare, item, compareMode, onClick, children,
   } = props;
   return (
     <Card
@@ -28,7 +28,9 @@ const HeadsetCard = (props) => {
         />
       )}
     >
-      <Card.Meta title={item.name} description={`${item.price} $`} />
+      {
+        children || <Card.Meta description={item.summary} title={`${item.price} $`} />
+      }
     </Card>
   );
 };
@@ -38,6 +40,7 @@ HeadsetCard.propTypes = {
   item: HeadsetShape,
   compareMode: PropTypes.bool,
   onClick: PropTypes.func,
+  children: PropTypes.element,
 };
 
 HeadsetCard.defaultProps = {
@@ -45,6 +48,7 @@ HeadsetCard.defaultProps = {
   item: {},
   compareMode: false,
   onClick: () => console.warn('onClick is not defined'),
+  children: null,
 };
 
 export default HeadsetCard;

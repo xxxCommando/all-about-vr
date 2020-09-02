@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { List, AutoComplete } from 'antd';
+import { List, Typography } from 'antd';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import './headsetList.scss';
 import { HeadsetShape } from '../../../shape';
 
 import HeadsetCard from '../../components/headsetCard';
+import AutoCompleteHeadset from '../../components/autoCompleteHeadset';
+
+const MAX_SELECT = 2;
 
 class HeadsetList extends React.Component {
   constructor(props) {
@@ -23,11 +26,6 @@ class HeadsetList extends React.Component {
     return items.filter((item) => selected.includes(item.id));
   };
 
-  onSelect = (data, option) => {
-    console.log('onSelect', data, option);
-    this.toggleSelected(option.id);
-  };
-
   toggleSelected(id) {
     const { selected } = this.state;
     const selectedIndex = selected.indexOf(id);
@@ -35,10 +33,11 @@ class HeadsetList extends React.Component {
       selected.splice(selectedIndex, 1);
       this.setState({ selected, compareMode: false });
     } else {
+      if (selected.length >= MAX_SELECT) return;
       const newSelected = [...selected, id];
       this.setState({
         selected: newSelected,
-        compareMode: newSelected.length === 2,
+        compareMode: newSelected.length === MAX_SELECT,
       });
     }
   }
@@ -49,32 +48,26 @@ class HeadsetList extends React.Component {
 
     return (
       <div>
-        <h2>Enter model name of 2 VR Headset </h2>
-        <AutoComplete
-          onSelect={this.onSelect}
-          value={selected[0]}
-          style={{ width: 200 }}
-          options={items.map((headset) => ({
-            value: headset.name,
-            id: headset.id,
-          }))}
+        <Typography.Title level={2}>Enter model name of 2 VR Headset</Typography.Title>
+
+        <AutoCompleteHeadset
+          items={items}
+          valueSelected={selected[0]}
+          alreadySelected={[selected[1]]}
           placeholder="Headset 1"
-          filterOption={(inputValue, option) => option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1}
+          onChange={(id) => this.toggleSelected(id)}
         />
 
-        <AutoComplete
-          onSelect={this.onSelect}
-          value={selected[1]}
-          style={{ width: 200 }}
-          options={items.map((headset) => ({
-            value: headset.name,
-          }))}
+        <AutoCompleteHeadset
+          items={items}
+          valueSelected={selected[1]}
+          alreadySelected={[selected[0]]}
           placeholder="Headset 2"
-          filterOption={(inputValue, option) => option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1}
+          onChange={(id) => this.toggleSelected(id)}
         />
 
         <hr />
-        <h2>You can also select 2 VR Headset in the list below</h2>
+        <Typography.Title level={2}>You can also select 2 VR Headset in the list below</Typography.Title>
         <List
           grid={{
             gutter: 16,

@@ -5,17 +5,13 @@ const DateShape = PropTypes.shape({
   seconds: PropTypes.number,
 });
 
-const DescriptionShape = PropTypes.shape({
-  long: PropTypes.string,
-  short: PropTypes.string,
-});
-
 const HeadsetShape = PropTypes.shape({
   name: PropTypes.string,
   img: PropTypes.string,
   price: PropTypes.number,
   releasedate: DateShape,
-  description: DescriptionShape,
+  description: PropTypes.string,
+  summary: PropTypes.string,
   index: PropTypes.number,
 });
 
