@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { Card, Image } from 'antd';
 import { FileSearchOutlined } from '@ant-design/icons';
@@ -13,12 +13,12 @@ const HeadsetCard = (props) => {
     selectForCompare, item, compareMode, onClick, children,
   } = props;
   return (
-    <div>
+    <div className="headset-card">
       <Card
         onClick={
-          compareMode && !selectForCompare ? () => {} : () => onClick(item.id)
+          !onClick || (compareMode && !selectForCompare) ? () => {} : () => onClick(item.id)
         }
-        hoverable
+        hoverable={onClick}
         bordered
         className={selectForCompare ? 'selected' : ''}
         title={item.name}
@@ -29,11 +29,7 @@ const HeadsetCard = (props) => {
         }
       </Card>
       <Link to={`/headsets/${item.id}`} className="card-link">
-        <FileSearchOutlined
-          key="information"
-          onClick={() => console.log('router vers la page')}
-
-        />
+        <FileSearchOutlined key="information" />
       </Link>
     </div>
   );
@@ -51,7 +47,7 @@ HeadsetCard.defaultProps = {
   selectForCompare: false,
   item: {},
   compareMode: false,
-  onClick: () => console.warn('onClick is not defined'),
+  onClick: null,
   children: null,
 };
 

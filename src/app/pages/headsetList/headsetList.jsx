@@ -48,7 +48,9 @@ class HeadsetList extends React.Component {
 
     return (
       <div>
-        <Typography.Title level={2}>Enter model name of 2 VR Headset</Typography.Title>
+        <Typography.Title level={2}>
+          Enter model name of 2 VR Headset
+        </Typography.Title>
 
         <AutoCompleteHeadset
           items={items}
@@ -67,7 +69,9 @@ class HeadsetList extends React.Component {
         />
 
         <hr />
-        <Typography.Title level={2}>You can also select 2 VR Headset in the list below</Typography.Title>
+        <Typography.Title level={2}>
+          You can also select 2 VR Headset in the list below
+        </Typography.Title>
         <List
           grid={{
             gutter: 16,

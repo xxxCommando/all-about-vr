@@ -8,7 +8,6 @@ import './app.scss';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import { FilterFilled } from '@ant-design/icons';
 import HeadsetList from './pages/headsetList';
 import Header from './components/header';
 import Footer from './components/footer';
@@ -51,10 +50,10 @@ class App extends React.Component {
     ...doc.data(),
   });
 
-headset = (id) => {
-  const { headsetsRef } = this.state;
-  return this.formatHeadset(headsetsRef.docs.find((headset) => headset.id === id));
-};
+  headset = (id) => {
+    const { headsetsRef } = this.state;
+    return this.formatHeadset(headsetsRef.docs.find((headset) => headset.id === id));
+  };
 
   toggleNightMode = () => {
     const { cookies } = this.props;

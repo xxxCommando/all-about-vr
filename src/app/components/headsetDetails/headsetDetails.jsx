@@ -1,40 +1,41 @@
 import React from 'react';
+import { Card } from 'antd';
+
 import './headsetDetails.scss';
-
-import { Card, Image } from 'antd';
 import HeadsetCard from '../headsetCard';
+import { HeadsetShape } from '../../../shape';
 
-class HeadsetDetails extends React.Component {
-  render() {
-    const gridStyle = {
-      width: '25%',
-      textAlign: 'center',
-    };
-    return (
-      <div>
+const HeadsetDetails = (props) => {
+  const { item } = props;
+  const gridStyle = {
+    width: '25%',
+    textAlign: 'center',
+  };
+  return (
+    <div>
+      <HeadsetCard item={item}>
+        <Card title="Resolution">
+          <Card.Grid style={gridStyle}>Content</Card.Grid>
+          <Card.Grid hoverable={false} style={gridStyle}>
+            Content
+          </Card.Grid>
+          <Card.Grid style={gridStyle}>Content</Card.Grid>
+          <Card.Grid style={gridStyle}>Content</Card.Grid>
+          <Card.Grid style={gridStyle}>Content</Card.Grid>
+          <Card.Grid style={gridStyle}>Content</Card.Grid>
+          <Card.Grid style={gridStyle}>Content</Card.Grid>
+        </Card>
+      </HeadsetCard>
+    </div>
+  );
+};
 
-        <Card
-          bordered
-          title={this.props.item.name}
-          cover={<Image src={this.props.item.img} preview={false} />}
+HeadsetDetails.propTypes = {
+  item: HeadsetShape,
+};
 
-   /* <Card title="Card Title">
-    <Card.Grid style={gridStyle}>Content</Card.Grid>
-    <Card.Grid hoverable={false} style={gridStyle}>
-      Content
-    </Card.Grid>
-    <Card.Grid style={gridStyle}>Content</Card.Grid>
-    <Card.Grid style={gridStyle}>Content</Card.Grid>
-    <Card.Grid style={gridStyle}>Content</Card.Grid>
-    <Card.Grid style={gridStyle}>Content</Card.Grid>
-    <Card.Grid style={gridStyle}>Content</Card.Grid>
-    </Card> */
-
-        />
-
-      </div>
-    );
-  }
-}
+HeadsetDetails.defaultProps = {
+  item: {},
+};
 
 export default HeadsetDetails;
