@@ -52,6 +52,7 @@ class App extends React.Component {
 
   headset = (id) => {
     const { headsetsRef } = this.state;
+
     return this.formatHeadset(headsetsRef.docs.find((headset) => headset.id === id));
   };
 
@@ -70,6 +71,7 @@ class App extends React.Component {
 
   render() {
     const { headsetsRef, darkMode, headsetsLoaded } = this.state;
+
     return (
       <Layout className="App">
         <Router>

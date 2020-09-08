@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import { Card, Image } from 'antd';
 import { FileSearchOutlined } from '@ant-design/icons';
@@ -10,13 +10,22 @@ import './headsetCard.scss';
 
 const HeadsetCard = (props) => {
   const {
-    selectForCompare, item, compareMode, onClick, children,
+    selectForCompare,
+    item,
+    compareMode,
+    onClick,
+    children,
+    location,
   } = props;
+  const pathname = location.pathname.split('/')[1];
+
   return (
     <div className="headset-card">
       <Card
         onClick={
-          !onClick || (compareMode && !selectForCompare) ? () => {} : () => onClick(item.id)
+          !onClick || (compareMode && !selectForCompare)
+            ? () => {}
+            : () => onClick(item.id)
         }
         hoverable={onClick}
         bordered
@@ -24,13 +33,15 @@ const HeadsetCard = (props) => {
         title={item.name}
         cover={<Image src={item.img} preview={false} />}
       >
-        {
-          children || <Card.Meta description={item.summary} title={`${item.price} $`} />
-        }
+        {children || (
+          <Card.Meta description={item.summary} title={`${item.price} $`} />
+        )}
       </Card>
-      <Link to={`/headsets/${item.id}`} className="card-link">
-        <FileSearchOutlined key="information" />
-      </Link>
+      {pathname === 'headsets' ? null : (
+        <Link to={`/headsets/${item.id}`} className="card-link">
+          <FileSearchOutlined key="information" />
+        </Link>
+      )}
     </div>
   );
 };
@@ -41,6 +52,9 @@ HeadsetCard.propTypes = {
   compareMode: PropTypes.bool,
   onClick: PropTypes.func,
   children: PropTypes.element,
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
+  }),
 };
 
 HeadsetCard.defaultProps = {
@@ -49,6 +63,9 @@ HeadsetCard.defaultProps = {
   compareMode: false,
   onClick: null,
   children: null,
+  location: PropTypes.shape({
+    pathname: '/',
+  }),
 };
 
-export default HeadsetCard;
+export default withRouter(HeadsetCard);
