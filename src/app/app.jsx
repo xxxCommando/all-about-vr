@@ -28,11 +28,7 @@ class App extends React.Component {
   async componentDidMount() {
     const { darkMode } = this.state;
     document.body.classList = darkMode ? ['dark'] : ['light'];
-    const collection = await firebase
-      .firestore()
-      .collection('headsets')
-      .orderBy('index')
-      .get();
+    const collection = await firebase.firestore().collection('headsets').orderBy('index').get();
     this.setState({
       headsetsRef: collection,
       headsetsLoaded: true,
@@ -41,8 +37,7 @@ class App extends React.Component {
 
   formatHeadsets = (headsetsRef) => {
     const { headsetsLoaded } = this.state;
-    return headsetsLoaded
-      ? headsetsRef.docs.map((doc) => (this.formatHeadset(doc))) : [];
+    return headsetsLoaded ? headsetsRef.docs.map((doc) => this.formatHeadset(doc)) : [];
   };
 
   formatHeadset = (doc) => ({
@@ -73,21 +68,24 @@ class App extends React.Component {
     const { headsetsRef, darkMode, headsetsLoaded } = this.state;
 
     return (
-      <Layout className="App">
-        <Router>
+      <Router>
+        <Layout className="App">
           <Header toggleNightMode={this.toggleNightMode} darkMode={darkMode} />
           <Layout.Content className="layout-content">
             <Switch>
               <Route path="/" exact>
                 <HeadsetList items={this.formatHeadsets(headsetsRef)} />
               </Route>
-              <Route path="/headsets/:id" component={({ match }) => (headsetsLoaded ? <HeadsetDetails item={this.headset(match.params.id)} /> : null)} />
+              <Route
+                path="/headsets/:id"
+                component={({ match }) => (headsetsLoaded ? <HeadsetDetails item={this.headset(match.params.id)} /> : null)}
+              />
               {/* <Route path="/about" component={About} /> */}
             </Switch>
           </Layout.Content>
-        </Router>
-        <Footer />
-      </Layout>
+          <Footer />
+        </Layout>
+      </Router>
     );
   }
 }

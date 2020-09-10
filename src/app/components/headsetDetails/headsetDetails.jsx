@@ -1,7 +1,7 @@
 import React from 'react';
-import {
-  Card, Table, Tag, Space,
-} from 'antd';
+import PropTypes from 'prop-types';
+import { Card, Table } from 'antd';
+import { Link } from 'react-router-dom';
 
 import './headsetDetails.scss';
 import moment from 'moment';
@@ -9,19 +9,16 @@ import HeadsetCard from '../headsetCard';
 import { HeadsetShape } from '../../../shape';
 
 const HeadsetDetails = (props) => {
-  const { item } = props;
-  const gridStyle = {
-    width: '25%',
-    textAlign: 'center',
-  };
-  console.log(item);
+  const {
+    selected, item, compareMode, onClick, compareResult,
+  } = props;
 
   const columns = [
     {
       title: 'Specs',
       dataIndex: 'specs',
       key: 'specs',
-      render: (text) => <a>{text}</a>,
+      render: (text) => <Link to="/wiki">{text}</Link>,
     },
     {
       title: '',
@@ -34,7 +31,7 @@ const HeadsetDetails = (props) => {
     {
       key: '1',
       specs: 'Date Release',
-      info: moment(item.releasedate.toDate()).calendar(),
+      info: item.releasedate ? moment(item.releasedate.toDate()).calendar() : '',
     },
     {
       key: '2',
@@ -45,28 +42,46 @@ const HeadsetDetails = (props) => {
       key: '3',
       specs: 'Something',
       info: item.name,
-
     },
   ];
 
+  const getClassName = (compareTarget) => {
+    if (!compareResult) {
+      return '';
+    } if (compareResult[compareTarget] === item[compareTarget]) {
+      return 'better';
+    }
+    return 'worst';
+  };
+
   return (
-    <div>
-      <HeadsetCard item={item}>
-        <Card title="Specification">
+    <HeadsetCard item={item} selected={selected} onClick={onClick}>
+      {!compareMode ? null : (
+        <Card
+          title="Specification"
+          className={getClassName('price')}
+        >
           <Table columns={columns} dataSource={data} pagination={false} />
         </Card>
-
-      </HeadsetCard>
-    </div>
+      )}
+    </HeadsetCard>
   );
 };
 
 HeadsetDetails.propTypes = {
+  selected: PropTypes.bool,
   item: HeadsetShape,
+  compareMode: PropTypes.bool,
+  onClick: PropTypes.func,
+  compareResult: PropTypes.shape({}),
 };
 
 HeadsetDetails.defaultProps = {
+  selected: false,
   item: {},
+  compareMode: true,
+  onClick: null,
+  compareResult: null,
 };
 
 export default HeadsetDetails;

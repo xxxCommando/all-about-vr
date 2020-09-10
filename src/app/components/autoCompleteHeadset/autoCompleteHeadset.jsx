@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AutoComplete } from 'antd';
+import { AutoComplete, Button, Tooltip } from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
 
+import './autoCompleteHeadset.scss';
 import { HeadsetShape } from '../../../shape';
 
 class AutoCompleteHeadset extends React.Component {
@@ -45,30 +47,50 @@ class AutoCompleteHeadset extends React.Component {
       onChange(options.id);
       newState.selectedId = options.id;
     } else if (selectedId) {
-      onChange(selectedId);
-      newState.selectedId = null;
+      this.clearInput();
     }
 
     newState.value = data;
     this.setState(newState);
   };
 
+  clearInput = () => {
+    const { onChange } = this.props;
+    const { selectedId } = this.state;
+    onChange(selectedId);
+    this.setState({
+      value: '',
+      selectedId: null,
+    });
+  };
+
   render() {
     const { items, placeholder, alreadySelected } = this.props;
     const { value } = this.state;
     return (
-      <AutoComplete
-        value={value}
-        style={{ width: 200 }}
-        onChange={this.onChange}
-        options={items
-          .map((headset) => ({
-            value: headset.name,
-            id: headset.id,
-          }))
-          .filter((item) => !alreadySelected.includes(item.id))}
-        placeholder={placeholder}
-      />
+      <>
+        <AutoComplete
+          value={value}
+          className="auto-complete-headset"
+          onChange={this.onChange}
+          options={items
+            .map((headset) => ({
+              value: headset.name,
+              id: headset.id,
+            }))
+            .filter((item) => !alreadySelected.includes(item.id))}
+          placeholder={placeholder}
+          filterOption={(inputValue, option) => option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1}
+        />
+        <Tooltip title="delete" className="auto-complete-headset-delete">
+          <Button
+            type="primary"
+            icon={<CloseOutlined />}
+            disabled={value === ''}
+            onClick={this.clearInput}
+          />
+        </Tooltip>
+      </>
     );
   }
 }

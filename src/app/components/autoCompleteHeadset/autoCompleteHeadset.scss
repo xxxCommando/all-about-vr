@@ -1,0 +1,23 @@
+@import '../../../assets/scss/global.scss';
+@import '../../../assets/scss/mixin.scss';
+
+@include theme {
+  .ant-select {
+    &.auto-complete-headset {
+      width: 33vh;
+    }
+  }
+  &.dark {
+    .ant-select {
+      .ant-select-selector {
+        border-color: $dark-main-hover !important;
+      }
+    }
+    .ant-btn {
+      &.auto-complete-headset-delete {
+        background-color: $dark-main-hover;
+        border-color: $dark-main-hover;
+      }
+    }
+  }
+}

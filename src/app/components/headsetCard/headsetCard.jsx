@@ -10,26 +10,25 @@ import './headsetCard.scss';
 
 const HeadsetCard = (props) => {
   const {
-    selectForCompare,
+    selected,
     item,
-    compareMode,
     onClick,
     children,
     location,
   } = props;
-  const pathname = location.pathname.split('/')[1];
+  const isHeadsetPage = location.pathname.split('/')[1] === 'headsets';
 
   return (
     <div className="headset-card">
       <Card
         onClick={
-          !onClick || (compareMode && !selectForCompare)
+          !onClick
             ? () => {}
             : () => onClick(item.id)
         }
         hoverable={onClick}
         bordered
-        className={selectForCompare ? 'selected' : ''}
+        className={selected ? 'selected' : ''}
         title={item.name}
         cover={<Image src={item.img} preview={false} />}
       >
@@ -37,7 +36,7 @@ const HeadsetCard = (props) => {
           <Card.Meta description={item.summary} title={`${item.price} $`} />
         )}
       </Card>
-      {pathname === 'headsets' ? null : (
+      {isHeadsetPage ? null : (
         <Link to={`/headsets/${item.id}`} className="card-link">
           <FileSearchOutlined key="information" />
         </Link>
@@ -47,9 +46,8 @@ const HeadsetCard = (props) => {
 };
 
 HeadsetCard.propTypes = {
-  selectForCompare: PropTypes.bool,
+  selected: PropTypes.bool,
   item: HeadsetShape,
-  compareMode: PropTypes.bool,
   onClick: PropTypes.func,
   children: PropTypes.element,
   location: PropTypes.shape({
@@ -58,9 +56,8 @@ HeadsetCard.propTypes = {
 };
 
 HeadsetCard.defaultProps = {
-  selectForCompare: false,
+  selected: false,
   item: {},
-  compareMode: false,
   onClick: null,
   children: null,
   location: PropTypes.shape({

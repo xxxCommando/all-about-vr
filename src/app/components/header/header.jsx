@@ -17,7 +17,7 @@ const CustomHeader = (props) => {
       <Link to="/">
         <div className="logo" />
       </Link>
-      <Menu theme="dark" mode="horizontal" className="nav-menu" defaultSelectedKeys={[pathname.length ? pathname : 'home']}>
+      <Menu theme="dark" mode="horizontal" className="nav-menu" selectedKeys={[pathname.length ? pathname : 'home']}>
         <Menu.Item key="home">
           <Link to="/">Comparator</Link>
         </Menu.Item>
