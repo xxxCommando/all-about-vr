@@ -1,23 +1,28 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Layout, Menu, Button } from 'antd';
 import { Link, withRouter } from 'react-router-dom';
 import Icon from '@ant-design/icons';
-import PropTypes from 'prop-types';
 
 import './header.scss';
 import { ReactComponent as Moon } from '../../../assets/images/moon.svg';
 
-const { Header } = Layout;
+const getPathname = (location) => location.pathname.split('/')[1];
 
-const CustomHeader = (props) => {
-  const { toggleNightMode, darkMode, location } = props;
-  const pathname = location.pathname.split('/')[1];
+const Header = (props) => {
+  const { toggleDarkMode, darkMode, location } = props;
+  const pathname = getPathname(location);
   return (
-    <Header>
+    <Layout.Header>
       <Link to="/">
         <div className="logo" />
       </Link>
-      <Menu theme="dark" mode="horizontal" className="nav-menu" selectedKeys={[pathname.length ? pathname : 'home']}>
+      <Menu
+        theme="dark"
+        mode="horizontal"
+        className="nav-menu"
+        selectedKeys={[pathname.length ? pathname : 'home']}
+      >
         <Menu.Item key="home">
           <Link to="/">Comparator</Link>
         </Menu.Item>
@@ -35,31 +40,31 @@ const CustomHeader = (props) => {
         </Menu.Item>
         <Button
           type="ghost"
-          onClick={() => toggleNightMode()}
+          onClick={() => toggleDarkMode()}
           shape="circle"
           className={`night-mode ${darkMode ? 'dark' : 'light'}`}
           icon={<Icon component={Moon} />}
           size="large"
         />
       </Menu>
-    </Header>
+    </Layout.Header>
   );
 };
 
-CustomHeader.propTypes = {
-  toggleNightMode: PropTypes.func,
+Header.propTypes = {
+  toggleDarkMode: PropTypes.func,
   darkMode: PropTypes.bool,
   location: PropTypes.shape({
     pathname: PropTypes.string,
   }),
 };
 
-CustomHeader.defaultProps = {
-  toggleNightMode: () => console.warn('toggleSelected is not defined'),
+Header.defaultProps = {
+  toggleDarkMode: () => console.warn('toggleDarkMode is not defined'),
   darkMode: false,
   location: PropTypes.shape({
     pathname: '/',
   }),
 };
 
-export default withRouter(CustomHeader);
+export default withRouter(Header);

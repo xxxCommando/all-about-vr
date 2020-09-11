@@ -1,13 +1,12 @@
 import React from 'react';
-import * as firebase from 'firebase';
-import { Layout } from 'antd';
 import { instanceOf } from 'prop-types';
+import { Layout } from 'antd';
 import { withCookies, Cookies } from 'react-cookie';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import './app.scss';
 
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
+import HeadsetService from './services/headset';
 import HeadsetList from './pages/headsetList';
 import Header from './components/header';
 import Footer from './components/footer';
@@ -19,39 +18,28 @@ class App extends React.Component {
 
     const { cookies } = props;
     this.state = {
-      headsetsRef: [],
-      headsetsLoaded: false,
       darkMode: cookies.get('all-about-vr-dark-mode') || false,
+      headsetService: new HeadsetService(),
+      fatalError: false,
     };
   }
 
   async componentDidMount() {
-    const { darkMode } = this.state;
+    const { darkMode, headsetService } = this.state;
     document.body.classList = darkMode ? ['dark'] : ['light'];
-    const collection = await firebase.firestore().collection('headsets').orderBy('index').get();
-    this.setState({
-      headsetsRef: collection,
-      headsetsLoaded: true,
-    });
+    try {
+      await headsetService.fetchHeadSetCollection();
+      this.setState({
+        headsetService,
+      });
+    } catch (error) {
+      this.setState({
+        fatalError: true,
+      });
+    }
   }
 
-  formatHeadsets = (headsetsRef) => {
-    const { headsetsLoaded } = this.state;
-    return headsetsLoaded ? headsetsRef.docs.map((doc) => this.formatHeadset(doc)) : [];
-  };
-
-  formatHeadset = (doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  });
-
-  headset = (id) => {
-    const { headsetsRef } = this.state;
-
-    return this.formatHeadset(headsetsRef.docs.find((headset) => headset.id === id));
-  };
-
-  toggleNightMode = () => {
+  toggleDarkMode() {
     const { cookies } = this.props;
     const { darkMode } = this.state;
     if (!darkMode) {
@@ -62,26 +50,34 @@ class App extends React.Component {
       document.body.classList = ['light'];
     }
     this.setState({ darkMode: !darkMode });
-  };
+  }
 
   render() {
-    const { headsetsRef, darkMode, headsetsLoaded } = this.state;
+    const { headsetService, darkMode, fatalError } = this.state;
 
     return (
       <Router>
         <Layout className="App">
-          <Header toggleNightMode={this.toggleNightMode} darkMode={darkMode} />
+          <Header toggleDarkMode={this.toggleDarkMode} darkMode={darkMode} />
           <Layout.Content className="layout-content">
-            <Switch>
-              <Route path="/" exact>
-                <HeadsetList items={this.formatHeadsets(headsetsRef)} />
-              </Route>
-              <Route
-                path="/headsets/:id"
-                component={({ match }) => (headsetsLoaded ? <HeadsetDetails item={this.headset(match.params.id)} /> : null)}
-              />
-              {/* <Route path="/about" component={About} /> */}
-            </Switch>
+            {fatalError ? (
+              <div>error 500 ici</div>
+            ) : (
+              <Switch>
+                <Route path="/" exact>
+                  <HeadsetList items={headsetService.getFormatedHeadsets()} />
+                </Route>
+                <Route
+                  path="/headsets/:id"
+                  component={({ match }) => (
+                    <HeadsetDetails item={headsetService.getFormatedHeadset(match.params.id)} />
+                  )}
+                />
+                <Route>
+                  <div>404 ici</div>
+                </Route>
+              </Switch>
+            )}
           </Layout.Content>
           <Footer />
         </Layout>
