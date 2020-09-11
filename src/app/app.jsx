@@ -58,7 +58,7 @@ class App extends React.Component {
     return (
       <Router>
         <Layout className="App">
-          <Header toggleDarkMode={this.toggleDarkMode} darkMode={darkMode} />
+          <Header toggleDarkMode={() => this.toggleDarkMode()} darkMode={darkMode} />
           <Layout.Content className="layout-content">
             {fatalError ? (
               <div>error 500 ici</div>

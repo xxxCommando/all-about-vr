@@ -1,55 +1,121 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Layout, Menu, Button } from 'antd';
+import {
+  Layout, Menu, Button, Drawer,
+} from 'antd';
 import { Link, withRouter } from 'react-router-dom';
-import Icon from '@ant-design/icons';
+import Icon, { MenuOutlined } from '@ant-design/icons';
 
 import './header.scss';
 import { ReactComponent as Moon } from '../../../assets/images/moon.svg';
+import { ReactComponent as Logo } from '../../../assets/images/logo.svg';
 
 const getPathname = (location) => location.pathname.split('/')[1];
 
-const Header = (props) => {
-  const { toggleDarkMode, darkMode, location } = props;
-  const pathname = getPathname(location);
-  return (
-    <Layout.Header>
-      <Link to="/">
-        <div className="logo" />
-      </Link>
-      <Menu
-        theme="dark"
-        mode="horizontal"
-        className="nav-menu"
-        selectedKeys={[pathname.length ? pathname : 'home']}
-      >
-        <Menu.Item key="home">
-          <Link to="/">Comparator</Link>
-        </Menu.Item>
-        <Menu.Item key="headsets">
-          <Link to="/headsets">Headsets</Link>
-        </Menu.Item>
-        <Menu.Item key="wiki">
-          <Link to="/wiki">Wiki</Link>
-        </Menu.Item>
-        <Menu.Item key="vr-games">
-          <Link to="/vr-games">VR Games</Link>
-        </Menu.Item>
-        <Menu.Item key="about">
-          <Link to="/about">About</Link>
-        </Menu.Item>
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      visible: false,
+    };
+  }
+
+  showDrawer = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+
+  onClose = () => {
+    this.setState({
+      visible: false,
+    });
+  };
+
+  render() {
+    const { toggleDarkMode, darkMode, location } = this.props;
+    const { visible } = this.state;
+    const pathname = getPathname(location);
+    return (
+      <Layout.Header>
+        <Link to="/">
+          <div className="logo">
+            <Logo />
+            <span>AllAboutVR</span>
+          </div>
+        </Link>
         <Button
           type="ghost"
           onClick={() => toggleDarkMode()}
           shape="circle"
-          className={`night-mode ${darkMode ? 'dark' : 'light'}`}
+          className={`dark-mode ${darkMode ? 'dark' : 'light'}`}
           icon={<Icon component={Moon} />}
           size="large"
         />
-      </Menu>
-    </Layout.Header>
-  );
-};
+        <Button
+          type="ghost"
+          onClick={this.showDrawer}
+          icon={<MenuOutlined />}
+          className={`menu dark-mode ${darkMode ? 'dark' : 'light'}`}
+          size="large"
+        />
+        <Menu
+          theme="dark"
+          mode="horizontal"
+          className="nav-menu"
+          selectedKeys={[pathname.length ? pathname : 'home']}
+        >
+          <Menu.Item key="home">
+            <Link to="/">Comparator</Link>
+          </Menu.Item>
+          <Menu.Item key="headsets">
+            <Link to="/headsets">Headsets</Link>
+          </Menu.Item>
+          <Menu.Item key="wiki">
+            <Link to="/wiki">Wiki</Link>
+          </Menu.Item>
+          <Menu.Item key="vr-games">
+            <Link to="/vr-games">VR Games</Link>
+          </Menu.Item>
+          <Menu.Item key="about">
+            <Link to="/about">About</Link>
+          </Menu.Item>
+        </Menu>
+        {/* mobile */}
+        <Drawer
+          title="Menu"
+          placement="right"
+          closable={false}
+          onClose={this.onClose}
+          visible={visible}
+        >
+          <Menu
+            theme="dark"
+            className="nav-menu"
+            selectedKeys={[pathname.length ? pathname : 'home']}
+          >
+            <Menu.Item key="home">
+              <Link to="/">Comparator</Link>
+            </Menu.Item>
+            <Menu.Item key="headsets">
+              <Link to="/headsets">Headsets</Link>
+            </Menu.Item>
+            <Menu.Item key="wiki">
+              <Link to="/wiki">Wiki</Link>
+            </Menu.Item>
+            <Menu.Item key="vr-games">
+              <Link to="/vr-games">VR Games</Link>
+            </Menu.Item>
+            <Menu.Item key="about">
+              <Link to="/about">About</Link>
+            </Menu.Item>
+          </Menu>
+        </Drawer>
+      </Layout.Header>
+    );
+  }
+}
 
 Header.propTypes = {
   toggleDarkMode: PropTypes.func,

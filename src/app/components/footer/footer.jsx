@@ -1,15 +1,8 @@
-import React from "react";
-import "./footer.scss";
+import React from 'react';
+import { Layout } from 'antd';
 
-class Footer extends React.Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
+import './footer.scss';
 
-  render() {
-    return <footer>AllAboutVR©2020 Created by Bleuh and xxCommando</footer>;
-  }
-}
+const Footer = () => <Layout.Footer>AllAboutVR©2020 Created by Bleuh and xxCommando</Layout.Footer>;
 
 export default Footer;

@@ -16,30 +16,41 @@
   }
 
   .logo {
-    width: 120px;
-    height: 31px;
-    background: $dark-main-hover;
-    margin: 16px 24px 16px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 40px;
+    margin: 12px 24px 12px 0;
     float: left;
+    svg {
+      height: 40px;
+      width: 40px;
+      margin: 5px;
+    }
+    span {
+      font-size: 30px;
+      color: white;
+      height: 100%;
+      line-height: normal;
+      @include lg {
+        display: none;
+      }
+    }
   }
 
-  .nav-menu {
-    font-size: 16px;
-    .night-mode {
+  .ant-btn {
+    &.dark-mode {
+      float: right;
+      margin: 12px;
       &.dark {
         color: $dark-main;
         border: none;
         background-color: #f0f2f5;
-        padding: 0;
-        float: right;
-        margin: 12px;
       }
       &.light {
         color: #f0f2f5;
         border: 2px solid;
-        padding: 0;
-        float: right;
-        margin: 12px;
       }
     }
   }
