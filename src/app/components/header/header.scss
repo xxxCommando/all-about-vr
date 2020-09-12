@@ -1,20 +1,7 @@
-@import "../../../assets/scss/global.scss";
+@import '../../../assets/scss/global.scss';
 @import '../../../assets/scss/mixin.scss';
 
 @include theme {
-  &.dark {
-    .ant-menu.ant-menu-dark.nav-menu {
-      >.ant-menu-item {
-        &-selected {
-          background-color: $dark-main-hover;
-        }
-        &:hover {
-          background-color: $dark-main-hover;
-        }
-      }
-    }
-  }
-
   .logo {
     display: flex;
     justify-content: center;
@@ -30,29 +17,109 @@
     }
     span {
       font-size: 30px;
-      color: white;
+      color: $white-text;
       height: 100%;
       line-height: normal;
       @include lg {
+        display: none;
+      }
+      @include md {
+        display: block;
+      }
+    }
+  }
+
+  .ant-menu {
+    &.nav-menu {
+      @include md {
         display: none;
       }
     }
   }
 
   .ant-btn {
-    &.dark-mode {
+    &.right-button {
       float: right;
       margin: 12px;
       &.dark {
         color: $dark-main;
         border: none;
-        background-color: #f0f2f5;
+        background-color: $white-text;
       }
       &.light {
-        color: #f0f2f5;
+        color: $white-text;
         border: 2px solid;
+      }
+
+      &.dark-mode {
+        display: block;
+        @include md {
+          display: none;
+        }
+      }
+
+      &.open-menu {
+        display: none;
+        @include md {
+          display: block;
+        }
       }
     }
   }
 
+  .drawer-mobile {
+    .ant-drawer-content {
+      .ant-drawer-footer {
+        border-top: none;
+        .dark-mode {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &.light {
+    .drawer-mobile {
+      .ant-drawer-content {
+        .ant-drawer-header {
+          background-color: #001529;
+          border-bottom: none;
+          .ant-drawer-title {
+            color: $white-text;
+          }
+        }
+        .ant-drawer-body {
+          background-color: #001529;
+        }
+        .ant-drawer-footer {
+          background-color: #001529;
+        }
+      }
+    }
+  }
+
+  &.dark {
+    .ant-menu.ant-menu-dark.nav-menu {
+      > .ant-menu-item {
+        &-selected {
+          background-color: $dark-main-hover;
+        }
+        &:hover {
+          background-color: $dark-main-hover;
+        }
+      }
+    }
+    .drawer-mobile {
+      .ant-menu.ant-menu-dark {
+        > .ant-menu-item {
+          &-selected {
+            background-color: $dark-main-hover;
+          }
+          &:hover {
+            background-color: $dark-main-hover;
+          }
+        }
+      }
+    }
+  }
 }

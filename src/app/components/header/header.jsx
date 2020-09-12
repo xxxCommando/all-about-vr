@@ -49,15 +49,8 @@ class Header extends React.Component {
           type="ghost"
           onClick={() => toggleDarkMode()}
           shape="circle"
-          className={`dark-mode ${darkMode ? 'dark' : 'light'}`}
+          className={`right-button dark-mode ${darkMode ? 'dark' : 'light'}`}
           icon={<Icon component={Moon} />}
-          size="large"
-        />
-        <Button
-          type="ghost"
-          onClick={this.showDrawer}
-          icon={<MenuOutlined />}
-          className={`menu dark-mode ${darkMode ? 'dark' : 'light'}`}
           size="large"
         />
         <Menu
@@ -83,17 +76,35 @@ class Header extends React.Component {
           </Menu.Item>
         </Menu>
         {/* mobile */}
+        <Button
+          type="ghost"
+          onClick={this.showDrawer}
+          className={`right-button open-menu ${darkMode ? 'dark' : 'light'}`}
+          icon={<MenuOutlined />}
+          size="large"
+        />
         <Drawer
           title="Menu"
           placement="right"
+          className="drawer-mobile"
           closable={false}
           onClose={this.onClose}
           visible={visible}
+          footer={(
+            <Button
+              type="ghost"
+              onClick={() => toggleDarkMode()}
+              shape="circle"
+              className={`right-button dark-mode ${darkMode ? 'dark' : 'light'}`}
+              icon={<Icon component={Moon} />}
+              size="large"
+            />
+          )}
         >
           <Menu
             theme="dark"
-            className="nav-menu"
             selectedKeys={[pathname.length ? pathname : 'home']}
+            onSelect={this.onClose}
           >
             <Menu.Item key="home">
               <Link to="/">Comparator</Link>

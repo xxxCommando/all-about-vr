@@ -26,7 +26,7 @@ firebase.initializeApp(config);
 
 const data = {
   img: 'https://images-na.ssl-images-amazon.com/images/I/61fgwdI0C3L._AC_SL1200_.jpg',
-  name: 'Casque VR',
+  name: `Casque VR ${Math.floor(Math.random() * Math.floor(1000000))}`,
   index: 123456789,
   price: 123456789,
 };
