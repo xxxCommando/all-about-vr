@@ -11,6 +11,8 @@ import HeadsetList from './pages/headsetList';
 import Header from './components/header';
 import Footer from './components/footer';
 import HeadsetDetails from './components/headsetDetails';
+import Page404 from './pages/page404/page404';
+import Page500 from './pages/page500/page500';
 
 class App extends React.Component {
   constructor(props) {
@@ -61,7 +63,7 @@ class App extends React.Component {
           <Header toggleDarkMode={() => this.toggleDarkMode()} darkMode={darkMode} />
           <Layout.Content className="layout-content">
             {fatalError ? (
-              <div>error 500 ici</div>
+              <Page500 />
             ) : (
               <Switch>
                 <Route path="/" exact>
@@ -74,7 +76,7 @@ class App extends React.Component {
                   )}
                 />
                 <Route>
-                  <div>404 ici</div>
+                  <Page404 />
                 </Route>
               </Switch>
             )}
