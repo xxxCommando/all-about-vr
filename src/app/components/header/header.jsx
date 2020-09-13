@@ -12,6 +12,64 @@ import { ReactComponent as Logo } from '../../../assets/images/logo.svg';
 
 const getPathname = (location) => location.pathname.split('/')[1];
 
+const MenuNav = (props) => {
+  const { mode, className, pathname } = props;
+  return (
+    <Menu
+      theme="dark"
+      mode={mode}
+      className={className}
+      selectedKeys={[pathname.length ? pathname : 'home']}
+    >
+      <Menu.Item key="home">
+        <Link to="/">Comparator</Link>
+      </Menu.Item>
+      <Menu.Item key="headsets">
+        <Link to="/headsets">Headsets</Link>
+      </Menu.Item>
+      <Menu.Item key="wiki">
+        <Link to="/wiki">Wiki</Link>
+      </Menu.Item>
+      <Menu.Item key="vr-games">
+        <Link to="/vr-games">VR Games</Link>
+      </Menu.Item>
+      <Menu.Item key="about">
+        <Link to="/about">About</Link>
+      </Menu.Item>
+    </Menu>
+  );
+};
+
+MenuNav.propTypes = {
+  mode: PropTypes.string,
+  className: PropTypes.string,
+  pathname: PropTypes.string.isRequired,
+};
+
+MenuNav.defaultProps = {
+  mode: '',
+  className: '',
+};
+
+const ButtonDarkMode = (props) => {
+  const { darkMode, toggleDarkMode } = props;
+  return (
+    <Button
+      type="ghost"
+      onClick={() => toggleDarkMode()}
+      shape="circle"
+      className={`right-button dark-mode ${darkMode ? 'dark' : 'light'}`}
+      icon={<Icon component={Moon} />}
+      size="large"
+    />
+  );
+};
+
+ButtonDarkMode.propTypes = {
+  darkMode: PropTypes.string.isRequired,
+  toggleDarkMode: PropTypes.func.isRequired,
+};
+
 class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -45,36 +103,8 @@ class Header extends React.Component {
             <span>AllAboutVR</span>
           </div>
         </Link>
-        <Button
-          type="ghost"
-          onClick={() => toggleDarkMode()}
-          shape="circle"
-          className={`right-button dark-mode ${darkMode ? 'dark' : 'light'}`}
-          icon={<Icon component={Moon} />}
-          size="large"
-        />
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          className="nav-menu"
-          selectedKeys={[pathname.length ? pathname : 'home']}
-        >
-          <Menu.Item key="home">
-            <Link to="/">Comparator</Link>
-          </Menu.Item>
-          <Menu.Item key="headsets">
-            <Link to="/headsets">Headsets</Link>
-          </Menu.Item>
-          <Menu.Item key="wiki">
-            <Link to="/wiki">Wiki</Link>
-          </Menu.Item>
-          <Menu.Item key="vr-games">
-            <Link to="/vr-games">VR Games</Link>
-          </Menu.Item>
-          <Menu.Item key="about">
-            <Link to="/about">About</Link>
-          </Menu.Item>
-        </Menu>
+        <ButtonDarkMode toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
+        <MenuNav mode="horizontal" className="nav-menu" pathname={pathname} />
         {/* mobile */}
         <Button
           type="ghost"
@@ -90,38 +120,9 @@ class Header extends React.Component {
           closable={false}
           onClose={this.onClose}
           visible={visible}
-          footer={(
-            <Button
-              type="ghost"
-              onClick={() => toggleDarkMode()}
-              shape="circle"
-              className={`right-button dark-mode ${darkMode ? 'dark' : 'light'}`}
-              icon={<Icon component={Moon} />}
-              size="large"
-            />
-          )}
+          footer={(<ButtonDarkMode toggleDarkMode={toggleDarkMode} darkMode={darkMode} />)}
         >
-          <Menu
-            theme="dark"
-            selectedKeys={[pathname.length ? pathname : 'home']}
-            onSelect={this.onClose}
-          >
-            <Menu.Item key="home">
-              <Link to="/">Comparator</Link>
-            </Menu.Item>
-            <Menu.Item key="headsets">
-              <Link to="/headsets">Headsets</Link>
-            </Menu.Item>
-            <Menu.Item key="wiki">
-              <Link to="/wiki">Wiki</Link>
-            </Menu.Item>
-            <Menu.Item key="vr-games">
-              <Link to="/vr-games">VR Games</Link>
-            </Menu.Item>
-            <Menu.Item key="about">
-              <Link to="/about">About</Link>
-            </Menu.Item>
-          </Menu>
+          <MenuNav pathname={pathname} mode="vertical" />
         </Drawer>
       </Layout.Header>
     );
