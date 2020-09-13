@@ -23,6 +23,7 @@ class App extends React.Component {
       darkMode: cookies.get('all-about-vr-dark-mode') || false,
       headsetService: new HeadsetService(),
       fatalError: false,
+      mainClassName: ['App'],
     };
   }
 
@@ -54,16 +55,27 @@ class App extends React.Component {
     this.setState({ darkMode: !darkMode });
   }
 
+  toggleClassName(className) {
+    const { mainClassName } = this.state;
+    if (mainClassName.includes(className)) {
+      this.setState({ mainClassName: mainClassName.filter((item) => item !== className) });
+    } else {
+      this.setState({ mainClassName: [...mainClassName, className] });
+    }
+  }
+
   render() {
-    const { headsetService, darkMode, fatalError } = this.state;
+    const {
+      headsetService, darkMode, fatalError, mainClassName,
+    } = this.state;
 
     return (
       <Router>
-        <Layout className="App">
+        <Layout className={mainClassName}>
           <Header toggleDarkMode={() => this.toggleDarkMode()} darkMode={darkMode} />
           <Layout.Content className="layout-content">
             {fatalError ? (
-              <Page500 />
+              <Page500 toggleClassName={(className) => this.toggleClassName(className)} />
             ) : (
               <Switch>
                 <Route path="/" exact>
@@ -76,7 +88,7 @@ class App extends React.Component {
                   )}
                 />
                 <Route>
-                  <Page404 />
+                  <Page404 toggleClassName={(className) => this.toggleClassName(className)} />
                 </Route>
               </Switch>
             )}

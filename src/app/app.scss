@@ -3,13 +3,15 @@
 @import "../assets/scss/mixin.scss";
 
 @include theme {
-  .App {
-    text-align: center;
-    min-height: 100vh;
-    .layout-content {
-      margin: 24px 16px;
-      padding: 0 24px;
-      height: 100%;
+  .ant-layout {
+    &.App {
+      text-align: center;
+      min-height: 100vh;
+      .layout-content {
+        margin: 24px 16px;
+        padding: 0 24px;
+        height: 100%;
+      }
     }
   }
 
