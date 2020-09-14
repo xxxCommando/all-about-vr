@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
 import {
   List, Typography, Divider, Layout, Row, Col,
 } from 'antd';
@@ -56,8 +57,15 @@ class HeadsetList extends React.Component {
 
     return (
       <>
+        <Helmet>
+          <title>Headset comparator - AllAboutVR</title>
+          <meta
+            name="description"
+            content="Easier way to compare headset and find your best setup for VR ! Compare price, resolution, etc TODO"
+          />
+        </Helmet>
         <Layout>
-          <Typography.Title level={2}>Enter model name of 2 VR Headset</Typography.Title>
+          <Typography.Title level={2}>Headset comparator</Typography.Title>
 
           <Row align="middle" justify="space-around">
             <Col style={{ display: 'flex', margin: 20 }}>
@@ -65,7 +73,7 @@ class HeadsetList extends React.Component {
                 items={items}
                 valueSelected={selected[0]}
                 alreadySelected={[selected[1]]}
-                placeholder="Headset 1"
+                placeholder="Select headset 1"
                 onChange={(id) => this.toggleSelected(id)}
               />
             </Col>
@@ -74,19 +82,18 @@ class HeadsetList extends React.Component {
                 items={items}
                 valueSelected={selected[1]}
                 alreadySelected={[selected[0]]}
-                placeholder="Headset 2"
+                placeholder="Select headset 2"
                 onChange={(id) => this.toggleSelected(id)}
               />
             </Col>
           </Row>
         </Layout>
 
-        <Divider />
+        <Divider orientation="left" plain>
+          {compareMode ? 'Comparaison done' : 'Click on headsets to add in your comparison list'}
+        </Divider>
 
         <Layout>
-          <Typography.Title level={2}>
-            You can also select 2 VR Headset in the list below
-          </Typography.Title>
           <List
             grid={{
               gutter: 16,

@@ -100,7 +100,7 @@ class Header extends React.Component {
         <Link to="/">
           <div className="logo">
             <Logo />
-            <span>AllAboutVR</span>
+            <h1>AllAboutVR</h1>
           </div>
         </Link>
         <ButtonDarkMode toggleDarkMode={toggleDarkMode} darkMode={darkMode} />

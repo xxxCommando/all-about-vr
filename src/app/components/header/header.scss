@@ -15,11 +15,13 @@
       width: 40px;
       margin: 5px;
     }
-    span {
+    h1 {
       font-size: 30px;
       color: $white-text;
       height: 100%;
       line-height: normal;
+      margin: 0;
+      font-weight: 400;
       @include lg {
         display: none;
       }

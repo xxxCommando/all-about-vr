@@ -30,7 +30,7 @@ const HeadsetCard = (props) => {
         bordered
         className={selected ? 'selected' : ''}
         title={item.name}
-        cover={<Image src={item.img} preview={false} />}
+        cover={<Image src={item.img} preview={false} alt={item.name} />}
       >
         {children || (
           <Card.Meta description={item.summary} title={`${item.price} $`} />
