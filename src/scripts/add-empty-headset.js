@@ -25,10 +25,29 @@ const config = {
 firebase.initializeApp(config);
 
 const data = {
+  audio: true,
+  brand: 'xxx',
+  description: 'xxx',
+  flipup: true,
+  fov: 0,
   img: 'https://images-na.ssl-images-amazon.com/images/I/61fgwdI0C3L._AC_SL1200_.jpg',
-  name: `Casque VR ${Math.floor(Math.random() * Math.floor(1000000))}`,
   index: 123456789,
+  ipd: true,
+  mic: true,
+  name: `Casque VR ${Math.floor(Math.random() * Math.floor(1000000))}`,
+  pixeldensity: 0,
   price: 123456789,
+  refreshrate: 0,
+  releasedate: Date.now(),
+  requirement: 'computer',
+  res: '1000x1000',
+  screetype: 'OLED',
+  summary: "I'm a super VR Headset",
+  think: 'Nice headset',
+  tracking: 'Station',
+  weight: 0,
+  wireless: false,
+
 };
 
 const id = process.argv[2];

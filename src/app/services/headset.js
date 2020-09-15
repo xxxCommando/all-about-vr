@@ -40,7 +40,7 @@ class HeadsetService {
 
   getFormatedHeadset(id) {
     if (!this.collectionRef) {
-      return null;
+      return {};
     }
     return this.formatHeadset(this.collectionRef.docs.find((headset) => headset.id === id));
   }
