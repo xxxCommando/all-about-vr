@@ -13,6 +13,8 @@ import Footer from './components/footer';
 import HeadsetDetails from './components/headsetDetails';
 import Page404 from './pages/page404/page404';
 import Page500 from './pages/page500/page500';
+import Headset from './pages/headset/headset';
+import Construction from './pages/pageconstruction/construction';
 
 class App extends React.Component {
   constructor(props) {
@@ -82,13 +84,25 @@ class App extends React.Component {
                   <HeadsetList items={headsetService.getFormatedHeadsets()} />
                 </Route>
                 <Route
-                  path="/headsets/:id"
+                  path="/headset/:id"
                   component={({ match }) => (
-                    <HeadsetDetails item={headsetService.getFormatedHeadset(match.params.id)} />
+                    <Headset item={headsetService.getFormatedHeadset(match.params.id)} />
                   )}
                 />
-                <Route>
+                {/* <Route>
                   <Page404 toggleClassName={(className) => this.toggleClassName(className)} />
+                </Route> */}
+                <Route path="/headsets" exact>
+                  <Construction />
+                </Route>
+                <Route path="/wiki" exact>
+                  <Construction />
+                </Route>
+                <Route path="/vr-games" exact>
+                  <Construction />
+                </Route>
+                <Route path="/about" exact>
+                  <Construction />
                 </Route>
               </Switch>
             )}

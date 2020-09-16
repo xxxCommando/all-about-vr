@@ -37,7 +37,7 @@ const HeadsetCard = (props) => {
         )}
       </Card>
       {isHeadsetPage ? null : (
-        <Link to={`/headsets/${item.id}`} className="card-link">
+        <Link to={`/headset/${item.id}`} className="card-link">
           <FileSearchOutlined key="information" />
         </Link>
       )}
