@@ -10,7 +10,6 @@ import HeadsetService from './services/headset';
 import HeadsetList from './pages/headsetList';
 import Header from './components/header';
 import Footer from './components/footer';
-import HeadsetDetails from './components/headsetDetails';
 import Page404 from './pages/page404/page404';
 import Page500 from './pages/page500/page500';
 import Headset from './pages/headset/headset';
@@ -89,9 +88,7 @@ class App extends React.Component {
                     <Headset item={headsetService.getFormatedHeadset(match.params.id)} />
                   )}
                 />
-                {/* <Route>
-                  <Page404 toggleClassName={(className) => this.toggleClassName(className)} />
-                </Route> */}
+
                 <Route path="/headsets" exact>
                   <Construction />
                 </Route>
@@ -103,6 +100,9 @@ class App extends React.Component {
                 </Route>
                 <Route path="/about" exact>
                   <Construction />
+                </Route>
+                <Route>
+                  <Page404 toggleClassName={(className) => this.toggleClassName(className)} />
                 </Route>
               </Switch>
             )}
