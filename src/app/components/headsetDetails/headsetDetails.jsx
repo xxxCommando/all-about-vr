@@ -180,11 +180,8 @@ const HeadsetDetails = (props) => {
   return (
     <HeadsetCard item={item} selected={selected} onClick={onClick}>
       {!compareMode ? null : (
-        <Card
-
-          className={getClassName('price')}
-        >
-          <Table columns={columnsInfo} dataSource={dataInfo} pagination={false} />
+        <Card>
+          <Table columns={columnsInfo} dataSource={dataInfo} pagination={false} className={getClassName('price')} />
           <Table columns={columnsScreen} dataSource={dataScreen} pagination={false} />
           <Table columns={columnsSpecs} dataSource={dataSpecs} pagination={false} />
           <Table columns={columnsReview} dataSource={dataReview} pagination={false} />

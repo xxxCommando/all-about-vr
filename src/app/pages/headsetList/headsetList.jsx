@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import {
-  List, Typography, Divider, Layout, Row, Col,
+  List, Typography, Divider, Layout, Row, Col, Card,
 } from 'antd';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
@@ -11,41 +11,53 @@ import { HeadsetShape } from '../../../shape';
 
 import HeadsetDetails from '../../components/headsetDetails';
 import AutoCompleteHeadset from '../../components/autoCompleteHeadset';
-import compare from '../../services/comparator';
+import ComparatorService from '../../services/comparator';
 
-const MAX_SELECT = 2;
+const waitData = [
+  'Headset 1',
+  'Headset 2',
+  'Headset 3',
+  'Headset 4',
+  'Headset 5',
+  'Headset 6',
+  'Headset 7',
+  'Headset 8',
+  'Headset 9',
+  'Headset 10',
+  'Headset 11',
+  'Headset 12',
+];
 
 class HeadsetList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: [],
+      comparatorService: new ComparatorService(),
       compareMode: false,
       compareResult: {},
     };
   }
 
-  filterSelected = (selected) => {
+  toggleSelected(id, selectorIndex = null) {
     const { items } = this.props;
-    return items.filter((item) => selected.includes(item.id));
-  };
-
-  toggleSelected(id) {
-    const { selected } = this.state;
-    const selectedIndex = selected.indexOf(id);
-    if (selectedIndex !== -1) {
-      selected.splice(selectedIndex, 1);
-      this.setState({ selected, compareMode: false });
+    const { comparatorService } = this.state;
+    if (comparatorService.isSelected(id)) {
+      comparatorService.remove(id);
+      comparatorService.updateMapping(selectorIndex);
+      this.setState({ comparatorService, compareMode: false });
     } else {
-      if (selected.length >= MAX_SELECT) return;
-      const newSelected = [...selected, id];
+      if (comparatorService.isFull()) return;
+      const selectedItem = items.find((item) => item.id === id);
+      comparatorService.updateMapping(selectorIndex, selectedItem);
+      comparatorService.add(selectedItem, id);
+      const isFull = comparatorService.isFull();
       let compareResult = {};
-      if (newSelected.length === MAX_SELECT) {
-        compareResult = compare(this.filterSelected(newSelected));
+      if (isFull) {
+        compareResult = comparatorService.doCompare();
       }
       this.setState({
-        selected: newSelected,
-        compareMode: newSelected.length === MAX_SELECT,
+        comparatorService,
+        compareMode: isFull,
         compareResult,
       });
     }
@@ -53,7 +65,7 @@ class HeadsetList extends React.Component {
 
   render() {
     const { items } = this.props;
-    const { selected, compareMode, compareResult } = this.state;
+    const { comparatorService, compareMode, compareResult } = this.state;
 
     return (
       <>
@@ -64,32 +76,34 @@ class HeadsetList extends React.Component {
             content="Easier way to compare headset and find your best setup for VR ! Compare price, resolution, etc TODO"
           />
         </Helmet>
+        <Typography.Title level={1}>Headset comparator</Typography.Title>
+        <Divider orientation="left">Select a headset</Divider>
         <Layout>
-          <Typography.Title level={2}>Headset comparator</Typography.Title>
-
-          <Row align="middle" justify="space-around">
-            <Col style={{ display: 'flex', margin: 20 }}>
+          <Row align="middle" justify="space-around" className="auto-complete-wrapper">
+            <Col>
               <AutoCompleteHeadset
                 items={items}
-                valueSelected={selected[0]}
-                alreadySelected={[selected[1]]}
+                itemSelected={comparatorService.getInputMapping(0)}
+                alreadySelected={comparatorService.getInputMapping()}
                 placeholder="Select headset 1"
-                onChange={(id) => this.toggleSelected(id)}
+                onChange={(id) => this.toggleSelected(id, 0)}
+                disabled={items.length === 0}
               />
             </Col>
-            <Col style={{ display: 'flex', margin: 20 }}>
+            <Col>
               <AutoCompleteHeadset
                 items={items}
-                valueSelected={selected[1]}
-                alreadySelected={[selected[0]]}
+                itemSelected={comparatorService.getInputMapping(1)}
+                alreadySelected={comparatorService.getInputMapping()}
                 placeholder="Select headset 2"
-                onChange={(id) => this.toggleSelected(id)}
+                onChange={(id) => this.toggleSelected(id, 1)}
+                disabled={items.length === 0}
               />
             </Col>
           </Row>
         </Layout>
 
-        <Divider orientation="left" plain>
+        <Divider orientation="left">
           {compareMode ? 'Comparaison done' : 'Click on headsets to add in your comparison list'}
         </Divider>
 
@@ -102,26 +116,40 @@ class HeadsetList extends React.Component {
               lg: compareMode ? 2 : 3,
             }}
           >
-            <ReactCSSTransitionGroup
-              transitionName="fade-headsets"
-              transitionEnterTimeout={700}
-              transitionLeaveTimeout={300}
-              className="ant-row headsets"
-            >
-              {items.map((item) => (compareMode && !selected.includes(item.id) ? undefined : (
-                <div className={compareMode ? 'compare-mode' : 'normal-mode'}>
-                  <List.Item>
-                    <HeadsetDetails
-                      selected={selected.includes(item.id)}
-                      item={item}
-                      compareMode={compareMode}
-                      onClick={(id) => this.toggleSelected(id)}
-                      compareResult={compareResult}
-                    />
-                  </List.Item>
-                </div>
-              )))}
-            </ReactCSSTransitionGroup>
+            {items.length === 0 ? (
+              <div className="ant-row headsets">
+                {waitData.map((name) => (
+                  <div className="normal-mode">
+                    <List.Item>
+                      <div className="headset-card">
+                        <Card loading title={name} />
+                      </div>
+                    </List.Item>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <ReactCSSTransitionGroup
+                transitionName="fade-headsets"
+                transitionEnterTimeout={700}
+                transitionLeaveTimeout={300}
+                className="ant-row headsets"
+              >
+                {items.map((item) => (compareMode && !comparatorService.isSelected(item.id) ? undefined : (
+                  <div className={compareMode ? 'compare-mode' : 'normal-mode'}>
+                    <List.Item>
+                      <HeadsetDetails
+                        selected={comparatorService.isSelected(item.id)}
+                        item={item}
+                        compareMode={compareMode}
+                        onClick={(id) => this.toggleSelected(id)}
+                        compareResult={compareResult}
+                      />
+                    </List.Item>
+                  </div>
+                )))}
+              </ReactCSSTransitionGroup>
+            )}
           </List>
         </Layout>
       </>

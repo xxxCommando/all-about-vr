@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AutoComplete, Button, Tooltip } from 'antd';
+import {
+  AutoComplete, Button, Tooltip, Input, Card, Avatar,
+} from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 
 import './autoCompleteHeadset.scss';
@@ -11,42 +13,40 @@ class AutoCompleteHeadset extends React.Component {
     super(props);
     this.state = {
       value: '',
-      selectedId: null,
+      isSelected: false,
     };
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    const { items, valueSelected } = nextProps;
-    const { selectedId } = prevState;
-    if (valueSelected && selectedId === null) {
-      const headset = items.find((item) => item.id === valueSelected);
+    const { itemSelected } = nextProps;
+    const { isSelected } = prevState;
+    if (itemSelected && !isSelected) {
       return {
-        value: headset.name,
-        selectedId: headset.id,
+        value: itemSelected.name,
+        isSelected: true,
       };
     }
-    if (valueSelected === '' && selectedId) {
+    if (itemSelected === null && isSelected) {
       return {
         value: '',
-        selectedId: null,
+        isSelected: false,
       };
     }
     return prevState;
   }
 
   onChange = (data, options) => {
-    const { onChange } = this.props;
-    const { selectedId } = this.state;
+    const { onChange, itemSelected } = this.props;
     const newState = { ...this.state };
 
-    if (selectedId && Object.entries(options).length !== 0) {
-      onChange(selectedId);
+    if (itemSelected && Object.entries(options).length !== 0) {
+      onChange(itemSelected.id);
       onChange(options.id);
-      newState.selectedId = options.id;
+      newState.isSelected = true;
     } else if (Object.entries(options).length !== 0) {
       onChange(options.id);
-      newState.selectedId = options.id;
-    } else if (selectedId) {
+      newState.isSelected = true;
+    } else if (itemSelected) {
       this.clearInput();
     }
 
@@ -55,41 +55,70 @@ class AutoCompleteHeadset extends React.Component {
   };
 
   clearInput = () => {
-    const { onChange } = this.props;
-    const { selectedId } = this.state;
-    onChange(selectedId);
+    const { onChange, itemSelected } = this.props;
+    if (itemSelected) {
+      onChange(itemSelected.id);
+    }
     this.setState({
       value: '',
-      selectedId: null,
+      isSelected: false,
     });
   };
 
   render() {
-    const { items, placeholder, alreadySelected } = this.props;
+    const {
+      items, placeholder, itemSelected, alreadySelected, disabled,
+    } = this.props;
     const { value } = this.state;
     return (
       <>
         <AutoComplete
           value={value}
           className="auto-complete-headset"
+          dropdownClassName="auto-complete-headset-dropdown"
           onChange={this.onChange}
           options={items
             .map((headset) => ({
               value: headset.name,
               id: headset.id,
+              label: (
+                <Card className="auto-complete-card">
+                  <Card.Meta
+                    avatar={<Avatar src={headset.img} shape="square" />}
+                    title={headset.name}
+                  />
+                </Card>
+              ),
             }))
             .filter((item) => !alreadySelected.includes(item.id))}
-          placeholder={placeholder}
           filterOption={(inputValue, option) => option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1}
-        />
-        <Tooltip title="delete" className="auto-complete-headset-delete">
-          <Button
-            type="primary"
-            icon={<CloseOutlined />}
-            disabled={value === ''}
-            onClick={this.clearInput}
+          disabled={disabled}
+        >
+          <Input
+            prefix={
+              itemSelected ? (
+                <Avatar size="large" shape="square" src={itemSelected.img} alt={value} />
+              ) : (
+                <Avatar size="large" style={{ background: 'none' }} />
+              )
+            }
+            placeholder={placeholder}
+            maxLength="50"
+            enterButton
+            size="large"
+            suffix={(
+              <Tooltip title="delete" className="auto-complete-headset-delete">
+                <Button
+                  type="primary"
+                  size="large"
+                  icon={<CloseOutlined />}
+                  disabled={value === ''}
+                  onClick={this.clearInput}
+                />
+              </Tooltip>
+            )}
           />
-        </Tooltip>
+        </AutoComplete>
       </>
     );
   }
@@ -97,18 +126,20 @@ class AutoCompleteHeadset extends React.Component {
 
 AutoCompleteHeadset.propTypes = {
   items: PropTypes.arrayOf(HeadsetShape),
-  valueSelected: PropTypes.string,
+  itemSelected: HeadsetShape,
   alreadySelected: PropTypes.arrayOf(PropTypes.string),
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
+  disabled: PropTypes.bool,
 };
 
 AutoCompleteHeadset.defaultProps = {
   items: [],
-  valueSelected: '',
+  itemSelected: null,
   alreadySelected: [''],
   placeholder: '',
   onChange: console.warn('onChange is not defined'),
+  disabled: true,
 };
 
 export default AutoCompleteHeadset;
