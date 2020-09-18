@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, Table } from 'antd';
+import {
+  Card,
+} from 'antd';
 import { Link } from 'react-router-dom';
 
 import './headsetDetails.scss';
@@ -12,161 +14,6 @@ const HeadsetDetails = (props) => {
   const {
     selected, item, compareMode, onClick, compareResult,
   } = props;
-
-  const columnsInfo = [
-    {
-      title: 'General Informations',
-      dataIndex: 'specs',
-      key: 'specs',
-
-    },
-    {
-      title: '',
-      dataIndex: 'info',
-      key: 'info',
-    },
-  ];
-
-  const columnsScreen = [
-    {
-      title: 'Screen Specifications',
-      dataIndex: 'specs',
-      key: 'specs',
-      render: (text) => <Link to="/wiki">{text}</Link>,
-    },
-    {
-      title: '',
-      dataIndex: 'info',
-      key: 'info',
-    },
-  ];
-
-  const columnsSpecs = [
-    {
-      title: 'Other Specifications',
-      dataIndex: 'specs',
-      key: 'specs',
-      render: (text) => <Link to="/wiki">{text}</Link>,
-    },
-    {
-      title: '',
-      dataIndex: 'info',
-      key: 'info',
-    },
-  ];
-
-  const columnsReview = [
-    {
-      title: 'What we think',
-      dataIndex: 'review',
-      key: 'review',
-
-    },
-
-  ];
-
-  const dataInfo = [
-    {
-      key: '1',
-      specs: 'Brand',
-      info: item.brand,
-    },
-    {
-      key: '2',
-      specs: 'Date Release',
-      info: item.releasedate ? moment(item.releasedate.toDate()).calendar() : '',
-    },
-    {
-      key: '3',
-      specs: 'Price',
-      info: `${item.price} $`,
-    },
-
-  ];
-
-  const dataScreen = [
-
-    {
-      key: '1',
-      specs: 'FOV',
-      info: `${item.fov} °`,
-    },
-    {
-      key: '2',
-      specs: 'Refresh Rate',
-      info: `${item.refreshrate} Hz`,
-    },
-    {
-      key: '3',
-      specs: 'Resolution per eyes',
-      info: item.res,
-    },
-    {
-      key: '4',
-      specs: 'Pixel density',
-      info: `${item.pixeldensity} dpi`,
-    },
-    {
-      key: '5',
-      specs: 'Screen Type',
-      info: item.screentype,
-    },
-    {
-      key: '6',
-      specs: 'IPD Adjustement',
-      info: item.ipd ? 'Yes' : 'No',
-    },
-    {
-      key: '7',
-      specs: 'Flip-Up',
-      info: item.flipup ? 'Yes' : 'No',
-    },
-
-  ];
-
-  const dataSpecs = [
-
-    {
-      key: '1',
-      specs: 'Weight',
-      info: `${item.weight} g`,
-    },
-    {
-      key: '2',
-      specs: 'Tracking',
-      info: item.tracking,
-    },
-    {
-      key: '3',
-      specs: 'Wireless',
-      info: item.wireless ? 'Yes' : 'No',
-    },
-    {
-      key: '3',
-      specs: 'Build in Audio',
-      info: item.audio ? 'Yes' : 'No',
-    },
-    {
-      key: '4',
-      specs: 'Build in mic',
-      info: item.mic ? 'Yes' : 'No',
-    },
-    {
-      key: '5',
-      specs: 'PC Requirement',
-      info: item.requirement,
-    },
-
-  ];
-
-  const dataReview = [
-    {
-      key: '1',
-      specs: item.description,
-      review: item.description,
-    },
-
-  ];
 
   const getClassName = (compareTarget) => {
     if (!compareResult) {
@@ -180,11 +27,71 @@ const HeadsetDetails = (props) => {
   return (
     <HeadsetCard item={item} selected={selected} onClick={onClick}>
       {!compareMode ? null : (
-        <Card>
-          <Table columns={columnsInfo} dataSource={dataInfo} pagination={false} className={getClassName('price')} />
-          <Table columns={columnsScreen} dataSource={dataScreen} pagination={false} />
-          <Table columns={columnsSpecs} dataSource={dataSpecs} pagination={false} />
-          <Table columns={columnsReview} dataSource={dataReview} pagination={false} />
+        <Card className="headset-card-details">
+
+          <Card.Grid className="headset-card-details-title" hoverable={false}><span>General Informations</span></Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">Date Release</Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">
+            {item.releasedate
+              ? moment(item.releasedate.toDate()).calendar() : ''}
+          </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">Brand</Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">{item.brand}</Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">Price</Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">
+            {item.price}
+            {' '}
+            $
+          </Card.Grid>
+          <Card.Grid className="headset-card-details-title" hoverable={false}>Screen Specifications</Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">FOV</Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">
+            {item.fov}
+            {' '}
+            °
+          </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">Refresh Rate</Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">
+            {item.refreshrate}
+            {' '}
+            Hz
+          </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">Resolution per eyes</Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">{item.res}</Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">Pixel Density</Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">
+            {item.pixeldensity}
+            dpi
+
+          </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">Screen Type</Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">{item.screentype}</Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">IPD Adjustement</Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">{item.ipd ? 'Yes' : 'No'}</Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">Flip-Up</Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">{item.flipup ? 'Yes' : 'No'}</Card.Grid>
+          <Card.Grid className="headset-card-details-title" hoverable={false}>Other Specifications</Card.Grid>
+
+          <Card.Grid hoverable={false} className="headset-card-details-normal">Weight</Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">
+            {item.weight}
+            {' '}
+            g
+
+          </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">Tracking</Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">{item.tracking}</Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">Wireless</Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">{item.wireless ? 'Yes' : 'No'}</Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">Build in Audio</Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">{item.audio ? 'Yes' : 'No'}</Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">Build in Mic</Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">{item.mic ? 'Yes' : 'No'}</Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-title">PC Requirement</Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-large">{item.requirement}</Card.Grid>
+          <Card.Grid className="headset-card-details-title" hoverable={false}>What we think</Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-large">{item.description}</Card.Grid>
+
         </Card>
 
       )}

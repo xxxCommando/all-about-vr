@@ -27,6 +27,9 @@
         padding-left: 8px; padding-right: 8px;
         &.normal-mode {
           width: 25%;
+          .ant-card-body {
+            margin: 15px;
+          }
           @include lg {
             width: 33%;
           }
@@ -38,6 +41,9 @@
           transition: width 1s ease-out;
           transition-delay: 300ms;
           width: 50%;
+          .ant-card-body {
+            margin: 0px;
+          }
         }
       }
     }

@@ -1,18 +1,47 @@
-@import '../../../assets/scss/mixin.scss';
+@import "../../../assets/scss/mixin.scss";
 
 @include theme {
   .headset-card {
+    .ant-card-body {
+      padding: 0px;
+      .headset-card-details {
+        &-title {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #f9f9f9;
+        }
+        &-normal {
+          width: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        &-large {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        div {
+          height: 40px;
+          padding: 0px;
+          text-align: center;
+        }
+      }
+    }
     .ant-card {
       .better {
         thead {
-          th{
+          th {
             background: rgba(0, 128, 0, 0.8);
           }
         }
       }
       .worst {
         thead {
-          th{
+          th {
             background: rgba(255, 0, 0, 0.8);
           }
         }

@@ -1,5 +1,6 @@
 @import "../assets/scss/light-default.scss";
 @import "../assets/scss/dark-default.scss";
+@import "../assets/scss/global.scss";
 @import "../assets/scss/mixin.scss";
 
 @include theme {
@@ -11,6 +12,10 @@
         margin: 24px 16px;
         padding: 0 24px;
         height: 100%;
+
+        @include sm{
+          padding: 0;
+        }
       }
     }
   }
