@@ -53,6 +53,23 @@ const data = {
   tracking: 'Station',
   weight: Math.floor(Math.random() * Math.floor(1000)),
   wireless: false,
+  pushedContents: [
+    {
+      text: 'blabla',
+      img: 'url',
+      right: true,
+    },
+    {
+      text: 'blabla',
+      img: 'url',
+      right: true,
+    },
+    {
+      text: 'blabla',
+      img: 'url',
+      right: true,
+    },
+  ],
 };
 
 const id = process.argv[2];

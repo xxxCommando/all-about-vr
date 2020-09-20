@@ -19,6 +19,8 @@ class HeadsetService {
     }
   }
 
+  dataLoaded = () => this.collectionRef !== null;
+
   formatHeadset = (doc) => ({
     id: doc.id,
     ...doc.data(),

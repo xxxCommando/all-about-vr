@@ -1,6 +1,10 @@
 @import '../../../assets/scss/global.scss';
 @import '../../../assets/scss/mixin.scss';
 
-@include md {
-    width: 100%;
+@include theme {
+  .single-pushed-content.ant-layout {
+    .right {
+      flex-direction: row-reverse;
+    }
   }
+}

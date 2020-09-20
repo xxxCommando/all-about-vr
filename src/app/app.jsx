@@ -92,7 +92,7 @@ class App extends React.Component {
                 <Route
                   path="/headset/:id"
                   component={({ match }) => (
-                    <Headset item={headsetService.getFormatedHeadset(match.params.id)} />
+                    headsetService.dataLoaded() ? <Headset item={headsetService.getFormatedHeadset(match.params.id)} /> : null
                   )}
                 />
 
