@@ -3,6 +3,7 @@ import { instanceOf } from 'prop-types';
 import { Layout } from 'antd';
 import { withCookies, Cookies } from 'react-cookie';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import ReactGa from 'react-ga';
 
 import './app.scss';
 
@@ -14,6 +15,8 @@ import Page404 from './pages/page404/page404';
 import Page500 from './pages/page500/page500';
 import Headset from './pages/headset/headset';
 import Construction from './pages/pageconstruction/construction';
+
+require('dotenv').config();
 
 class App extends React.Component {
   constructor(props) {
@@ -31,11 +34,15 @@ class App extends React.Component {
   async componentDidMount() {
     const { darkMode, headsetService } = this.state;
     document.body.classList = darkMode ? ['dark'] : ['light'];
+
     try {
       await headsetService.fetchHeadSetCollection();
       this.setState({
         headsetService,
       });
+
+      ReactGa.initialize(process.env.REACT_APP_GOOGLEANALYTICS);
+      ReactGa.pageview(window.location.pathname + window.location.search);
     } catch (error) {
       this.setState({
         fatalError: true,
