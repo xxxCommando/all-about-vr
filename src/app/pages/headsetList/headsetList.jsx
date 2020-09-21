@@ -7,7 +7,7 @@ import {
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import './headsetList.scss';
-import { HeadsetShape } from '../../../shape';
+import { HeadsetShape } from '../../shape';
 
 import HeadsetDetails from '../../components/headsetDetails';
 import AutoCompleteHeadset from '../../components/autoCompleteHeadset';

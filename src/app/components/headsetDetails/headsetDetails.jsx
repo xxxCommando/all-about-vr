@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import './headsetDetails.scss';
 import moment from 'moment';
 import HeadsetCard from '../headsetCard';
-import { HeadsetShape } from '../../../shape';
+import { HeadsetShape } from '../../shape';
 
 const HeadsetDetails = (props) => {
   const {

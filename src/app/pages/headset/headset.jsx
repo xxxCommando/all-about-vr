@@ -3,7 +3,7 @@ import React from 'react';
 import {
   Image, Row, Col, Typography, Layout,
 } from 'antd';
-import { HeadsetShape } from '../../../shape';
+import { HeadsetShape } from '../../shape';
 
 import './headset.scss';
 

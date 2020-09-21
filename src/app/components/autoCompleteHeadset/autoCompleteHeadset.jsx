@@ -6,7 +6,7 @@ import {
 import { CloseOutlined } from '@ant-design/icons';
 
 import './autoCompleteHeadset.scss';
-import { HeadsetShape } from '../../../shape';
+import { HeadsetShape } from '../../shape';
 
 class AutoCompleteHeadset extends React.Component {
   constructor(props) {

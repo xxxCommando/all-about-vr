@@ -5,7 +5,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { Card, Image } from 'antd';
 import { FileSearchOutlined } from '@ant-design/icons';
 
-import { HeadsetShape } from '../../../shape';
+import { HeadsetShape } from '../../shape';
 import './headsetCard.scss';
 
 const HeadsetCard = (props) => {

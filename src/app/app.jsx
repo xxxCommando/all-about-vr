@@ -1,13 +1,15 @@
 import React from 'react';
-import { instanceOf } from 'prop-types';
+import PropTypes, { instanceOf } from 'prop-types';
 import { Layout } from 'antd';
 import { withCookies, Cookies } from 'react-cookie';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 import ReactGa from 'react-ga';
+import { fetchHeadsets } from './redux/headsets/actions';
 
 import './app.scss';
+import { HeadsetShape } from './shape';
 
-import HeadsetService from './services/headset';
 import HeadsetList from './pages/headsetList';
 import Header from './components/header';
 import Footer from './components/footer';
@@ -16,8 +18,16 @@ import Page500 from './pages/page500/page500';
 import Headset from './pages/headset/headset';
 import Construction from './pages/pageconstruction/construction';
 
-require('dotenv').config();
+const mapStateToProps = (state) => ({
+  formatedHeadset: state.headsets.formatedHeadset,
+  isLoaded: state.headsets.isLoaded,
+  isFetching: state.headsets.isFetching,
+  fatalError: state.headsets.fatalError,
+});
 
+const mapDispatchToProps = (dispatch) => ({
+  doFetchHeadsets: () => dispatch(fetchHeadsets()),
+});
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -25,29 +35,17 @@ class App extends React.Component {
     const { cookies } = props;
     this.state = {
       darkMode: cookies.get('all-about-vr-dark-mode') || false,
-      headsetService: new HeadsetService(),
-      fatalError: false,
       mainClassName: ['App'],
     };
   }
 
-  async componentDidMount() {
-    const { darkMode, headsetService } = this.state;
+  componentDidMount() {
+    const { doFetchHeadsets } = this.props;
+    const { darkMode } = this.state;
+    doFetchHeadsets();
     document.body.classList = darkMode ? ['dark'] : ['light'];
-
-    try {
-      await headsetService.fetchHeadSetCollection();
-      this.setState({
-        headsetService,
-      });
-
-      ReactGa.initialize(process.env.REACT_APP_GOOGLEANALYTICS);
-      ReactGa.pageview(window.location.pathname + window.location.search);
-    } catch (error) {
-      this.setState({
-        fatalError: true,
-      });
-    }
+    ReactGa.initialize(process.env.REACT_APP_GOOGLEANALYTICS);
+    ReactGa.pageview(window.location.pathname + window.location.search);
   }
 
   toggleDarkMode() {
@@ -73,9 +71,8 @@ class App extends React.Component {
   }
 
   render() {
-    const {
-      headsetService, darkMode, fatalError, mainClassName,
-    } = this.state;
+    const { formatedHeadset, isLoaded, fatalError } = this.props;
+    const { darkMode, mainClassName } = this.state;
 
     return (
       <Router>
@@ -87,13 +84,15 @@ class App extends React.Component {
             ) : (
               <Switch>
                 <Route path="/" exact>
-                  <HeadsetList items={headsetService.getFormatedHeadsets()} />
+                  <HeadsetList items={formatedHeadset} />
                 </Route>
                 <Route
                   path="/headset/:id"
-                  component={({ match }) => (
-                    headsetService.dataLoaded() ? <Headset item={headsetService.getFormatedHeadset(match.params.id)} /> : null
-                  )}
+                  component={({ match }) => (isLoaded ? (
+                    <Headset
+                      item={formatedHeadset.find((headset) => headset.id === match.params.id)}
+                    />
+                  ) : null)}
                 />
 
                 <Route path="/headsets" exact>
@@ -122,7 +121,11 @@ class App extends React.Component {
 }
 
 App.propTypes = {
+  formatedHeadset: PropTypes.arrayOf(HeadsetShape).isRequired,
+  isLoaded: PropTypes.bool.isRequired,
+  fatalError: PropTypes.bool.isRequired,
+  doFetchHeadsets: PropTypes.func.isRequired,
   cookies: instanceOf(Cookies).isRequired,
 };
 
-export default withCookies(App);
+export default withCookies(connect(mapStateToProps, mapDispatchToProps)(App));

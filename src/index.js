@@ -2,11 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as firebase from 'firebase';
 import { CookiesProvider } from 'react-cookie';
+import { Provider } from 'react-redux';
 
 import App from './app';
 import * as serviceWorker from './serviceWorker';
 
 import './index.scss';
+
+import store from './app/store';
 
 // using dotenv to manage env variable
 
@@ -37,7 +40,9 @@ firebase.initializeApp(config);
 ReactDOM.render(
   <React.StrictMode>
     <CookiesProvider>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </CookiesProvider>
   </React.StrictMode>,
   document.getElementById('root'),
