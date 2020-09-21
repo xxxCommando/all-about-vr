@@ -14,22 +14,31 @@ class AutoCompleteHeadset extends React.Component {
     this.state = {
       value: '',
       isSelected: false,
+      selectedName: '',
     };
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     const { itemSelected } = nextProps;
-    const { isSelected } = prevState;
+    const { isSelected, value, selectedName } = prevState;
     if (itemSelected && !isSelected) {
       return {
         value: itemSelected.name,
         isSelected: true,
+        selectedName: itemSelected.name,
       };
     }
     if (itemSelected === null && isSelected) {
+      if (value !== selectedName) {
+        return {
+          isSelected: false,
+          selectedName: '',
+        };
+      }
       return {
         value: '',
         isSelected: false,
+        selectedName: '',
       };
     }
     return prevState;
@@ -62,6 +71,7 @@ class AutoCompleteHeadset extends React.Component {
     this.setState({
       value: '',
       isSelected: false,
+      selectedName: '',
     });
   };
 
@@ -106,19 +116,20 @@ class AutoCompleteHeadset extends React.Component {
             maxLength="50"
             enterButton
             size="large"
-            suffix={(
-              <Tooltip title="delete" className="auto-complete-headset-delete">
-                <Button
-                  type="primary"
-                  size="large"
-                  icon={<CloseOutlined />}
-                  disabled={value === ''}
-                  onClick={this.clearInput}
-                />
-              </Tooltip>
-            )}
+            suffix={(<div />)}
           />
         </AutoComplete>
+        <div className="auto-complete-headset-delete">
+          <Tooltip title="delete">
+            <Button
+              type="primary"
+              size="large"
+              icon={<CloseOutlined />}
+              disabled={value === ''}
+              onClick={this.clearInput}
+            />
+          </Tooltip>
+        </div>
       </>
     );
   }

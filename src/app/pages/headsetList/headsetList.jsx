@@ -43,12 +43,12 @@ class HeadsetList extends React.Component {
     const { comparatorService } = this.state;
     if (comparatorService.isSelected(id)) {
       comparatorService.remove(id);
-      comparatorService.updateMapping(selectorIndex);
+      comparatorService.deleteFromMapping(id, selectorIndex);
       this.setState({ comparatorService, compareMode: false });
     } else {
       if (comparatorService.isFull()) return;
       const selectedItem = items.find((item) => item.id === id);
-      comparatorService.updateMapping(selectorIndex, selectedItem);
+      comparatorService.addInMapping(selectedItem, selectorIndex);
       comparatorService.add(selectedItem, id);
       const isFull = comparatorService.isFull();
       let compareResult = {};
@@ -84,7 +84,7 @@ class HeadsetList extends React.Component {
               <AutoCompleteHeadset
                 items={items}
                 itemSelected={comparatorService.getInputMapping(0)}
-                alreadySelected={comparatorService.getInputMapping()}
+                alreadySelected={comparatorService.getSelectedIds()}
                 placeholder="Select headset 1"
                 onChange={(id) => this.toggleSelected(id, 0)}
                 disabled={items.length === 0}
@@ -94,7 +94,7 @@ class HeadsetList extends React.Component {
               <AutoCompleteHeadset
                 items={items}
                 itemSelected={comparatorService.getInputMapping(1)}
-                alreadySelected={comparatorService.getInputMapping()}
+                alreadySelected={comparatorService.getSelectedIds()}
                 placeholder="Select headset 2"
                 onChange={(id) => this.toggleSelected(id, 1)}
                 disabled={items.length === 0}
