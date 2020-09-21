@@ -9,6 +9,8 @@ import Icon, { MenuOutlined } from '@ant-design/icons';
 import './header.scss';
 import { ReactComponent as Moon } from '../../../assets/images/moon.svg';
 import { ReactComponent as Logo } from '../../../assets/images/logo.svg';
+import { ReactComponent as LogoAllAboutVR } from '../../../assets/images/logo3.svg';
+import { ReactComponent as LogoAllAboutVRNight } from '../../../assets/images/logoNight.svg';
 
 const getPathname = (location) => location.pathname.split('/')[1];
 
@@ -99,7 +101,8 @@ class Header extends React.Component {
       <Layout.Header>
         <Link to="/">
           <div className="logo">
-            <Logo />
+            {darkMode ? <LogoAllAboutVRNight /> : <LogoAllAboutVR />}
+
             <p>AllAboutVR</p>
           </div>
         </Link>
