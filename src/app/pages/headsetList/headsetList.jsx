@@ -78,7 +78,7 @@ class HeadsetList extends React.Component {
           />
         </Helmet>
         <Typography.Title level={1}>Headset comparator</Typography.Title>
-        <Divider orientation="left">Select a headset</Divider>
+        <Divider orientation="left">Search headsets to compare</Divider>
         <Layout>
           <Row align="middle" justify="space-around" className="auto-complete-wrapper">
             <Col>
@@ -86,7 +86,7 @@ class HeadsetList extends React.Component {
                 items={items}
                 itemSelected={comparatorService.getInputMapping(0)}
                 alreadySelected={comparatorService.getSelectedIds()}
-                placeholder="Select headset 1"
+                placeholder="Headset 1"
                 onChange={(id) => this.toggleSelected(id, 0)}
                 disabled={items.length === 0}
               />
@@ -99,7 +99,7 @@ class HeadsetList extends React.Component {
                 items={items}
                 itemSelected={comparatorService.getInputMapping(1)}
                 alreadySelected={comparatorService.getSelectedIds()}
-                placeholder="Select headset 2"
+                placeholder="Headset 2"
                 onChange={(id) => this.toggleSelected(id, 1)}
                 disabled={items.length === 0}
               />
@@ -108,7 +108,7 @@ class HeadsetList extends React.Component {
         </Layout>
 
         <Divider orientation="left">
-          {compareMode ? 'Comparaison done' : 'Click on headsets to add in your comparison list'}
+          {compareMode ? 'Compare mode' : 'Select 2 headsets to compare'}
         </Divider>
 
         <Layout>

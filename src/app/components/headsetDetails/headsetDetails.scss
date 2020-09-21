@@ -10,11 +10,13 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          background-color: #f9f9f9;
-          &.better{
+
+          font-weight: bold;
+
+          &.better {
             background: rgba(0, 128, 0, 0.8);
           }
-          &.worst{
+          &.worst {
             background: rgba(255, 0, 0, 0.8);
           }
         }
@@ -23,17 +25,58 @@
           display: flex;
           justify-content: center;
           align-items: center;
+          &-text {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 500;
+          }
         }
         &-large {
           width: 100%;
           display: flex;
           justify-content: center;
           align-items: center;
+          &-text {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 500;
+          }
+        }
+        &-logo {
+          font-size: 20px;
+          margin-right: 10px;
         }
         div {
           height: 40px;
           padding: 0px;
           text-align: center;
+        }
+      }
+    }
+  }
+  &.dark {
+    .headset-card {
+      .ant-card-body {
+        .headset-card-details {
+          &-title {
+            background-color: #503d4d;
+          }
+        }
+      }
+    }
+  }
+
+  &.light {
+    .headset-card {
+      .ant-card-body {
+        .headset-card-details {
+          &-title {
+            background-color: #f9f9f9;
+          }
         }
       }
     }
