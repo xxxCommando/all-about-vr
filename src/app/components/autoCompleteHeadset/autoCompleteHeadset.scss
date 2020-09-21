@@ -23,13 +23,11 @@
     }
   }
   &.dark {
-    
-  .auto-complete-headset-dropdown {
-    .ant-select-item-option-selected {
-      background-color: $dark-main-hover !important;
+    .auto-complete-headset-dropdown {
+      .ant-select-item-option-selected {
+        background-color: $dark-main-hover !important;
+      }
     }
-
-  }
     .ant-select {
       &.auto-complete-headset {
         .ant-input-affix-wrapper {
@@ -72,14 +70,19 @@
       }
     }
   }
+  .auto-complete-headset-delete {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
   &.dark {
     .ant-select {
       .ant-select-selector {
         border-color: $dark-main-hover !important;
       }
     }
-    .ant-btn {
-      &.auto-complete-headset-delete {
+    .auto-complete-headset-delete {
+      .ant-btn {
         background-color: $dark-main-hover;
         border-color: $dark-main-hover;
       }

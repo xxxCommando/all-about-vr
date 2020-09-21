@@ -105,11 +105,32 @@ class ComparatorService {
       }),
       {},
     );
+    this.selectedId = [];
   }
 
-  updateMapping(selectorIndex = null, item = null) {
-    const index = selectorIndex || Object.values(this.selected).length;
-    this.inputMapping[index] = item;
+  deleteFromMapping(id, selectorIndex = null) {
+    if (selectorIndex) {
+      this.inputMapping[selectorIndex] = null;
+      return;
+    }
+    const indexToDelete = Object.keys(this.inputMapping).find((key) => {
+      if (this.inputMapping[key] === null) {
+        return false;
+      }
+      return this.inputMapping[key].id === id;
+    });
+    this.inputMapping[indexToDelete] = null;
+  }
+
+  addInMapping(item, selectorIndex = null) {
+    if (selectorIndex) {
+      this.inputMapping[selectorIndex] = item;
+      return;
+    }
+    const emptyKey = Object.keys(this.inputMapping).find((key) => this.inputMapping[key] === null);
+    if (emptyKey) {
+      this.inputMapping[emptyKey] = item;
+    }
   }
 
   getInputMapping(index = null) {
@@ -119,12 +140,21 @@ class ComparatorService {
     return Object.values(this.inputMapping);
   }
 
+  getSelectedIds() {
+    return this.selectedId;
+  }
+
   add(item, id) {
     if (this.isFull()) return;
+    this.selectedId = [...this.selectedId, item.id];
     this.selected[id] = item;
   }
 
   remove(id) {
+    const index = this.selectedId.indexOf(id);
+    if (index > -1) {
+      this.selectedId.splice(index, 1);
+    }
     delete this.selected[id];
   }
 
