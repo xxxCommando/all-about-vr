@@ -3,6 +3,12 @@
 
 @include theme {
   .single-pushed-content.ant-layout {
+    margin-bottom: 40px;
+    .ant-col{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     .right {
       flex-direction: row-reverse;
     }

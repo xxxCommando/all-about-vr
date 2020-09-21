@@ -13,7 +13,7 @@ const compareScreen = (item1, item2) => {
     if (item.refreshrate === compareResult.rr) {
       weight += RR_WEIGHT;
     }
-    if (item.res === compareResult.res) {
+    if ((item.resolution.x * item.resolution.y) === compareResult.res) {
       weight += RES_WEIGHT;
     }
     if (item.pixeldensity === compareResult.pd) {
@@ -40,10 +40,9 @@ const compareScreen = (item1, item2) => {
   const compareResolution = (res1, res2) => {
     if (!res1) return res2;
     if (!res2) return res1;
-    const resolution1 = res1.split('x');
-    const resolution2 = res2.split('x');
-    return parseInt(resolution1[0], 10) * parseInt(resolution1[1], 10)
-      > parseInt(resolution2[0], 10) * parseInt(resolution2[1], 10)
+
+    return res1.x * res1.y
+      > res2.x * res2.y
       ? res1
       : res2;
   };
@@ -57,7 +56,7 @@ const compareScreen = (item1, item2) => {
   const compareResult = {
     fov: compareFov(item1.fov, item2.fov),
     rr: compareRefreshrate(item1.refreshrate, item2.refreshrate),
-    res: compareResolution(item1.res, item2.res),
+    res: compareResolution(item1.resolution, item2.resolution),
     pd: comparePixelDensity(item1.pixeldensity, item2.pixeldensity),
     ipd: true,
   };
