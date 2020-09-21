@@ -12,6 +12,7 @@ import { HeadsetShape } from '../../../shape';
 import HeadsetDetails from '../../components/headsetDetails';
 import AutoCompleteHeadset from '../../components/autoCompleteHeadset';
 import ComparatorService from '../../services/comparator';
+import VsAnimation from '../../components/vsAnimation/vsAnimation';
 
 const waitData = [
   'Headset 1',
@@ -91,6 +92,9 @@ class HeadsetList extends React.Component {
               />
             </Col>
             <Col>
+              {/* <VsAnimation />
+            </Col>
+            <Col> */}
               <AutoCompleteHeadset
                 items={items}
                 itemSelected={comparatorService.getInputMapping(1)}
