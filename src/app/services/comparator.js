@@ -13,7 +13,7 @@ const compareScreen = (item1, item2) => {
     if (item.refreshrate === compareResult.rr) {
       weight += RR_WEIGHT;
     }
-    if ((item.resolution.x * item.resolution.y) === compareResult.res) {
+    if (item.resolution === compareResult.res) {
       weight += RES_WEIGHT;
     }
     if (item.pixeldensity === compareResult.pd) {
