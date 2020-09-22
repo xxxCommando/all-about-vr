@@ -3,9 +3,7 @@ import PropTypes, { instanceOf } from 'prop-types';
 import { Layout } from 'antd';
 import { withCookies, Cookies } from 'react-cookie';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { connect } from 'react-redux';
 import ReactGa from 'react-ga';
-import { fetchHeadsets } from './redux/headsets/actions';
 
 import './app.scss';
 import { HeadsetShape } from './shape';
@@ -18,16 +16,6 @@ import Page500 from './pages/page500/page500';
 import Headset from './pages/headset/headset';
 import Construction from './pages/pageconstruction/construction';
 
-const mapStateToProps = (state) => ({
-  formatedHeadset: state.headsets.formatedHeadset,
-  isLoaded: state.headsets.isLoaded,
-  isFetching: state.headsets.isFetching,
-  fatalError: state.headsets.fatalError,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  doFetchHeadsets: () => dispatch(fetchHeadsets()),
-});
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -40,9 +28,9 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const { doFetchHeadsets } = this.props;
+    const { fetchHeadsets } = this.props;
     const { darkMode } = this.state;
-    doFetchHeadsets();
+    fetchHeadsets();
     document.body.classList = darkMode ? ['dark'] : ['light'];
     ReactGa.initialize(process.env.REACT_APP_GOOGLEANALYTICS);
     ReactGa.pageview(window.location.pathname + window.location.search);
@@ -124,8 +112,8 @@ App.propTypes = {
   formatedHeadset: PropTypes.arrayOf(HeadsetShape).isRequired,
   isLoaded: PropTypes.bool.isRequired,
   fatalError: PropTypes.bool.isRequired,
-  doFetchHeadsets: PropTypes.func.isRequired,
+  fetchHeadsets: PropTypes.func.isRequired,
   cookies: instanceOf(Cookies).isRequired,
 };
 
-export default withCookies(connect(mapStateToProps, mapDispatchToProps)(App));
+export default withCookies(App);
