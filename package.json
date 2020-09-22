@@ -25,7 +25,8 @@
     "react-scripts": "3.4.3",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "reselect": "^4.0.0"
+    "reselect": "^4.0.0",
+    "all-about-vr-compare": "git@github.com:Bleuh/all-about-vr-compare.git"
   },
   "scripts": {
     "start": "react-scripts start",
