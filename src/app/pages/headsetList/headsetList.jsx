@@ -11,7 +11,6 @@ import { HeadsetShape } from '../../shape';
 
 import HeadsetDetails from '../../components/headsetDetails';
 import AutoCompleteHeadset from '../../components/autoCompleteHeadset';
-import VsAnimation from '../../components/vsAnimation/vsAnimation';
 
 import { MAX_SELECT } from '../../redux/compare/reducers/compare';
 
@@ -89,10 +88,15 @@ class HeadsetList extends React.Component {
                 disabled={items.length === 0}
               />
             </Col>
-            <Col>
-              {/* <VsAnimation />
+            <Col className="vs-animation">
+              <div className={compareMode ? 'compare-mode' : ''}>
+                <span>V</span>
+              </div>
+              <div className={compareMode ? 'compare-mode' : ''}>
+                <span>S</span>
+              </div>
             </Col>
-            <Col> */}
+            <Col>
               <AutoCompleteHeadset
                 items={items}
                 itemSelected={inputMapping[1]}
