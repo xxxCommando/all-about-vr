@@ -4,7 +4,6 @@ import { Card } from 'antd';
 import {
   CheckOutlined, CloseOutlined, AndroidOutlined, WindowsOutlined, AppleOutlined,
 } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
 
 import './headsetDetails.scss';
 import moment from 'moment';
@@ -172,7 +171,7 @@ const HeadsetDetails = (props) => {
                   case 'macos':
                     return <AppleOutlined className="headset-card-details-logo" />;
                   default:
-                    console.log('');
+                    return '';
                 }
               }) : null}
 

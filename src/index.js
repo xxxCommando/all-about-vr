@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as firebase from 'firebase';
+import firebase from 'firebase/app';
 import { CookiesProvider } from 'react-cookie';
 import { Provider } from 'react-redux';
 

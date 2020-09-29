@@ -16,7 +16,7 @@ const Headset = (props) => {
 
       {
         item.pushedContents.map((content, index) => (
-          <Layout Layout className="single-pushed-content">
+          <Layout className="single-pushed-content" key={content.name}>
             <Row justify="center" className={content.right || (index % 2 !== 0) ? 'right' : 'left'}>
               <Col flex="0 0 400px">
                 <Image width={300} src={content.img} preview={false} alt={item.name} />

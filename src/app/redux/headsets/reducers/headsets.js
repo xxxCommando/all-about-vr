@@ -8,7 +8,7 @@ const initialState = {
   collectionRef: null,
   formatedHeadset: [],
   isFetching: false,
-  isLoaded: true,
+  isLoaded: false,
   fatalError: false,
 };
 

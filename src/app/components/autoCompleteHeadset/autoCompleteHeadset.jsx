@@ -75,6 +75,11 @@ class AutoCompleteHeadset extends React.Component {
     });
   };
 
+  filterOption = (option, inputValue) => {
+    const { value } = option;
+    return value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1;
+  }
+
   render() {
     const {
       items, placeholder, itemSelected, alreadySelected, disabled,
@@ -101,7 +106,7 @@ class AutoCompleteHeadset extends React.Component {
               ),
             }))
             .filter((item) => !alreadySelected.includes(item.id))}
-          filterOption={(inputValue, option) => option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1}
+          filterOption={(inputValue, option) => this.filterOption(option, inputValue)}
           disabled={disabled}
         >
           <Input
@@ -114,9 +119,8 @@ class AutoCompleteHeadset extends React.Component {
             }
             placeholder={placeholder}
             maxLength="50"
-            enterButton
             size="large"
-            suffix={(<div />)}
+            suffix={<div />}
           />
         </AutoComplete>
         <div className="auto-complete-headset-delete">
@@ -149,7 +153,7 @@ AutoCompleteHeadset.defaultProps = {
   itemSelected: null,
   alreadySelected: [''],
   placeholder: '',
-  onChange: console.warn('onChange is not defined'),
+  onChange: () => console.warn('onChange is not defined'),
   disabled: true,
 };
 

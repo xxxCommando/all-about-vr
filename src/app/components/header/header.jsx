@@ -8,7 +8,6 @@ import Icon, { MenuOutlined } from '@ant-design/icons';
 
 import './header.scss';
 import { ReactComponent as Moon } from '../../../assets/images/moon.svg';
-import { ReactComponent as Logo } from '../../../assets/images/logo.svg';
 import { ReactComponent as LogoAllAboutVR } from '../../../assets/images/logo3.svg';
 import { ReactComponent as LogoAllAboutVRNight } from '../../../assets/images/logoNight.svg';
 
@@ -68,7 +67,7 @@ const ButtonDarkMode = (props) => {
 };
 
 ButtonDarkMode.propTypes = {
-  darkMode: PropTypes.string.isRequired,
+  darkMode: PropTypes.bool.isRequired,
   toggleDarkMode: PropTypes.func.isRequired,
 };
 

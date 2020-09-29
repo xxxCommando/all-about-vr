@@ -125,7 +125,7 @@ class HeadsetList extends React.Component {
             {items.length === 0 ? (
               <div className="ant-row headsets">
                 {waitData.map((name) => (
-                  <div className="normal-mode">
+                  <div className="normal-mode" key={name}>
                     <List.Item>
                       <div className="headset-card">
                         <Card loading title={name} />
@@ -142,7 +142,7 @@ class HeadsetList extends React.Component {
                 className="ant-row headsets"
               >
                 {items.map((item) => (compareMode && !selected[item.id] ? undefined : (
-                  <div className={compareMode ? 'compare-mode' : 'normal-mode'}>
+                  <div className={compareMode ? 'compare-mode' : 'normal-mode'} key={item.id}>
                     <List.Item>
                       <HeadsetDetails
                         selected={selected[item.id]}
@@ -167,7 +167,7 @@ HeadsetList.propTypes = {
   items: PropTypes.arrayOf(HeadsetShape),
   selected: PropTypes.shape().isRequired,
   inputMapping: PropTypes.shape().isRequired,
-  selectedIds: PropTypes.arrayOf(PropTypes.number).isRequired,
+  selectedIds: PropTypes.arrayOf(PropTypes.string).isRequired,
   compareMode: PropTypes.bool.isRequired,
   compareResult: PropTypes.shape().isRequired,
   addMapping: PropTypes.func.isRequired,
