@@ -1,3 +1,4 @@
+@import '../../../assets/scss/global.scss';
 @import "../../../assets/scss/mixin.scss";
 
 @include theme {
@@ -25,12 +26,19 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          &-text {
+          @include md {
+            width: 100%;
+          }
+          &-text {  
             width: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             font-weight: 500;
+            @include md {
+              width: 100%;
+              font-weight: 600;
+            }
           }
         }
         &-large {

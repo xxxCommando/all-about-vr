@@ -93,12 +93,14 @@ class Header extends React.Component {
   };
 
   render() {
-    const { toggleDarkMode, darkMode, location } = this.props;
+    const {
+      toggleDarkMode, darkMode, location, doClear,
+    } = this.props;
     const { visible } = this.state;
     const pathname = getPathname(location);
     return (
       <Layout.Header>
-        <Link to="/">
+        <Link to="/" onClick={() => doClear()}>
           <div className="logo">
             {darkMode ? <LogoAllAboutVRNight /> : <LogoAllAboutVR />}
 
@@ -137,6 +139,7 @@ Header.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string,
   }),
+  doClear: PropTypes.func.isRequired,
 };
 
 Header.defaultProps = {

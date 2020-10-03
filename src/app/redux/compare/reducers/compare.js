@@ -7,6 +7,7 @@ import {
   DO_COMPARE,
   COMPARE_MODE_ON,
   COMPARE_MODE_OFF,
+  DO_CLEAR,
 } from '../types';
 
 export const MAX_SELECT = 2;
@@ -108,6 +109,16 @@ export default function compare(state = initialState, action) {
       return {
         ...state,
         compareResult: compareItem(Object.values(state.selected)),
+      };
+
+    case DO_CLEAR:
+      return {
+        ...state,
+        selected: {},
+        inputMapping: { ...initialState.inputMapping },
+        selectedIds: [],
+        compareMode: false,
+        compareResult: {},
       };
 
     default:

@@ -16,3 +16,5 @@ export const remove = (id) => ({ type: types.REMOVE, id });
 export const setCompareMode = (bool) => (bool ? { type: types.COMPARE_MODE_ON } : { type: types.COMPARE_MODE_OFF });
 
 export const doCompare = () => ({ type: types.DO_COMPARE });
+
+export const doClear = () => ({ type: types.DO_CLEAR });
