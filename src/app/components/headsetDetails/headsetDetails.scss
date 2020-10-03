@@ -2,6 +2,9 @@
 @import "../../../assets/scss/mixin.scss";
 
 @include theme {
+
+
+
   .headset-card {
     .ant-card-body {
       padding: 0px;
@@ -13,7 +16,15 @@
           align-items: center;
 
           font-weight: bold;
-
+          &-smile{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            right: 5%;
+            font-size: 18px;
+            
+          }
           &.better {
             background: rgba(0, 128, 0, 0.8);
           }

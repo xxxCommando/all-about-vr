@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card } from 'antd';
 import {
-  CheckOutlined, CloseOutlined, AndroidOutlined, WindowsOutlined, AppleOutlined,
+  CheckOutlined, CloseOutlined, AndroidOutlined, WindowsOutlined, AppleOutlined, FrownTwoTone, SmileTwoTone,
 } from '@ant-design/icons';
 
 import './headsetDetails.scss';
@@ -20,9 +20,9 @@ const HeadsetDetails = (props) => {
     if (
       compareResult[compareTarget].find((element) => element.id === item.id)
     ) {
-      return 'better';
+      return <SmileTwoTone twoToneColor="#52c41a" />;
     }
-    return 'worst';
+    return <FrownTwoTone twoToneColor="#D8122F" />;
   };
 
   return (
@@ -30,10 +30,13 @@ const HeadsetDetails = (props) => {
       {!compareMode ? null : (
         <Card className="headset-card-details">
           <Card.Grid
-            className={`headset-card-details-title ${getClassName('price')}`}
+            className="headset-card-details-title"
             hoverable={false}
           >
-            <span>General Informations</span>
+            General Informations
+            <div className="headset-card-details-title-smile">
+              {getClassName('price')}
+            </div>
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
             Date Release
@@ -61,6 +64,9 @@ const HeadsetDetails = (props) => {
             hoverable={false}
           >
             Screen Specifications
+            <div className="headset-card-details-title-smile">
+              {getClassName('screen')}
+            </div>
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
             FOV

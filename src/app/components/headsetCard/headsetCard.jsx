@@ -18,6 +18,22 @@ const HeadsetCard = (props) => {
   } = props;
   const isHeadsetPage = location.pathname.split('/')[1] === 'headsets';
 
+  const getHeadsetStatus = (status) => {
+    if (status === 1) return 'Coming Soon';
+    if (status === 3) return 'Outdated';
+    return '';
+  };
+
+  const getHeadsetMetaTitle = (headset) => {
+    if (!headset.price && headset.status === 2) {
+      return 'Free';
+    }
+    if (!headset.price) {
+      return getHeadsetStatus(headset.status);
+    }
+    return `${headset.price} $ ${getHeadsetStatus(headset.status)}`;
+  };
+
   return (
     <div className="headset-card">
       <Card
@@ -33,7 +49,7 @@ const HeadsetCard = (props) => {
         cover={<Image src={item.img} preview={false} alt={item.name} />}
       >
         {children || (
-          <Card.Meta description={item.summary} title={`${item.price} $`} />
+          <Card.Meta description={item.summary} title={getHeadsetMetaTitle(item)} />
         )}
       </Card>
       {isHeadsetPage ? null : (
