@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.2.2",
+    "@testing-library/jest-dom": "^5.11.4",
     "all-about-vr-compare": "git+ssh://git@github.com:Bleuh/all-about-vr-compare.git",
     "antd": "^4.6.1",
     "dotenv": "^8.2.0",
@@ -14,7 +15,6 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-addons-css-transition-group": "^15.6.2",
-    "react-cookie": "^4.0.3",
     "react-dom": "^16.13.1",
     "react-ga": "^3.1.2",
     "react-helmet": "^6.1.0",
@@ -22,6 +22,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "redux": "^4.0.5",
+    "redux-cookies-middleware": "^0.2.1",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0"
   },
@@ -31,7 +32,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "precommit": "pretty-quick --staged",
-    "lint": "eslint ./",
+    "lint": "eslint ./src",
     "add-headset": "node src/scripts/add-empty-headset.js"
   },
   "eslintConfig": {

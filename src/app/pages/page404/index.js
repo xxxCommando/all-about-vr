@@ -1,1 +1,12 @@
-export { default } from './page404';
+import { connect } from 'react-redux';
+import Page404 from './page404';
+import { toggleMainClass } from '../../redux/all-about-vr/actions';
+
+const mapStateToProps = () => ({
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  toggleMainClass: (className) => dispatch(toggleMainClass(className)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Page404);

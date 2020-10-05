@@ -7,13 +7,13 @@ import './page404.scss';
 
 class Page404 extends React.Component {
   componentDidMount() {
-    const { toggleClassName } = this.props;
-    toggleClassName('layout-404');
+    const { toggleMainClass } = this.props;
+    toggleMainClass('layout-404');
   }
 
   componentWillUnmount() {
-    const { toggleClassName } = this.props;
-    toggleClassName('layout-404');
+    const { toggleMainClass } = this.props;
+    toggleMainClass('layout-404');
   }
 
   render() {
@@ -33,7 +33,7 @@ class Page404 extends React.Component {
 }
 
 Page404.propTypes = {
-  toggleClassName: PropTypes.func.isRequired,
+  toggleMainClass: PropTypes.func.isRequired,
 };
 
 export default Page404;

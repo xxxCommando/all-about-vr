@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes, { instanceOf } from 'prop-types';
+import PropTypes from 'prop-types';
 import { Layout } from 'antd';
-import { withCookies, Cookies } from 'react-cookie';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ReactGa from 'react-ga';
 
@@ -11,64 +10,32 @@ import { HeadsetShape } from './shape';
 import HeadsetList from './pages/headsetList';
 import Header from './components/header';
 import Footer from './components/footer';
-import Page404 from './pages/page404/page404';
-import Page500 from './pages/page500/page500';
-import Headset from './pages/headset/headset';
-import Construction from './pages/pageconstruction/construction';
+import Page404 from './pages/page404';
+import Page500 from './pages/page500';
+import Headset from './pages/headset';
+import Construction from './pages/pageconstruction';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    const { cookies } = props;
-    this.state = {
-      darkMode: cookies.get('all-about-vr-dark-mode') || false,
-      mainClassName: ['App'],
-    };
-  }
-
   componentDidMount() {
-    const { fetchHeadsets } = this.props;
-    const { darkMode } = this.state;
+    const { fetchHeadsets, darkMode } = this.props;
     fetchHeadsets();
     document.body.classList = darkMode ? ['dark'] : ['light'];
     ReactGa.initialize(process.env.REACT_APP_GOOGLEANALYTICS);
     ReactGa.pageview(window.location.pathname + window.location.search);
   }
 
-  toggleDarkMode() {
-    const { cookies } = this.props;
-    const { darkMode } = this.state;
-    if (!darkMode) {
-      cookies.set('all-about-vr-dark-mode', 'activate');
-      document.body.classList = ['dark'];
-    } else {
-      cookies.remove('all-about-vr-dark-mode');
-      document.body.classList = ['light'];
-    }
-    this.setState({ darkMode: !darkMode });
-  }
-
-  toggleClassName(className) {
-    const { mainClassName } = this.state;
-    if (mainClassName.includes(className)) {
-      this.setState({ mainClassName: mainClassName.filter((item) => item !== className) });
-    } else {
-      this.setState({ mainClassName: [...mainClassName, className] });
-    }
-  }
-
   render() {
-    const { formatedHeadset, isLoaded, fatalError } = this.props;
-    const { darkMode, mainClassName } = this.state;
+    const {
+      formatedHeadset, isLoaded, fatalError, mainClassName,
+    } = this.props;
 
     return (
       <Router>
         <Layout className={mainClassName}>
-          <Header toggleDarkMode={() => this.toggleDarkMode()} darkMode={darkMode} />
+          <Header />
           <Layout.Content className="layout-content">
             {fatalError ? (
-              <Page500 toggleClassName={(className) => this.toggleClassName(className)} />
+              <Page500 />
             ) : (
               <Switch>
                 <Route path="/" exact>
@@ -82,7 +49,6 @@ class App extends React.Component {
                     />
                   ) : null)}
                 />
-
                 <Route path="/headsets" exact>
                   <Construction />
                 </Route>
@@ -96,7 +62,7 @@ class App extends React.Component {
                   <Construction />
                 </Route>
                 <Route>
-                  <Page404 toggleClassName={(className) => this.toggleClassName(className)} />
+                  <Page404 />
                 </Route>
               </Switch>
             )}
@@ -110,10 +76,11 @@ class App extends React.Component {
 
 App.propTypes = {
   formatedHeadset: PropTypes.arrayOf(HeadsetShape).isRequired,
+  darkMode: PropTypes.bool.isRequired,
+  mainClassName: PropTypes.string.isRequired,
   isLoaded: PropTypes.bool.isRequired,
   fatalError: PropTypes.bool.isRequired,
   fetchHeadsets: PropTypes.func.isRequired,
-  cookies: instanceOf(Cookies).isRequired,
 };
 
-export default withCookies(App);
+export default App;

@@ -2,27 +2,27 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import * as types from './types';
 
-function requestHeadsets() {
+export function requestHeadsets() {
   return {
     type: types.REQUEST_HEADSETS,
   };
 }
 
-function receiveHeadsets(headsetsRef) {
+export function receiveHeadsets(headsetsRef) {
   return {
     type: types.RECEIVE_HEADSETS,
     headsetsRef,
   };
 }
 
-function catchHeadsets() {
+export function catchHeadsets() {
   return {
     type: types.INVALIDE_HEADSETS,
   };
 }
 
 export function fetchHeadsets() {
-  return function (dispatch) {
+  return (dispatch) => {
     dispatch(requestHeadsets());
     return firebase
       .firestore()

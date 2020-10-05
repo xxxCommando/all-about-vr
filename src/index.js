@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import firebase from 'firebase/app';
-import { CookiesProvider } from 'react-cookie';
 import { Provider } from 'react-redux';
 
 import App from './app';
@@ -39,11 +38,9 @@ firebase.initializeApp(config);
 
 ReactDOM.render(
   <React.StrictMode>
-    <CookiesProvider>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </CookiesProvider>
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
 );

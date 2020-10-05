@@ -7,13 +7,13 @@ import './page500.scss';
 
 class Page500 extends React.Component {
   componentDidMount() {
-    const { toggleClassName } = this.props;
-    toggleClassName('layout-500');
+    const { toggleMainClass } = this.props;
+    toggleMainClass('layout-500');
   }
 
   componentWillUnmount() {
-    const { toggleClassName } = this.props;
-    toggleClassName('layout-500');
+    const { toggleMainClass } = this.props;
+    toggleMainClass('layout-500');
   }
 
   render() {
@@ -34,7 +34,7 @@ class Page500 extends React.Component {
 }
 
 Page500.propTypes = {
-  toggleClassName: PropTypes.func.isRequired,
+  toggleMainClass: PropTypes.func.isRequired,
 };
 
 export default Page500;

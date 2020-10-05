@@ -134,20 +134,12 @@ class Header extends React.Component {
 }
 
 Header.propTypes = {
-  toggleDarkMode: PropTypes.func,
-  darkMode: PropTypes.bool,
+  toggleDarkMode: PropTypes.func.isRequired,
+  darkMode: PropTypes.bool.isRequired,
   location: PropTypes.shape({
     pathname: PropTypes.string,
-  }),
+  }).isRequired,
   doClear: PropTypes.func.isRequired,
-};
-
-Header.defaultProps = {
-  toggleDarkMode: () => console.warn('toggleDarkMode is not defined'),
-  darkMode: false,
-  location: PropTypes.shape({
-    pathname: '/',
-  }),
 };
 
 export default withRouter(Header);

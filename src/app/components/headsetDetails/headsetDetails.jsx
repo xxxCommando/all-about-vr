@@ -2,7 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card } from 'antd';
 import {
-  CheckOutlined, CloseOutlined, AndroidOutlined, WindowsOutlined, AppleOutlined, FrownTwoTone, SmileTwoTone,
+  CheckOutlined,
+  CloseOutlined,
+  AndroidOutlined,
+  WindowsOutlined,
+  AppleOutlined,
+  FrownOutlined,
+  SmileOutlined,
 } from '@ant-design/icons';
 
 import './headsetDetails.scss';
@@ -17,26 +23,19 @@ const HeadsetDetails = (props) => {
 
   const getClassName = (compareTarget) => {
     if (!compareResult) return '';
-    if (
-      compareResult[compareTarget].find((element) => element.id === item.id)
-    ) {
-      return <SmileTwoTone twoToneColor="#52c41a" />;
+    if (compareResult[compareTarget].find((element) => element.id === item.id)) {
+      return <SmileOutlined className="better" />;
     }
-    return <FrownTwoTone twoToneColor="#D8122F" />;
+    return <FrownOutlined className="worst" />;
   };
 
   return (
     <HeadsetCard item={item} selected={selected} onClick={onClick}>
       {!compareMode ? null : (
         <Card className="headset-card-details">
-          <Card.Grid
-            className="headset-card-details-title"
-            hoverable={false}
-          >
+          <Card.Grid className="headset-card-details-title" hoverable={false}>
             General Informations
-            <div className="headset-card-details-title-smile">
-              {getClassName('price')}
-            </div>
+            <span className="headset-card-details-title-smile">{getClassName('price')}</span>
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
             Date Release
@@ -53,10 +52,7 @@ const HeadsetDetails = (props) => {
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
             Price
           </Card.Grid>
-          <Card.Grid
-            hoverable={false}
-            className="headset-card-details-normal"
-          >
+          <Card.Grid hoverable={false} className="headset-card-details-normal">
             {`${item.price} $`}
           </Card.Grid>
           <Card.Grid
@@ -64,44 +60,30 @@ const HeadsetDetails = (props) => {
             hoverable={false}
           >
             Screen Specifications
-            <div className="headset-card-details-title-smile">
-              {getClassName('screen')}
-            </div>
+            <div className="headset-card-details-title-smile">{getClassName('screen')}</div>
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
             FOV
           </Card.Grid>
-          <Card.Grid
-            hoverable={false}
-            className="headset-card-details-normal"
-          >
+          <Card.Grid hoverable={false} className="headset-card-details-normal">
             {`${item.fov} °`}
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
             Refresh Rate
           </Card.Grid>
-          <Card.Grid
-            hoverable={false}
-            className="headset-card-details-normal"
-          >
+          <Card.Grid hoverable={false} className="headset-card-details-normal">
             {`${item.refreshrate} Hz`}
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
             Resolution per eyes
           </Card.Grid>
-          <Card.Grid
-            hoverable={false}
-            className="headset-card-details-normal"
-          >
+          <Card.Grid hoverable={false} className="headset-card-details-normal">
             {`${item.resolution.x} x ${item.resolution.y}`}
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
             Pixel Density
           </Card.Grid>
-          <Card.Grid
-            hoverable={false}
-            className="headset-card-details-normal"
-          >
+          <Card.Grid hoverable={false} className="headset-card-details-normal">
             {`${item.pixeldensity} dpi`}
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
@@ -129,10 +111,7 @@ const HeadsetDetails = (props) => {
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
             Weight
           </Card.Grid>
-          <Card.Grid
-            hoverable={false}
-            className="headset-card-details-normal"
-          >
+          <Card.Grid hoverable={false} className="headset-card-details-normal">
             {`${item.weight} g`}
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
@@ -179,8 +158,8 @@ const HeadsetDetails = (props) => {
                   default:
                     return '';
                 }
-              }) : null}
-
+              })
+              : null}
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-large-text">
             CPU
@@ -197,10 +176,7 @@ const HeadsetDetails = (props) => {
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
             RAM
           </Card.Grid>
-          <Card.Grid
-            hoverable={false}
-            className="headset-card-details-normal"
-          >
+          <Card.Grid hoverable={false} className="headset-card-details-normal">
             {`${item.requirements.ram} GB`}
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
