@@ -1,0 +1,125 @@
+@import '../../../assets/scss/global.scss';
+@import '../../../assets/scss/mixin.scss';
+
+@include theme {
+  .headset-card {
+    .ant-card-body {
+      padding: 0px;
+      .headset-card-details {
+        &-title {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          font-weight: bold;
+          &-smile {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            right: 5%;
+            font-size: 24px;
+            .better {
+              svg {
+                path {
+                  fill: green;
+                }
+              }
+            }
+            .worst {
+              svg {
+                path {
+                  fill: red;
+                }
+              }
+            }
+          }
+        }
+        &-normal {
+          width: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          @include md {
+            width: 100%;
+          }
+          &-text {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 500;
+            @include md {
+              width: 100%;
+              font-weight: 600;
+            }
+          }
+        }
+        &-large {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          &-text {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 500;
+          }
+        }
+        &-logo {
+          font-size: 20px;
+          margin-right: 10px;
+        }
+        div {
+          height: 40px;
+          padding: 0px;
+          text-align: center;
+        }
+      }
+    }
+  }
+  &.dark {
+    .headset-card {
+      .ant-card-body {
+        .headset-card-details {
+          &-title {
+            background-color: #503d4d;
+            &-smile {
+              svg {
+                border-radius: 30px;
+                path {
+                  fill: white;
+                }
+              }
+              .better {
+                svg {
+                  background: green;
+                }
+              }
+              .worst {
+                svg {
+                  background: red;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.light {
+    .headset-card {
+      .ant-card-body {
+        .headset-card-details {
+          &-title {
+            background-color: #f9f9f9;
+          }
+        }
+      }
+    }
+  }
+}

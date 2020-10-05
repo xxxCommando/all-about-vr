@@ -1,9 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import * as firebase from 'firebase';
-import App from './App';
+import firebase from 'firebase/app';
+import { Provider } from 'react-redux';
+
+import App from './app';
 import * as serviceWorker from './serviceWorker';
+
+import './index.scss';
+
+import store from './app/store';
 
 // using dotenv to manage env variable
 
@@ -33,7 +38,9 @@ firebase.initializeApp(config);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
 );

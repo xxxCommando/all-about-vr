@@ -1,0 +1,13 @@
+@import '../../../assets/scss/global.scss';
+@import '../../../assets/scss/mixin.scss';
+
+@include theme {
+  &.dark {
+    a {
+      color: $dark-main-link;
+      &:hover {
+        color: $dark-main-hover;
+      }
+    }
+  }
+}
