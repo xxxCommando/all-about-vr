@@ -77,7 +77,7 @@ class App extends React.Component {
 App.propTypes = {
   formatedHeadset: PropTypes.arrayOf(HeadsetShape).isRequired,
   darkMode: PropTypes.bool.isRequired,
-  mainClassName: PropTypes.string.isRequired,
+  mainClassName: PropTypes.arrayOf(PropTypes.string).isRequired,
   isLoaded: PropTypes.bool.isRequired,
   fatalError: PropTypes.bool.isRequired,
   fetchHeadsets: PropTypes.func.isRequired,
