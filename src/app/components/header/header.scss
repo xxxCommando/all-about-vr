@@ -1,0 +1,141 @@
+@import '../../../assets/scss/global.scss';
+@import '../../../assets/scss/mixin.scss';
+
+@include theme {
+  .ant-layout-header.header {
+    @include xs {
+      padding: 0 5px;
+    }
+  }
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 40px;
+    margin: 12px 24px 12px 0;
+    @include xs {
+      margin: 12px 6px 12px 12px;
+    }
+    float: left;
+    svg {
+      height: 40px;
+      width: 40px;
+    }
+    p {
+      font-size: 30px;
+      color: $white-text;
+      height: 100%;
+      line-height: normal;
+      margin: 0 0 0 12px;
+      font-weight: 400;
+      @include lg {
+        display: none;
+      }
+      @include md {
+        display: block;
+      }
+    }
+  }
+
+  .ant-menu {
+    &.nav-menu {
+      @include md {
+        display: none;
+      }
+    }
+  }
+
+  .ant-btn {
+    &.right-button {
+      float: right;
+      margin: 12px;
+      &.dark {
+        color: $dark-main;
+        border: none;
+        background-color: $white-text;
+      }
+      &.light {
+        color: $white-text;
+        border: 2px solid;
+      }
+
+      &.dark-mode {
+        display: block;
+        @include md {
+          display: none;
+        }
+      }
+
+      &.open-menu {
+        display: none;
+        @include md {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .drawer-mobile {
+    .ant-drawer-content {
+      .ant-drawer-footer {
+        border-top: none;
+        .dark-mode {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &.light {
+    .drawer-mobile {
+      .ant-drawer-content {
+        .ant-drawer-header {
+          background-color: #001529;
+          border-bottom: none;
+          .ant-drawer-title {
+            color: $white-text;
+          }
+        }
+        .ant-drawer-body {
+          background-color: #001529;
+        }
+        .ant-drawer-footer {
+          background-color: #001529;
+        }
+      }
+    }
+  }
+
+  &.dark {
+    .logo {
+      svg {
+        #casque-color {
+          fill: $dark-main-hover;
+        }
+      }
+    }
+    .ant-menu.ant-menu-dark.nav-menu {
+      > .ant-menu-item {
+        &-selected {
+          background-color: $dark-main-hover;
+        }
+        &:hover {
+          background-color: $dark-main-hover;
+        }
+      }
+    }
+    .drawer-mobile {
+      .ant-menu.ant-menu-dark {
+        > .ant-menu-item {
+          &-selected {
+            background-color: $dark-main-hover;
+          }
+          &:hover {
+            background-color: $dark-main-hover;
+          }
+        }
+      }
+    }
+  }
+}
