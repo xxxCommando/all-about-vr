@@ -8,8 +8,7 @@ import Icon, { MenuOutlined } from '@ant-design/icons';
 
 import './header.scss';
 import { ReactComponent as Moon } from '../../../assets/images/moon.svg';
-import { ReactComponent as LogoAllAboutVR } from '../../../assets/images/logo3.svg';
-import { ReactComponent as LogoAllAboutVRNight } from '../../../assets/images/logoNight.svg';
+import { ReactComponent as LogoAllAboutVR } from '../../../assets/images/logo.svg';
 
 const getPathname = (location) => location.pathname.split('/')[1];
 
@@ -99,11 +98,10 @@ class Header extends React.Component {
     const { visible } = this.state;
     const pathname = getPathname(location);
     return (
-      <Layout.Header>
+      <Layout.Header className="header">
         <Link to="/" onClick={() => doClear()}>
           <div className="logo">
-            {darkMode ? <LogoAllAboutVRNight /> : <LogoAllAboutVR />}
-
+            <LogoAllAboutVR />
             <p>AllAboutVR</p>
           </div>
         </Link>

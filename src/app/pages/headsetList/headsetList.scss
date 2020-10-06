@@ -32,8 +32,9 @@
   }
   10% {
     top: -32px;
-    text-shadow: 0 1px 0 #303030, 0 2px 0 #303030, 0 3px 0 #303030, 0 4px 0 #303030, 0 5px 0 #303030, 0 6px 0 #303030,
-      0 7px 0 #303030, 0 8px 0 #303030, 0 9px 0 #303030, 0 50px 25px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 1px 0 #303030, 0 2px 0 #303030, 0 3px 0 #303030, 0 4px 0 #303030, 0 5px 0 #303030,
+      0 6px 0 #303030, 0 7px 0 #303030, 0 8px 0 #303030, 0 9px 0 #303030,
+      0 50px 25px rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -105,9 +106,9 @@
               span {
                 animation: bounce-black 5s ease infinite;
                 color: $dark-main-hover;
-                text-shadow: 0 1px 0 #303030, 0 2px 0 #303030, 0 3px 0 #303030, 0 4px 0 #303030, 0 5px 0 #303030,
-                  0 6px 0 transparent, 0 7px 0 transparent, 0 8px 0 transparent, 0 9px 0 transparent,
-                  0 10px 10px rgba(0, 0, 0, 0.4);
+                text-shadow: 0 1px 0 #303030, 0 2px 0 #303030, 0 3px 0 #303030, 0 4px 0 #303030,
+                  0 5px 0 #303030, 0 6px 0 transparent, 0 7px 0 transparent, 0 8px 0 transparent,
+                  0 9px 0 transparent, 0 10px 10px rgba(0, 0, 0, 0.4);
               }
             }
           }
@@ -193,7 +194,15 @@
         &.normal-mode {
           width: 25%;
           .ant-card-body {
-            margin: 15px;
+            margin: 18px;
+            .ant-card-meta-detail {
+              display: flex;
+              min-height: 100px;
+              flex-direction: column;
+              .ant-card-meta-description {
+                margin: auto;
+              }
+            }
           }
           @include lg {
             width: 33%;

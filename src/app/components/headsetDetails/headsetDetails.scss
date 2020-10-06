@@ -13,6 +13,9 @@
           align-items: center;
 
           font-weight: bold;
+          @include md {
+            padding: 0 30px !important;
+          }
           &-smile {
             display: flex;
             justify-content: center;
@@ -61,6 +64,9 @@
           display: flex;
           justify-content: center;
           align-items: center;
+          @include md {
+            padding: 5px !important;
+          }
           &-text {
             width: 100%;
             display: flex;
@@ -74,7 +80,7 @@
           margin-right: 10px;
         }
         div {
-          height: 40px;
+          min-height: 40px;
           padding: 0px;
           text-align: center;
         }
