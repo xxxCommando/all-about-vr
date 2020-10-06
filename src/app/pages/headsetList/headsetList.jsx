@@ -14,20 +14,7 @@ import AutoCompleteHeadset from '../../components/autoCompleteHeadset';
 
 import { MAX_SELECT } from '../../redux/compare/reducers/compare';
 
-const waitData = [
-  'Headset 1',
-  'Headset 2',
-  'Headset 3',
-  'Headset 4',
-  'Headset 5',
-  'Headset 6',
-  'Headset 7',
-  'Headset 8',
-  'Headset 9',
-  'Headset 10',
-  'Headset 11',
-  'Headset 12',
-];
+const waitData = [...Array(12).keys()].map((index) => `Headset ${index}`);
 
 class HeadsetList extends React.Component {
   toggleSelected(id, selectorIndex = null) {

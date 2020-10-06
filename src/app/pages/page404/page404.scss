@@ -12,6 +12,13 @@
   &.dark {
     .layout-404 {
       .layout-content {
+        svg {
+          path {
+            &:nth-child(11) {
+              fill: $dark-main-hover;
+            }
+          }
+        }
         .ant-btn {
           border-color: $dark-main-hover;
           background-color: $dark-main-hover;

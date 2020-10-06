@@ -2,6 +2,11 @@
 @import '../../../assets/scss/mixin.scss';
 
 @include theme {
+  .ant-layout-header.header {
+    @include xs {
+      padding: 0 5px;
+    }
+  }
   .logo {
     display: flex;
     justify-content: center;
@@ -9,6 +14,9 @@
     width: auto;
     height: 40px;
     margin: 12px 24px 12px 0;
+    @include xs {
+      margin: 12px 6px 12px 12px;
+    }
     float: left;
     svg {
       height: 40px;
@@ -100,6 +108,13 @@
   }
 
   &.dark {
+    .logo {
+      svg {
+        #casque-color {
+          fill: $dark-main-hover;
+        }
+      }
+    }
     .ant-menu.ant-menu-dark.nav-menu {
       > .ant-menu-item {
         &-selected {

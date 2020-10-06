@@ -10,12 +10,12 @@ import './construction.scss';
 class Construction extends React.Component {
   componentDidMount() {
     const { toggleMainClass } = this.props;
-    toggleMainClass('layout-500');
+    toggleMainClass('layout-construction');
   }
 
   componentWillUnmount() {
     const { toggleMainClass } = this.props;
-    toggleMainClass('layout-500');
+    toggleMainClass('layout-construction');
   }
 
   render() {
