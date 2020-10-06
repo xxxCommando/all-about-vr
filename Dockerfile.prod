@@ -7,8 +7,7 @@ WORKDIR /app
 RUN apk add --no-cache openssh-client git
 
 # add credentials on build & make sure your domain is accepted
-RUN mkdir /root/.ssh/
-RUN mkdir -p -m 0600 /root/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
+RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
 
 COPY package.json yarn.lock ./
 RUN --mount=type=ssh yarn
