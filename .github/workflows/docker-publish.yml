@@ -28,22 +28,17 @@ env:
   REACT_APP_GOOGLEANALYTICS: ${{ secrets.REACT_APP_GOOGLEANALYTICS }}
 
 jobs:
-  ssh:
+  # Run tests.
+  # See also https://docs.docker.com/docker-hub/builds/automated-testing/
+  test:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Install SSH Key
-        uses: shimataro/ssh-key-action@v2.1.0
+      - uses: shimataro/ssh-key-action@v2.1.0
         with:
           key: ${{ secrets.SSH_KEY }}
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
 
-  # Run tests.
-  # See also https://docs.docker.com/docker-hub/builds/automated-testing/
-  test:
-    needs: ssh
-    runs-on: ubuntu-latest
-
-    steps:
       - uses: actions/checkout@v2
 
       - name: Run tests
@@ -59,12 +54,17 @@ jobs:
   # See also https://docs.docker.com/docker-hub/builds/
   push:
     # Ensure test job passes before pushing image.
-    needs: [ssh, test]
+    needs: test
 
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
 
     steps:
+      - uses: shimataro/ssh-key-action@v2.1.0
+        with:
+          key: ${{ secrets.SSH_KEY }}
+          known_hosts: ${{ secrets.KNOWN_HOSTS }}
+
       - uses: actions/checkout@v2
 
       - name: Build image
