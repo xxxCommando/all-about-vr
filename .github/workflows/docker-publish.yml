@@ -15,7 +15,7 @@ on:
   pull_request:
 
 env:
-  IMAGE_NAME: image
+  IMAGE_NAME: all-about-vr
   NODE_ENV: production
   REACT_APP_APIKEY: ${{ secrets.REACT_APP_APIKEY }}
   REACT_APP_AUTHDOMAIN: ${{ secrets.REACT_APP_AUTHDOMAIN }}
@@ -72,7 +72,7 @@ jobs:
 
       - name: Log into GitHub Container Registry
       # TODO: Create a PAT with `read:packages` and `write:packages` scopes and save it as an Actions secret `CR_PAT`
-        run: echo "${{ secrets.CR_PAT }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
+        run: echo "${{ secrets.CR_PAT }}" | docker login -u bleuh --password-stdin
 
       - name: Push image to GitHub Container Registry
         run: |
