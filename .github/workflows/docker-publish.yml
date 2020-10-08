@@ -68,7 +68,16 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build image
-        run: DOCKER_BUILDKIT=1 docker build --ssh default=~/.ssh/id_rsa . --file Dockerfile.prod --tag $IMAGE_NAME
+        run: DOCKER_BUILDKIT=1 docker build --ssh default=~/.ssh/id_rsa . --file Dockerfile.prod --tag $IMAGE_NAME \
+          --build-arg REACT_APP_APIKEY \
+          --build-arg REACT_APP_AUTHDOMAIN \
+          --build-arg REACT_APP_DATABASEURL \
+          --build-arg REACT_APP_PROJECTID \
+          --build-arg REACT_APP_STORAGEBUCKET \
+          --build-arg REACT_APP_MESSAGINGSENDERID \
+          --build-arg REACT_APP_APPID \
+          --build-arg REACT_APP_MEASUREMENTID \
+          --build-arg REACT_APP_GOOGLEANALYTICS
 
       - name: Log into GitHub Container Registry
       # TODO: Create a PAT with `read:packages` and `write:packages` scopes and save it as an Actions secret `CR_PAT`
