@@ -68,16 +68,16 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build image
-        run: DOCKER_BUILDKIT=1 docker build --ssh default=~/.ssh/id_rsa . --file Dockerfile.prod \
-          --build-arg REACT_APP_APIKEY \
-          --build-arg REACT_APP_AUTHDOMAIN \
-          --build-arg REACT_APP_DATABASEURL \
-          --build-arg REACT_APP_PROJECTID \
-          --build-arg REACT_APP_STORAGEBUCKET \
-          --build-arg REACT_APP_MESSAGINGSENDERID \
-          --build-arg REACT_APP_APPID \
-          --build-arg REACT_APP_MEASUREMENTID \
-          --build-arg REACT_APP_GOOGLEANALYTICS \
+        run: DOCKER_BUILDKIT=1 docker build --ssh default=~/.ssh/id_rsa . --file Dockerfile.prod
+          --build-arg REACT_APP_APIKEY
+          --build-arg REACT_APP_AUTHDOMAIN
+          --build-arg REACT_APP_DATABASEURL
+          --build-arg REACT_APP_PROJECTID
+          --build-arg REACT_APP_STORAGEBUCKET
+          --build-arg REACT_APP_MESSAGINGSENDERID
+          --build-arg REACT_APP_APPID
+          --build-arg REACT_APP_MEASUREMENTID
+          --build-arg REACT_APP_GOOGLEANALYTICS
           --tag $IMAGE_NAME
 
       - name: Log into GitHub Container Registry
