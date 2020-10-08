@@ -1,13 +1,19 @@
+# syntax=docker/dockerfile:experimental
+
 FROM node:alpine
 
 WORKDIR /app
 
-COPY package.json /app
+RUN apk add --no-cache openssh-client git
+# add credentials on build & make sure your domain is accepted
+RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-RUN npm install --silent
+COPY package.json yarn.lock ./
+
+RUN --mount=type=ssh yarn
 
 COPY . /app
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["yarn", "start"]

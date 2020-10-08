@@ -1,0 +1,107 @@
+
+name: Docker
+
+on:
+  push:
+    # Publish `master` as Docker `latest` image.
+    branches:
+      - master
+
+    # Publish `v1.2.3` tags as releases.
+    tags:
+      - v*
+
+  # Run tests for any PRs.
+  pull_request:
+
+env:
+  IMAGE_NAME: all-about-vr
+  NODE_ENV: production
+  REACT_APP_APIKEY: ${{ secrets.REACT_APP_APIKEY }}
+  REACT_APP_AUTHDOMAIN: ${{ secrets.REACT_APP_AUTHDOMAIN }}
+  REACT_APP_DATABASEURL: ${{ secrets.REACT_APP_DATABASEURL }}
+  REACT_APP_PROJECTID: ${{ secrets.REACT_APP_PROJECTID }}
+  REACT_APP_STORAGEBUCKET: ${{ secrets.REACT_APP_STORAGEBUCKET }}
+  REACT_APP_MESSAGINGSENDERID: ${{ secrets.REACT_APP_MESSAGINGSENDERID }}
+  REACT_APP_APPID: ${{ secrets.REACT_APP_APPID }}
+  REACT_APP_MEASUREMENTID: ${{ secrets.REACT_APP_MEASUREMENTID }}
+  REACT_APP_GOOGLEANALYTICS: ${{ secrets.REACT_APP_GOOGLEANALYTICS }}
+
+jobs:
+  # Run tests.
+  # See also https://docs.docker.com/docker-hub/builds/automated-testing/
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: shimataro/ssh-key-action@v2.1.0
+        with:
+          key: ${{ secrets.SSH_KEY }}
+          known_hosts: ${{ secrets.KNOWN_HOSTS }}
+
+      - uses: actions/checkout@v2
+
+      - name: Run tests
+        run: |
+          if [ -f docker-compose.test.yml ]; then
+            DOCKER_BUILDKIT=1 docker-compose --file docker-compose.test.yml build
+            DOCKER_BUILDKIT=1 docker-compose --file docker-compose.test.yml run sut
+          else
+            DOCKER_BUILDKIT=1 docker build --file Dockerfile --ssh default=~/.ssh/id_rsa .
+          fi
+
+  # Push image to GitHub Packages.
+  # See also https://docs.docker.com/docker-hub/builds/
+  push:
+    # Ensure test job passes before pushing image.
+    needs: test
+
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+
+    steps:
+      - uses: shimataro/ssh-key-action@v2.1.0
+        with:
+          key: ${{ secrets.SSH_KEY }}
+          known_hosts: ${{ secrets.KNOWN_HOSTS }}
+
+      - uses: actions/checkout@v2
+
+      - name: Build image
+        run: DOCKER_BUILDKIT=1 docker build --ssh default=~/.ssh/id_rsa . --file Dockerfile.prod
+          --build-arg REACT_APP_APIKEY
+          --build-arg REACT_APP_AUTHDOMAIN
+          --build-arg REACT_APP_DATABASEURL
+          --build-arg REACT_APP_PROJECTID
+          --build-arg REACT_APP_STORAGEBUCKET
+          --build-arg REACT_APP_MESSAGINGSENDERID
+          --build-arg REACT_APP_APPID
+          --build-arg REACT_APP_MEASUREMENTID
+          --build-arg REACT_APP_GOOGLEANALYTICS
+          --tag $IMAGE_NAME
+
+      - name: Log into GitHub Container Registry
+      # TODO: Create a PAT with `read:packages` and `write:packages` scopes and save it as an Actions secret `CR_PAT`
+        run: echo "${{ secrets.CR_PAT }}" | docker login -u bleuh --password-stdin
+
+      - name: Push image to GitHub Container Registry
+        run: |
+          IMAGE_ID=${{ github.repository_owner }}/$IMAGE_NAME
+
+          # Change all uppercase to lowercase
+          IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
+
+          # Strip git ref prefix from version
+          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+
+          # Strip "v" prefix from tag name
+          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+
+          # Use Docker `latest` tag convention
+          [ "$VERSION" == "master" ] && VERSION=latest
+
+          echo IMAGE_ID=$IMAGE_ID
+          echo VERSION=$VERSION
+
+          docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
+          docker push $IMAGE_ID:$VERSION
