@@ -1,6 +1,6 @@
-@import '../assets/scss/light-default.scss';
-@import '../assets/scss/dark-default.scss';
+@import '../assets/scss/dark.scss';
 @import '../assets/scss/global.scss';
+@import '~antd/dist/antd.min.css';
 @import '../assets/scss/mixin.scss';
 
 @include theme {
