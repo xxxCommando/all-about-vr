@@ -76,10 +76,10 @@ class HeadsetList extends React.Component {
               />
             </Col>
             <Col className="vs-animation">
-              <div className={compareMode ? 'compare-mode' : ''}>
+              <div className={compareMode ? 'compare-mode' : 'normal-mode'}>
                 <span>V</span>
               </div>
-              <div className={compareMode ? 'compare-mode' : ''}>
+              <div className={compareMode ? 'compare-mode' : 'normal-mode'}>
                 <span>S</span>
               </div>
             </Col>
