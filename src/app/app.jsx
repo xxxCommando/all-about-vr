@@ -20,8 +20,10 @@ class App extends React.Component {
     const { fetchHeadsets, darkMode } = this.props;
     fetchHeadsets();
     document.body.classList = darkMode ? ['dark'] : ['light'];
-    ReactGa.initialize(process.env.REACT_APP_GOOGLEANALYTICS);
-    ReactGa.pageview(window.location.pathname + window.location.search);
+    if (process.env.NODE_ENV === 'production') {
+      ReactGa.initialize(process.env.REACT_APP_GOOGLEANALYTICS);
+      ReactGa.pageview(window.location.pathname + window.location.search);
+    }
   }
 
   render() {
