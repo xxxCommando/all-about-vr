@@ -53,7 +53,8 @@
     "eject": "react-scripts eject",
     "precommit": "pretty-quick --staged",
     "lint": "eslint ./src",
-    "add-headset": "node src/scripts/add-empty-headset.js"
+    "add-headset": "node src/scripts/add-empty-headset.js",
+    "update-headset": "node src/scripts/update-headsets.js"
   },
   "eslintConfig": {
     "extends": "react-app"

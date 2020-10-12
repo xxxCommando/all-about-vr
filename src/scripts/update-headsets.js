@@ -16,20 +16,13 @@ const config = {
 
 firebase.initializeApp(config);
 
-const id = process.argv[2];
-
-if (id !== undefined && id.length !== 0) {
-  firebase
-    .firestore()
-    .collection('test')
-    .doc(id)
-    .set(data)
-    .then(() => {
-      console.log(`${id} added`);
-      process.exit();
-    })
-    .catch(() => process.exit());
-} else {
-  console.log('No id params');
-  process.exit();
-}
+firebase
+  .firestore()
+  .collection('test').get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      doc.ref.update({
+        ...doc.data,
+        ...data,
+      });
+    });
+  });

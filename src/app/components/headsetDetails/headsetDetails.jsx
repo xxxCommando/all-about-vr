@@ -50,6 +50,10 @@ const HeadsetDetails = (props) => {
             {item.brand}
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
+            Target Audience
+          </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal" />
+          <Card.Grid hoverable={false} className="headset-card-details-normal-text">
             Price
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal">
@@ -109,22 +113,32 @@ const HeadsetDetails = (props) => {
           </Card.Grid>
 
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
-            Weight
-          </Card.Grid>
-          <Card.Grid hoverable={false} className="headset-card-details-normal">
-            {`${item.weight} g`}
-          </Card.Grid>
-          <Card.Grid hoverable={false} className="headset-card-details-normal-text">
             Tracking
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal">
             {item.tracking}
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
-            Wireless
+            Controller
+          </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal" />
+          <Card.Grid hoverable={false} className="headset-card-details-normal-text">
+            Hand Tracking
+          </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal" />
+          <Card.Grid hoverable={false} className="headset-card-details-normal-text">
+            Eye Tracking
+          </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal" />
+          <Card.Grid hoverable={false} className="headset-card-details-normal-text">
+            Facial Recognition
+          </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal" />
+          <Card.Grid hoverable={false} className="headset-card-details-normal-text">
+            Weight
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal">
-            {item.wireless ? <CheckOutlined /> : <CloseOutlined />}
+            {`${item.weight} g`}
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
             Build in Audio
@@ -138,8 +152,18 @@ const HeadsetDetails = (props) => {
           <Card.Grid hoverable={false} className="headset-card-details-normal">
             {item.mic ? <CheckOutlined /> : <CloseOutlined />}
           </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal-text">
+            Wireless
+          </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">
+            {item.wireless ? <CheckOutlined /> : <CloseOutlined />}
+          </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal-text">
+            Standalone
+          </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal" />
           <Card.Grid hoverable={false} className="headset-card-details-title">
-            PC Requirement
+            Software Requirement
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
             OS
@@ -161,6 +185,13 @@ const HeadsetDetails = (props) => {
               })
               : null}
           </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal-text">
+            Platform
+          </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-title">
+            PC Requirement
+          </Card.Grid>
+
           <Card.Grid hoverable={false} className="headset-card-details-large-text">
             CPU
           </Card.Grid>
