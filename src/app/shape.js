@@ -37,12 +37,6 @@ const PushedContentsShape = PropTypes.shape({
   right: PropTypes.bool,
 });
 
-const PushedContentsShape = PropTypes.shape({
-  text: PropTypes.string,
-  img: PropTypes.string,
-  right: PropTypes.bool,
-});
-
 const HeadsetShape = PropTypes.shape({
   audio: PropTypes.bool,
   brand: PropTypes.string,
