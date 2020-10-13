@@ -21,7 +21,7 @@ const id = process.argv[2];
 if (id !== undefined && id.length !== 0) {
   firebase
     .firestore()
-    .collection('test')
+    .collection('headsets')
     .doc(id)
     .set(data)
     .then(() => {

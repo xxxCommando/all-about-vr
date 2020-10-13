@@ -2,7 +2,6 @@
   "name": "all-about-vr",
   "version": "0.1.0",
   "description": "All you need to know about vr in one application.",
-  "homepage": "https://github.com/Bleuh/all-about-vr",
   "bugs": {
     "url": "https://github.com/Bleuh/all-about-vr/issues",
     "email": "bastiendouib@gmail.com"
@@ -19,8 +18,8 @@
     }
   ],
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/Bleuh/all-about-vr/"
+    "type": "git",
+    "url": "https://github.com/Bleuh/all-about-vr/"
   },
   "dependencies": {
     "@ant-design/icons": "^4.2.2",

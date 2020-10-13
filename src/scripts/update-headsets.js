@@ -18,11 +18,21 @@ firebase.initializeApp(config);
 
 firebase
   .firestore()
-  .collection('test').get().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      doc.ref.update({
-        ...doc.data,
-        ...data,
+  .collection('headsets')
+  .get()
+  .then((querySnapshot) => {
+    // create a list of async tasks to do
+    Promise.all(querySnapshot.docs.map((doc) => doc.ref.update({
+      ...data,
+      ...doc.data(),
+    })))
+      .then(() => {
+        // after all tasks end => exit prossess
+        console.log('updated');
+        process.exit();
+      })
+      .catch(() => {
+        console.log('error during update');
+        process.exit();
       });
-    });
   });
