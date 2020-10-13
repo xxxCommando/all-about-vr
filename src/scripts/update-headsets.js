@@ -1,5 +1,5 @@
 const firebase = require('firebase');
-const data = require('./default');
+const defaultData = require('./default');
 
 require('dotenv').config();
 
@@ -23,7 +23,7 @@ firebase
   .then((querySnapshot) => {
     // create a list of async tasks to do
     Promise.all(querySnapshot.docs.map((doc) => doc.ref.update({
-      ...data,
+      ...defaultData,
       ...doc.data(),
     })))
       .then(() => {

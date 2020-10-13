@@ -14,6 +14,18 @@ const RequirementsShape = PropTypes.shape({
   video: PropTypes.string,
 });
 
+const standaloneShape = PropTypes.shape({
+  cpu: PropTypes.string,
+  gpu: PropTypes.string,
+  ram: PropTypes.number,
+  storage: PropTypes.number,
+  storage2: PropTypes.number,
+  storage3: PropTypes.number,
+  expandable: PropTypes.bool,
+  batterylife: PropTypes.number,
+  link: PropTypes.bool,
+});
+
 const ResolutionShape = PropTypes.shape({
   x: PropTypes.number,
   y: PropTypes.number,
@@ -25,12 +37,22 @@ const PushedContentsShape = PropTypes.shape({
   right: PropTypes.bool,
 });
 
+const PushedContentsShape = PropTypes.shape({
+  text: PropTypes.string,
+  img: PropTypes.string,
+  right: PropTypes.bool,
+});
+
 const HeadsetShape = PropTypes.shape({
   audio: PropTypes.bool,
   brand: PropTypes.string,
+  controller: PropTypes.string,
   description: PropTypes.string,
+  eyetracking: PropTypes.bool,
+  facialrecognition: PropTypes.bool,
   flipup: PropTypes.bool,
   fov: PropTypes.number,
+  handtracking: PropTypes.bool,
   img: PropTypes.string,
   imgs: PropTypes.arrayOf(PropTypes.string),
   index: PropTypes.number,
@@ -38,12 +60,15 @@ const HeadsetShape = PropTypes.shape({
   mic: PropTypes.bool,
   name: PropTypes.string,
   pixeldensity: PropTypes.number,
+  platform: PropTypes.arrayOf(PropTypes.string),
   price: PropTypes.number,
   refreshrate: PropTypes.number,
   releasedate: DateShape,
   requirements: RequirementsShape,
   resolution: ResolutionShape,
   screentype: PropTypes.string,
+  standalone: PropTypes.bool,
+  standalonespecs: standaloneShape,
   status: PropTypes.number,
   summary: PropTypes.string,
   think: PropTypes.string,

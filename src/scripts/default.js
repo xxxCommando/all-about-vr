@@ -1,12 +1,16 @@
 const firebase = require('firebase');
 
-const data = {
+const defaultData = {
   audience: 2,
   audio: true,
   brand: 'xxx',
+  controller: 'xxx',
   description: 'xxx',
-  flipup: true,
+  eyetracking: false,
+  facialrecognition: false,
+  flipup: false,
   fov: Math.floor(Math.random() * Math.floor(100)),
+  handtracking: false,
   img: 'https://images-na.ssl-images-amazon.com/images/I/61fgwdI0C3L._AC_SL1200_.jpg',
   imgs: [
     'https://images-na.ssl-images-amazon.com/images/I/61fgwdI0C3L._AC_SL1200_.jpg',
@@ -19,6 +23,7 @@ const data = {
   mic: true,
   name: `Casque VR ${Math.floor(Math.random() * Math.floor(2000))}`,
   pixeldensity: Math.floor(Math.random() * Math.floor(1000)),
+  platform: ['windows', 'steam'],
   price: Math.floor(Math.random() * Math.floor(2000)),
   refreshrate: Math.floor(Math.random() * Math.floor(200)),
   releasedate: firebase.firestore.FieldValue.serverTimestamp(),
@@ -35,6 +40,18 @@ const data = {
     y: Math.floor(Math.random() * Math.floor(10000)),
   },
   screentype: 'OLED',
+  standalone: false,
+  standalonespecs: {
+    cpu: 'Snapdragon',
+    gpu: 'Adreno',
+    ram: 6,
+    storage: 32,
+    storage2: 64,
+    storage3: 128,
+    expandable: false,
+    batterylife: 3,
+    link: true,
+  },
   status: 1,
   summary: "I'm a super VR Headset",
   think: 'Nice headset',
@@ -60,4 +77,4 @@ const data = {
   ],
 };
 
-module.exports = data;
+module.exports = defaultData;
