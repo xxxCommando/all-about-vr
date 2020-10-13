@@ -117,8 +117,9 @@
     }
   }
   .ant-divider-horizontal.ant-divider-with-text {
-    &::before, &::after{
-      border-top: 1px solid rgba(0,0,0,.06);
+    &::before,
+    &::after {
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
     }
   }
   .ant-row {
@@ -185,17 +186,17 @@
         width: 44%;
         max-width: 700px;
         @include md {
+          padding: 0;
           width: 100%;
-          padding: 10px 0;
+          &:first-child {
+            padding-bottom: 20px;
+          }
         }
       }
     }
     &.headsets {
-      margin-left: -8px;
-      margin-right: -8px;
       > div {
-        padding-left: 8px;
-        padding-right: 8px;
+        padding: 0 8px;
         &.normal-mode {
           width: 25%;
           .ant-card-body {
@@ -213,10 +214,27 @@
             width: 33%;
           }
           @include sm {
+            padding: 0 4px;
             width: 50%;
           }
         }
         &.compare-mode {
+          @include sm {
+            padding: 0;
+            &:first-child {
+              padding-right: 4px;
+            }
+            &:last-child {
+              padding-left: 4px;
+            }
+            .headset-card {
+              .ant-card {
+                &.selected {
+                  box-shadow: none;
+                }
+              }
+            }
+          }
           transition: width 1s ease-out;
           transition-delay: 300ms;
           width: 50%;
@@ -244,7 +262,7 @@
     }
   }
 
-  .price-info{
+  .price-info {
     text-align: left;
     padding: 10px;
     color: grey;

@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import {
   List, Typography, Divider, Layout, Row, Col, Card,
 } from 'antd';
+import { DeleteOutlined } from '@ant-design/icons';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import './headsetList.scss';
@@ -11,6 +12,7 @@ import { HeadsetShape } from '../../shape';
 
 import HeadsetDetails from '../../components/headsetDetails';
 import AutoCompleteHeadset from '../../components/autoCompleteHeadset';
+import BackTopCustom from '../../components/backTopCustom';
 
 import { MAX_SELECT } from '../../redux/compare/reducers/compare';
 
@@ -49,7 +51,7 @@ class HeadsetList extends React.Component {
 
   render() {
     const {
-      items, compareMode, compareResult, inputMapping, selectedIds, selected,
+      items, compareMode, compareResult, inputMapping, selectedIds, selected, doClear,
     } = this.props;
 
     return (
@@ -145,6 +147,7 @@ class HeadsetList extends React.Component {
             )}
           </List>
         </Layout>
+        <BackTopCustom onClick={doClear} icon={compareMode ? <DeleteOutlined /> : null} />
       </>
     );
   }
@@ -163,6 +166,7 @@ HeadsetList.propTypes = {
   remove: PropTypes.func.isRequired,
   doCompare: PropTypes.func.isRequired,
   setCompareMode: PropTypes.func.isRequired,
+  doClear: PropTypes.func.isRequired,
 };
 
 HeadsetList.defaultProps = {

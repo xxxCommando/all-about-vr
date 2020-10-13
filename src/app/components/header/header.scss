@@ -119,20 +119,33 @@
       > .ant-menu-item {
         &-selected {
           background-color: $dark-main-hover;
+          a {
+            color: $white-text;
+          }
         }
         &:hover {
           background-color: $dark-main-hover;
+          a {
+            color: $white-text;
+          }
         }
       }
     }
     .drawer-mobile {
       .ant-menu.ant-menu-dark {
+        background-color: $dark-main;
         > .ant-menu-item {
           &-selected {
             background-color: $dark-main-hover;
+            a {
+              color: $white-text;
+            }
           }
           &:hover {
             background-color: $dark-main-hover;
+            a {
+              color: $white-text;
+            }
           }
         }
       }

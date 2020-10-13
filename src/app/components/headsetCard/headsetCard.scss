@@ -7,7 +7,6 @@
 
     .ant-card {
       text-align: center;
-
       @include sm {
         .ant-card-body {
           padding: 0;
@@ -31,6 +30,9 @@
       }
     }
     .card-link {
+      @include xxs {
+        display: none;
+      }
       color: inherit;
       position: absolute;
       top: 0;
