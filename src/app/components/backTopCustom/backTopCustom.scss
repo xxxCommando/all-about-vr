@@ -1,0 +1,39 @@
+@import '../../../assets/scss/global.scss';
+@import '../../../assets/scss/mixin.scss';
+
+@include theme {
+  .back-top-custom {
+    @include xl {
+      right: 75px;
+      bottom: 75px;
+    }
+
+    &-icon {
+      @include xl {
+        height: 60px;
+        width: 60px;
+      }
+      border-radius: 100%;
+      height: 40px;
+      width: 40px;
+      background-color: $light-main-hover;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .anticon {
+        @include xl {
+          font-size: 30px;
+        }
+        font-size: 20px;
+      }
+    }
+  }
+  &.dark {
+    .back-top-custom {
+      &-icon {
+        background-color: $dark-main-hover;
+      }
+    }
+  }
+}

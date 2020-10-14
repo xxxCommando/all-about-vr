@@ -2,7 +2,6 @@
   "name": "all-about-vr",
   "version": "0.1.0",
   "description": "All you need to know about vr in one application.",
-  "homepage": "https://github.com/Bleuh/all-about-vr",
   "bugs": {
     "url": "https://github.com/Bleuh/all-about-vr/issues",
     "email": "bastiendouib@gmail.com"
@@ -19,13 +18,13 @@
     }
   ],
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/Bleuh/all-about-vr/"
+    "type": "git",
+    "url": "https://github.com/Bleuh/all-about-vr/"
   },
   "dependencies": {
     "@ant-design/icons": "^4.2.2",
     "@testing-library/jest-dom": "^5.11.4",
-    "all-about-vr-compare": "git+ssh://git@github.com:Bleuh/all-about-vr-compare.git",
+    "all-about-vr-compare": "git+ssh://git@github.com/Bleuh/all-about-vr-compare.git",
     "antd": "^4.7.0",
     "dotenv": "^8.2.0",
     "firebase": "^7.21.1",
@@ -53,7 +52,8 @@
     "eject": "react-scripts eject",
     "precommit": "pretty-quick --staged",
     "lint": "eslint ./src",
-    "add-headset": "node src/scripts/add-empty-headset.js"
+    "add-headset": "node src/scripts/add-empty-headset.js",
+    "update-headset": "node src/scripts/update-headsets.js"
   },
   "eslintConfig": {
     "extends": "react-app"

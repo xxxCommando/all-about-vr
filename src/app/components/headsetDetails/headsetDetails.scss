@@ -2,9 +2,33 @@
 @import '../../../assets/scss/mixin.scss';
 
 @include theme {
+
+  .ant-drawer-body{
+    padding: 0;
+  }
+  .card-drawer{
+    &-large{
+      width: 100%;
+      min-height: 40px;
+      padding:10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &-text{
+        width: 100%;
+        font-weight: 500;
+        min-height: 40px;
+        padding:10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
   .headset-card {
     .ant-card-body {
-      padding: 0px;
+      padding: 0;
+      margin: 0;
       .headset-card-details {
         &-title {
           width: 100%;
@@ -88,6 +112,10 @@
     }
   }
   &.dark {
+    .button-standalone{
+      background-color: #503d4d;
+      border-color: #503d4d;
+    }
     .headset-card {
       .ant-card-body {
         .headset-card-details {

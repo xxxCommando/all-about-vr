@@ -12,6 +12,8 @@ export default function darkMode(state = initialState, action) {
   switch (action.type) {
     case TOGGLE_DARK_MODE: {
       document.body.classList = !state.darkMode ? ['dark'] : ['light'];
+      const metaThemeColor = document.querySelector('meta[name=theme-color]');
+      metaThemeColor.setAttribute('content', state.darkMode ? '#1890ff' : '#503D4D');
       return {
         ...state,
         darkMode: !state.darkMode,

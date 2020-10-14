@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Card } from 'antd';
-import {
+import { Card, Drawer, Button } from 'antd';
+import Icon, {
   CheckOutlined,
   CloseOutlined,
   AndroidOutlined,
@@ -15,11 +15,32 @@ import './headsetDetails.scss';
 import moment from 'moment';
 import HeadsetCard from '../headsetCard';
 import { HeadsetShape } from '../../shape';
+import { ReactComponent as Playstation } from '../../../assets/images/playstation.svg';
+import { ReactComponent as Linux } from '../../../assets/images/linux.svg';
+import { ReactComponent as Oculus } from '../../../assets/images/oculus.svg';
+import { ReactComponent as Steam } from '../../../assets/images/steam.svg';
+import { ReactComponent as Windows } from '../../../assets/images/vr-logo-windows-mr.svg';
 
 const HeadsetDetails = (props) => {
   const {
     selected, item, compareMode, onClick, compareResult,
   } = props;
+
+  const [visible, setVisible] = useState(false);
+
+  const showDrawer = () => {
+    setVisible(true);
+  };
+
+  const onClose = () => {
+    setVisible(false);
+  };
+
+  const getHeadsetAudience = (audience) => {
+    if (audience === 1) return 'Public';
+    if (audience === 2) return 'Enterprise';
+    return '';
+  };
 
   const getClassName = (compareTarget) => {
     if (!compareResult) return '';
@@ -30,7 +51,7 @@ const HeadsetDetails = (props) => {
   };
 
   return (
-    <HeadsetCard item={item} selected={selected} onClick={onClick}>
+    <HeadsetCard item={item} selected={selected} onClick={compareMode ? null : onClick}>
       {!compareMode ? null : (
         <Card className="headset-card-details">
           <Card.Grid className="headset-card-details-title" hoverable={false}>
@@ -48,6 +69,15 @@ const HeadsetDetails = (props) => {
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal">
             {item.brand}
+          </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal-text">
+            Target Audience
+          </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">
+
+            {item.audience
+              ? getHeadsetAudience(item.audience) : null}
+
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
             Price
@@ -105,15 +135,10 @@ const HeadsetDetails = (props) => {
             {item.flipup ? <CheckOutlined /> : <CloseOutlined />}
           </Card.Grid>
           <Card.Grid className="headset-card-details-title" hoverable={false}>
-            Other Specifications
+            Tracking Specifications
+            <div className="headset-card-details-title-smile">{getClassName('tracking')}</div>
           </Card.Grid>
 
-          <Card.Grid hoverable={false} className="headset-card-details-normal-text">
-            Weight
-          </Card.Grid>
-          <Card.Grid hoverable={false} className="headset-card-details-normal">
-            {`${item.weight} g`}
-          </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
             Tracking
           </Card.Grid>
@@ -121,10 +146,38 @@ const HeadsetDetails = (props) => {
             {item.tracking}
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
-            Wireless
+            Controller
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal">
-            {item.wireless ? <CheckOutlined /> : <CloseOutlined />}
+            {item.controller}
+          </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal-text">
+            Hand Tracking
+          </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">
+            {item.handtracking ? <CheckOutlined /> : <CloseOutlined />}
+          </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal-text">
+            Eye Tracking
+          </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">
+            {item.eyetracking ? <CheckOutlined /> : <CloseOutlined />}
+          </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal-text">
+            Facial Recognition
+          </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">
+            {item.facialrecognition ? <CheckOutlined /> : <CloseOutlined />}
+          </Card.Grid>
+          <Card.Grid className="headset-card-details-title" hoverable={false}>
+            Hardware Specifications
+            <div className="headset-card-details-title-smile">{getClassName('hardware')}</div>
+          </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal-text">
+            Weight
+          </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">
+            {`${item.weight} g`}
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
             Build in Audio
@@ -138,29 +191,138 @@ const HeadsetDetails = (props) => {
           <Card.Grid hoverable={false} className="headset-card-details-normal">
             {item.mic ? <CheckOutlined /> : <CloseOutlined />}
           </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal-text">
+            Wireless
+          </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">
+            {item.wireless ? <CheckOutlined /> : <CloseOutlined />}
+          </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal-text">
+            Standalone
+          </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">
+            {item.standalone ? (
+              <>
+                <Button type="primary" onClick={showDrawer} className="button-standalone">
+                  Info
+                </Button>
+                <Drawer
+                  title="Standalone Info"
+                  placement="right"
+                  className="drawer-standalone"
+                  closable={false}
+                  onClose={onClose}
+                  visible={visible}
+                >
+
+                  <Card className="card-drawer">
+                    <Card.Grid hoverable={false} className="card-drawer-large-text">
+                      CPU
+                    </Card.Grid>
+                    <Card.Grid hoverable={false} className="card-drawer-large">
+                      {item.standalonespecs.cpu}
+                    </Card.Grid>
+                    <Card.Grid hoverable={false} className="card-drawer-large-text">
+                      GPU
+                    </Card.Grid>
+                    <Card.Grid hoverable={false} className="card-drawer-large">
+                      {item.standalonespecs.gpu}
+                    </Card.Grid>
+                    <Card.Grid hoverable={false} className="card-drawer-large-text">
+                      RAM
+                    </Card.Grid>
+                    <Card.Grid hoverable={false} className="card-drawer-large">
+                      {`${item.standalonespecs.ram} GB`}
+                    </Card.Grid>
+                    <Card.Grid hoverable={false} className="card-drawer-large-text">
+                      Storage
+                    </Card.Grid>
+                    <Card.Grid hoverable={false} className="card-drawer-large">
+
+                      {item.standalonespecs.storages.map((storage, index) => `${storage}  GB${item.standalonespecs.storages.length - 1 !== index ? ' / ' : ''}`) }
+                    </Card.Grid>
+                    <Card.Grid hoverable={false} className="card-drawer-large-text">
+                      Expandable
+                    </Card.Grid>
+                    <Card.Grid hoverable={false} className="card-drawer-large">
+                      {item.standalonespecs.expandable ? <CheckOutlined /> : <CloseOutlined />}
+                    </Card.Grid>
+                    <Card.Grid hoverable={false} className="card-drawer-large-text">
+                      Battery life
+                    </Card.Grid>
+                    <Card.Grid hoverable={false} className="card-drawer-large">
+                      {`${item.standalonespecs.batterylife} H`}
+                    </Card.Grid>
+                    <Card.Grid hoverable={false} className="card-drawer-large-text">
+                      Link to PC
+                    </Card.Grid>
+                    <Card.Grid hoverable={false} className="card-drawer-large">
+                      {item.standalonespecs.link ? <CheckOutlined /> : <CloseOutlined />}
+                    </Card.Grid>
+                  </Card>
+
+                </Drawer>
+              </>
+            ) : <CloseOutlined />}
+
+          </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-title">
-            PC Requirement
+            Software Requirement
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
             OS
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal">
             {item.requirements.os
-              ? item.requirements.os.map((element) => {
-                const os = element;
+              ? item.requirements.os.map((os) => {
                 switch (os) {
                   case 'windows':
-                    return <WindowsOutlined className="headset-card-details-logo" />;
+                    return <WindowsOutlined className="headset-card-details-logo" id={os} />;
                   case 'android':
-                    return <AndroidOutlined className="headset-card-details-logo" />;
+                    return <AndroidOutlined className="headset-card-details-logo" id={os} />;
                   case 'macos':
-                    return <AppleOutlined className="headset-card-details-logo" />;
+                    return <AppleOutlined className="headset-card-details-logo" id={os} />;
+                  case 'linux':
+                    return <Icon component={Linux} className="headset-card-details-logo" id={os} />;
+                  case 'playstation':
+                    return <Icon component={Playstation} className="headset-card-details-logo" id={os} />;
+
                   default:
                     return '';
                 }
               })
               : null}
           </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal-text">
+            Platform
+          </Card.Grid>
+          <Card.Grid hoverable={false} className="headset-card-details-normal">
+            {item.platform
+              ? item.platform.map((platform) => {
+                switch (platform) {
+                  case 'steam':
+                    return <Icon component={Steam} className="headset-card-details-logo" id={platform} />;
+
+                  case 'oculus':
+                    return <Icon component={Oculus} className="headset-card-details-logo" id={platform} />;
+
+                  case 'windows':
+                    return <Icon component={Windows} className="headset-card-details-logo" id={platform} />;
+
+                  case 'playstation':
+                    return <Icon component={Playstation} className="headset-card-details-logo" id={platform} />;
+
+                  default:
+                    return '';
+                }
+              })
+              : null}
+          </Card.Grid>
+
+          <Card.Grid hoverable={false} className="headset-card-details-title">
+            PC Requirement
+          </Card.Grid>
+
           <Card.Grid hoverable={false} className="headset-card-details-large-text">
             CPU
           </Card.Grid>
