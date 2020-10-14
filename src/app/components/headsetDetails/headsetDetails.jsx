@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Card, Drawer, Button } from 'antd';
-import {
-  createFromIconfontCN,
+import Icon, {
   CheckOutlined,
   CloseOutlined,
   AndroidOutlined,
@@ -16,6 +15,11 @@ import './headsetDetails.scss';
 import moment from 'moment';
 import HeadsetCard from '../headsetCard';
 import { HeadsetShape } from '../../shape';
+import { ReactComponent as Playstation } from '../../../assets/images/playstation.svg';
+import { ReactComponent as Linux } from '../../../assets/images/linux.svg';
+import { ReactComponent as Oculus } from '../../../assets/images/oculus.svg';
+import { ReactComponent as Steam } from '../../../assets/images/steam.svg';
+import { ReactComponent as Windows } from '../../../assets/images/vr-logo-windows-mr.svg';
 
 const HeadsetDetails = (props) => {
   const {
@@ -37,15 +41,6 @@ const HeadsetDetails = (props) => {
     if (audience === 2) return 'Enterprise';
     return '';
   };
-
-  const IconFont = createFromIconfontCN({
-    scriptUrl: [
-      '//at.alicdn.com/t/font_2127896_6o45tlw77tu.js', // icon-oculus, icon-steam
-      '//at.alicdn.com/t/font_2127897_j99ayp2641j.js', //  icon-linux, icon-playstation
-      '//at.alicdn.com/t/font_2127903_5gylz1jr8ko.js', // icon-playstation
-      '//at.alicdn.com/t/font_2127905_8a27rwo6uni.js', // icon-vr-logo-windows-mr
-    ],
-  });
 
   const getClassName = (compareTarget) => {
     if (!compareResult) return '';
@@ -140,7 +135,8 @@ const HeadsetDetails = (props) => {
             {item.flipup ? <CheckOutlined /> : <CloseOutlined />}
           </Card.Grid>
           <Card.Grid className="headset-card-details-title" hoverable={false}>
-            Other Specifications
+            Tracking Specifications
+            <div className="headset-card-details-title-smile">{getClassName('tracking')}</div>
           </Card.Grid>
 
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
@@ -172,6 +168,10 @@ const HeadsetDetails = (props) => {
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal">
             {item.facialrecognition ? <CheckOutlined /> : <CloseOutlined />}
+          </Card.Grid>
+          <Card.Grid className="headset-card-details-title" hoverable={false}>
+            Hardware Specifications
+            <div className="headset-card-details-title-smile">{getClassName('hardware')}</div>
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
             Weight
@@ -238,7 +238,8 @@ const HeadsetDetails = (props) => {
                       Storage
                     </Card.Grid>
                     <Card.Grid hoverable={false} className="card-drawer-large">
-                      {`${item.standalonespecs.storage} GB / ${item.standalonespecs.storage2} GB `}
+
+                      {item.standalonespecs.storages.map((storage, index) => `${storage}  GB${item.standalonespecs.storages.length - 1 !== index ? ' / ' : ''}`) }
                     </Card.Grid>
                     <Card.Grid hoverable={false} className="card-drawer-large-text">
                       Expandable
@@ -273,19 +274,18 @@ const HeadsetDetails = (props) => {
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal">
             {item.requirements.os
-              ? item.requirements.os.map((element) => {
-                const os = element;
+              ? item.requirements.os.map((os) => {
                 switch (os) {
                   case 'windows':
-                    return <WindowsOutlined className="headset-card-details-logo" />;
+                    return <WindowsOutlined className="headset-card-details-logo" id={os} />;
                   case 'android':
-                    return <AndroidOutlined className="headset-card-details-logo" />;
+                    return <AndroidOutlined className="headset-card-details-logo" id={os} />;
                   case 'macos':
-                    return <AppleOutlined className="headset-card-details-logo" />;
+                    return <AppleOutlined className="headset-card-details-logo" id={os} />;
                   case 'linux':
-                    return <IconFont type="icon-linux" className="headset-card-details-logo" />;
+                    return <Icon component={Linux} className="headset-card-details-logo" id={os} />;
                   case 'playstation':
-                    return <IconFont type="icon-playstation" className="headset-card-details-logo" />;
+                    return <Icon component={Playstation} className="headset-card-details-logo" id={os} />;
 
                   default:
                     return '';
@@ -298,17 +298,19 @@ const HeadsetDetails = (props) => {
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal">
             {item.platform
-              ? item.platform.map((element) => {
-                const platform = element;
+              ? item.platform.map((platform) => {
                 switch (platform) {
                   case 'steam':
-                    return <IconFont type="icon-steam" className="headset-card-details-logo" />;
+                    return <Icon component={Steam} className="headset-card-details-logo" id={platform} />;
+
                   case 'oculus':
-                    return <IconFont type="icon-oculus" className="headset-card-details-logo" />;
+                    return <Icon component={Oculus} className="headset-card-details-logo" id={platform} />;
+
                   case 'windows':
-                    return <IconFont type="icon-vr-logo-windows-mr" className="headset-card-details-logo" />;
+                    return <Icon component={Windows} className="headset-card-details-logo" id={platform} />;
+
                   case 'playstation':
-                    return <IconFont type="icon-playstation" className="headset-card-details-logo" />;
+                    return <Icon component={Playstation} className="headset-card-details-logo" id={platform} />;
 
                   default:
                     return '';

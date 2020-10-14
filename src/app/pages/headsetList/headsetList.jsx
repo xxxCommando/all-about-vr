@@ -134,7 +134,7 @@ class HeadsetList extends React.Component {
                   <div className={compareMode ? 'compare-mode' : 'normal-mode'} key={item.id}>
                     <List.Item>
                       <HeadsetDetails
-                        selected={selected[item.id]}
+                        selected={selected[item.id] !== undefined}
                         item={item}
                         compareMode={compareMode}
                         onClick={(id) => this.toggleSelected(id)}

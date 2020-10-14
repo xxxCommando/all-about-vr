@@ -22,10 +22,28 @@ firebase
   .get()
   .then((querySnapshot) => {
     // create a list of async tasks to do
-    Promise.all(querySnapshot.docs.map((doc) => doc.ref.update({
-      ...defaultData,
-      ...doc.data(),
-    })))
+    Promise.all(querySnapshot.docs.map((doc) => {
+      const docData = doc.data();
+      const docRequirement = docData.requirements ? docData.requirements : {};
+      const docResolution = docData.resolution ? docData.resolution : {};
+      const docStandalone = docData.standalonespecs ? docData.standalonespecs : {};
+      return doc.ref.update({
+        ...defaultData,
+        ...docData,
+        requirements: {
+          ...defaultData.requirements,
+          ...docRequirement,
+        },
+        resolution: {
+          ...defaultData.resolution,
+          ...docResolution,
+        },
+        standalonespecs: {
+          ...defaultData.standalonespecs,
+          ...docStandalone,
+        },
+      });
+    }))
       .then(() => {
         // after all tasks end => exit prossess
         console.log('updated');

@@ -24,7 +24,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.2.2",
     "@testing-library/jest-dom": "^5.11.4",
-    "all-about-vr-compare": "git+ssh://git@github.com:Bleuh/all-about-vr-compare.git",
+    "all-about-vr-compare": "git+ssh://git@github.com/Bleuh/all-about-vr-compare.git",
     "antd": "^4.7.0",
     "dotenv": "^8.2.0",
     "firebase": "^7.21.1",
