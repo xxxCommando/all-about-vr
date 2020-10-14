@@ -7,6 +7,7 @@ import {
   remove,
   setCompareMode,
   doCompare,
+  doClear,
 } from '../../redux/compare/actions';
 
 const mapStateToProps = (state) => ({
@@ -24,6 +25,7 @@ const mapDispatchToProps = (dispatch) => ({
   remove: (id) => dispatch(remove(id)),
   setCompareMode: (bool) => dispatch(setCompareMode(bool)),
   doCompare: () => dispatch(doCompare()),
+  doClear: () => dispatch(doClear()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(headsetList);

@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import {
   List, Typography, Divider, Layout, Row, Col, Card,
 } from 'antd';
+import { DeleteOutlined } from '@ant-design/icons';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import './headsetList.scss';
@@ -11,6 +12,7 @@ import { HeadsetShape } from '../../shape';
 
 import HeadsetDetails from '../../components/headsetDetails';
 import AutoCompleteHeadset from '../../components/autoCompleteHeadset';
+import BackTopCustom from '../../components/backTopCustom';
 
 import { MAX_SELECT } from '../../redux/compare/reducers/compare';
 
@@ -49,7 +51,7 @@ class HeadsetList extends React.Component {
 
   render() {
     const {
-      items, compareMode, compareResult, inputMapping, selectedIds, selected,
+      items, compareMode, compareResult, inputMapping, selectedIds, selected, doClear,
     } = this.props;
 
     return (
@@ -76,10 +78,10 @@ class HeadsetList extends React.Component {
               />
             </Col>
             <Col className="vs-animation">
-              <div className={compareMode ? 'compare-mode' : ''}>
+              <div className={compareMode ? 'compare-mode' : 'normal-mode'}>
                 <span>V</span>
               </div>
-              <div className={compareMode ? 'compare-mode' : ''}>
+              <div className={compareMode ? 'compare-mode' : 'normal-mode'}>
                 <span>S</span>
               </div>
             </Col>
@@ -99,7 +101,7 @@ class HeadsetList extends React.Component {
         <Divider orientation="left">
           {compareMode ? 'Compare mode' : 'Select 2 headsets to compare'}
         </Divider>
-
+        <p className="price-info">* Prices of headsets are average prices of all necessary elements to use the headset (headset, controllers, base-station).</p>
         <Layout>
           <List
             grid={{
@@ -132,7 +134,7 @@ class HeadsetList extends React.Component {
                   <div className={compareMode ? 'compare-mode' : 'normal-mode'} key={item.id}>
                     <List.Item>
                       <HeadsetDetails
-                        selected={selected[item.id]}
+                        selected={selected[item.id] !== undefined}
                         item={item}
                         compareMode={compareMode}
                         onClick={(id) => this.toggleSelected(id)}
@@ -145,6 +147,7 @@ class HeadsetList extends React.Component {
             )}
           </List>
         </Layout>
+        <BackTopCustom onClick={doClear} icon={compareMode ? <DeleteOutlined /> : null} />
       </>
     );
   }
@@ -163,6 +166,7 @@ HeadsetList.propTypes = {
   remove: PropTypes.func.isRequired,
   doCompare: PropTypes.func.isRequired,
   setCompareMode: PropTypes.func.isRequired,
+  doClear: PropTypes.func.isRequired,
 };
 
 HeadsetList.defaultProps = {

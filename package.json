@@ -1,16 +1,35 @@
 {
   "name": "all-about-vr",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.2.0",
+  "description": "All you need to know about vr in one application.",
+  "bugs": {
+    "url": "https://github.com/Bleuh/all-about-vr/issues",
+    "email": "bastiendouib@gmail.com"
+  },
+  "license": "MIT",
+  "contributors": [
+    {
+      "name": "Bleuh",
+      "url": "https://github.com/Bleuh/"
+    },
+    {
+      "name": "xCommando",
+      "url": "https://github.com/xxxCommando/"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bleuh/all-about-vr/"
+  },
   "dependencies": {
     "@ant-design/icons": "^4.2.2",
     "@testing-library/jest-dom": "^5.11.4",
-    "all-about-vr-compare": "git+ssh://git@github.com:Bleuh/all-about-vr-compare.git",
-    "antd": "^4.6.1",
+    "all-about-vr-compare": "git+ssh://git@github.com/Bleuh/all-about-vr-compare.git",
+    "antd": "^4.7.0",
     "dotenv": "^8.2.0",
     "firebase": "^7.21.1",
     "ga": "0.0.2",
-    "moment": "^2.27.0",
+    "moment": "^2.29.0",
     "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
@@ -33,7 +52,8 @@
     "eject": "react-scripts eject",
     "precommit": "pretty-quick --staged",
     "lint": "eslint ./src",
-    "add-headset": "node src/scripts/add-empty-headset.js"
+    "add-headset": "node src/scripts/add-empty-headset.js",
+    "update-headset": "node src/scripts/update-headsets.js"
   },
   "eslintConfig": {
     "extends": "react-app"
