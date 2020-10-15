@@ -110,6 +110,7 @@
       }
     }
     .ant-menu.ant-menu-dark.nav-menu {
+      background: $dark-main;
       > .ant-menu-item {
         &-selected {
           background-color: $dark-main-hover;

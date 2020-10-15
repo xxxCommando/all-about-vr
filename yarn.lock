@@ -2306,7 +2306,7 @@ ajv@^6.1.0, ajv@^6.10.0, ajv@^6.10.2, ajv@^6.12.3, ajv@^6.12.4:
 
 "all-about-vr-compare@git+ssh://git@github.com/Bleuh/all-about-vr-compare.git":
   version "1.0.0"
-  resolved "git+ssh://git@github.com/Bleuh/all-about-vr-compare.git#2bfbd7e9fc42058902dfd6097d8bf99a44333f19"
+  resolved "git+ssh://git@github.com/Bleuh/all-about-vr-compare.git#2fb00f6fe7d6c52755d9d6a23541d2d1151f7bc8"
 
 alphanum-sort@^1.0.0:
   version "1.0.2"

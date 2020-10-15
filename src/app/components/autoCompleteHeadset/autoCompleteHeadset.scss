@@ -79,12 +79,17 @@
     .ant-select {
       .ant-select-selector {
         border-color: $dark-main-hover !important;
+        .ant-input-affix-wrapper-focused {
+          border-color: $dark-main-hover !important;
+          box-shadow: 0 0 0 2px rgba(80, 61, 77, 0.2);
+        }
       }
     }
     .auto-complete-headset-delete {
       .ant-btn {
         background-color: $dark-main-hover;
         border-color: $dark-main-hover;
+        color: $white-text;
       }
     }
   }

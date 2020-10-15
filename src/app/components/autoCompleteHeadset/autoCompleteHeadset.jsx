@@ -78,7 +78,7 @@ class AutoCompleteHeadset extends React.Component {
   filterOption = (option, inputValue) => {
     const { value } = option;
     return value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1;
-  }
+  };
 
   render() {
     const {
@@ -105,7 +105,9 @@ class AutoCompleteHeadset extends React.Component {
                 </Card>
               ),
             }))
-            .filter((item) => !alreadySelected.includes(item.id))}
+            .filter((item) => (itemSelected && itemSelected.id === item.id
+              ? true
+              : !alreadySelected.includes(item.id)))}
           filterOption={(inputValue, option) => this.filterOption(option, inputValue)}
           disabled={disabled}
         >
