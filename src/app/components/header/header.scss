@@ -46,43 +46,30 @@
     }
   }
 
-  .ant-btn {
-    &.right-button {
-      float: right;
-      margin: 12px;
-      &.dark {
-        color: $dark-main;
-        border: none;
-        background-color: $white-text;
-      }
-      &.light {
+  .right {
+    float: right;
+    span.version {
+      color: $white-text;
+      margin-right: 15px;
+    }
+    button.ant-btn {
+      color: $white-text;
+      border: 2px solid;
+      &:focus {
         color: $white-text;
-        border: 2px solid;
-      }
-
-      &.dark-mode {
-        display: block;
-        @include md {
-          display: none;
-        }
-      }
-
-      &.open-menu {
-        display: none;
-        @include md {
-          display: block;
-        }
+        border-color: $white-text;
       }
     }
-  }
-
-  .drawer-mobile {
-    .ant-drawer-content {
-      .ant-drawer-footer {
-        border-top: none;
-        .dark-mode {
-          display: block;
-        }
+    &.desktop {
+      display: block;
+      @include md {
+        display: none;
+      }
+    }
+    &.mobile {
+      display: none;
+      @include md {
+        display: block;
       }
     }
   }
@@ -115,7 +102,15 @@
         }
       }
     }
+    .right {
+      button.ant-btn {
+        color: $dark-main;
+        border: none;
+        background-color: $white-text;
+      }
+    }
     .ant-menu.ant-menu-dark.nav-menu {
+      background: $dark-main;
       > .ant-menu-item {
         &-selected {
           background-color: $dark-main-hover;
