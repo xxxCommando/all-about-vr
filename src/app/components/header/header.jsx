@@ -9,6 +9,7 @@ import Icon, { MenuOutlined } from '@ant-design/icons';
 import './header.scss';
 import { ReactComponent as Moon } from '../../../assets/images/moon.svg';
 import { ReactComponent as LogoAllAboutVR } from '../../../assets/images/logo.svg';
+import packageJson from '../../../../package.json';
 
 const getPathname = (location) => location.pathname.split('/')[1];
 
@@ -52,13 +53,12 @@ MenuNav.defaultProps = {
 };
 
 const ButtonDarkMode = (props) => {
-  const { darkMode, toggleDarkMode } = props;
+  const { toggleDarkMode } = props;
   return (
     <Button
       type="ghost"
       onClick={() => toggleDarkMode()}
       shape="circle"
-      className={`right-button dark-mode ${darkMode ? 'dark' : 'light'}`}
       icon={<Icon component={Moon} />}
       size="large"
     />
@@ -66,7 +66,6 @@ const ButtonDarkMode = (props) => {
 };
 
 ButtonDarkMode.propTypes = {
-  darkMode: PropTypes.bool.isRequired,
   toggleDarkMode: PropTypes.func.isRequired,
 };
 
@@ -105,16 +104,21 @@ class Header extends React.Component {
             <p>AllAboutVR</p>
           </div>
         </Link>
-        <ButtonDarkMode toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
+        <div className="right desktop">
+          <span className="version">{`v${packageJson.version}`}</span>
+          <ButtonDarkMode toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
+        </div>
         <MenuNav mode="horizontal" className="nav-menu" pathname={pathname} />
         {/* mobile */}
-        <Button
-          type="ghost"
-          onClick={this.showDrawer}
-          className={`right-button open-menu ${darkMode ? 'dark' : 'light'}`}
-          icon={<MenuOutlined />}
-          size="large"
-        />
+        <div className="right mobile">
+          <Button
+            type="ghost"
+            onClick={this.showDrawer}
+            className={`open-menu ${darkMode ? 'dark' : 'light'}`}
+            icon={<MenuOutlined />}
+            size="large"
+          />
+        </div>
         <Drawer
           title="Menu"
           placement="right"
@@ -122,7 +126,12 @@ class Header extends React.Component {
           closable={false}
           onClose={this.onClose}
           visible={visible}
-          footer={(<ButtonDarkMode toggleDarkMode={toggleDarkMode} darkMode={darkMode} />)}
+          footer={(
+            <div className="right">
+              <span className="version">{`v${packageJson.version}`}</span>
+              <ButtonDarkMode toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
+            </div>
+          )}
         >
           <MenuNav pathname={pathname} mode="vertical" />
         </Drawer>

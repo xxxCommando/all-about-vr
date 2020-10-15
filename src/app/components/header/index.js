@@ -5,8 +5,7 @@ import {
 } from '../../redux/compare/actions';
 import { toggleDarkMode } from '../../redux/all-about-vr/actions';
 
-const mapStateToProps = (state) => ({
-  darkMode: state.allAboutVR.darkMode.darkMode,
+const mapStateToProps = () => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -60,7 +60,7 @@ class HeadsetList extends React.Component {
           <title>Headset comparator - AllAboutVR</title>
           <meta
             name="description"
-            content="Easier way to compare headset and find your best setup for VR ! Compare price, resolution, etc TODO"
+            content="Easier way to compare VR headsets and find your best setup for VR ! Compare price, resolution, tracking, hardware, etc..."
           />
         </Helmet>
         <Typography.Title level={1}>Headset comparator</Typography.Title>
