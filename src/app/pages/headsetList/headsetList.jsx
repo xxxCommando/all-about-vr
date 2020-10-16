@@ -55,7 +55,7 @@ class HeadsetList extends React.Component {
     } = this.props;
 
     return (
-      <>
+      <Layout.Content className="layout-content">
         <Helmet>
           <title>Headset comparator - AllAboutVR</title>
           <meta
@@ -148,7 +148,7 @@ class HeadsetList extends React.Component {
           </List>
         </Layout>
         <BackTopCustom onClick={doClear} icon={compareMode ? <DeleteOutlined /> : null} />
-      </>
+      </Layout.Content>
     );
   }
 }

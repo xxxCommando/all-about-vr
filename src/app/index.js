@@ -8,7 +8,6 @@ const mapStateToProps = (state) => ({
   isFetching: state.headsets.isFetching,
   fatalError: state.headsets.fatalError,
   darkMode: state.allAboutVR.darkMode.darkMode,
-  mainClassName: state.allAboutVR.mainClass.mainClassName,
 });
 
 const mapDispatchToProps = (dispatch) => ({

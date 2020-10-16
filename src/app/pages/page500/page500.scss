@@ -3,22 +3,18 @@
 
 @include theme {
   .layout-500 {
-    .ant-layout-content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   &.dark {
     .layout-500 {
-      .layout-content {
-        .ant-btn {
-          border-color: $dark-main-hover;
-          background-color: $dark-main-hover;
-          &:hover {
-            border-color: $dark-main-link;
-            background-color: $dark-main-link;
-          }
+      .ant-btn {
+        border-color: $dark-main-hover;
+        background-color: $dark-main-hover;
+        &:hover {
+          border-color: $dark-main-link;
+          background-color: $dark-main-link;
         }
       }
     }
