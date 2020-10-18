@@ -15,6 +15,7 @@ import Page500 from './pages/page500';
 import Headset from './pages/headset';
 import Construction from './pages/pageconstruction';
 import Wiki from './pages/wiki';
+import About from './pages/about';
 
 class App extends React.Component {
   componentDidMount() {
@@ -64,7 +65,7 @@ class App extends React.Component {
                 <Construction />
               </Route>
               <Route path="/about" exact>
-                <Construction />
+                <About />
               </Route>
               <Route>
                 <Page404 />
