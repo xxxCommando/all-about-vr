@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ReactGa from 'react-ga';
 
 import './app.scss';
-import { HeadsetShape } from './shape';
+import { HeadsetShape, GameShape } from './shape';
 
 import HeadsetList from './pages/headsetList';
 import Header from './components/header';
@@ -13,12 +13,14 @@ import Footer from './components/footer';
 import Page404 from './pages/page404';
 import Page500 from './pages/page500';
 import Headset from './pages/headset';
+import Games from './pages/games';
 import Construction from './pages/pageconstruction';
 
 class App extends React.Component {
   componentDidMount() {
-    const { fetchHeadsets, darkMode } = this.props;
+    const { fetchHeadsets, fetchGames, darkMode } = this.props;
     fetchHeadsets();
+    fetchGames();
     document.body.classList = darkMode ? ['dark'] : ['light'];
     const metaThemeColor = document.querySelector('meta[name=theme-color]');
     metaThemeColor.setAttribute('content', !darkMode ? '#1890ff' : '#503D4D');
@@ -30,7 +32,7 @@ class App extends React.Component {
 
   render() {
     const {
-      formatedHeadset, isLoaded, fatalError, mainClassName,
+      formatedHeadset, formatedGame, isLoaded, fatalError, mainClassName,
     } = this.props;
 
     return (
@@ -62,7 +64,7 @@ class App extends React.Component {
                   <Construction />
                 </Route>
                 <Route path="/vr-games" exact>
-                  <Construction />
+                  <Games items={formatedGame} />
                 </Route>
                 <Route path="/about" exact>
                   <Construction />
@@ -82,11 +84,13 @@ class App extends React.Component {
 
 App.propTypes = {
   formatedHeadset: PropTypes.arrayOf(HeadsetShape).isRequired,
+  formatedGame: PropTypes.arrayOf(GameShape).isRequired,
   darkMode: PropTypes.bool.isRequired,
   mainClassName: PropTypes.arrayOf(PropTypes.string).isRequired,
   isLoaded: PropTypes.bool.isRequired,
   fatalError: PropTypes.bool.isRequired,
   fetchHeadsets: PropTypes.func.isRequired,
+  fetchGames: PropTypes.func.isRequired,
 };
 
 export default App;
