@@ -52,6 +52,7 @@
     "eject": "react-scripts eject",
     "precommit": "pretty-quick --staged",
     "lint": "eslint ./src",
+    "add-game": "node src/scripts/add-empty-game.js",
     "add-headset": "node src/scripts/add-empty-headset.js",
     "update-headset": "node src/scripts/update-headsets.js"
   },
