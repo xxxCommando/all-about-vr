@@ -18,6 +18,17 @@
           margin: 24px 8px;
         }
       }
+
+      .layout-content-article{
+        margin: 30px 100px;
+        padding: 24px;
+        height: 100%;
+        background-color: white;
+        @include sm {
+          padding: 24px 12px;
+          margin: 24px;
+        }
+        }
     }
   }
 }

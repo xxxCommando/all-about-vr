@@ -12,6 +12,7 @@ import Icon, {
 } from '@ant-design/icons';
 
 import './headsetDetails.scss';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
 import HeadsetCard from '../headsetCard';
 import { HeadsetShape } from '../../shape';
@@ -93,43 +94,43 @@ const HeadsetDetails = (props) => {
             <div className="headset-card-details-title-smile">{getClassName('screen')}</div>
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
-            FOV
+            <Link to={{ pathname: '/wiki', hash: '#fov' }}>FOV</Link>
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal">
             {`${item.fov} °`}
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
-            Refresh Rate
+            <Link to={{ pathname: '/wiki', hash: '#refreshrate' }}>Refresh Rate</Link>
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal">
             {`${item.refreshrate} Hz`}
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
-            Resolution per eyes
+            <Link to={{ pathname: '/wiki', hash: '#resolution' }}>Resolution per eyes</Link>
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal">
             {`${item.resolution.x} x ${item.resolution.y}`}
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
-            Pixel Density
+            <Link to={{ pathname: '/wiki', hash: '#pixeldensity' }}>Pixel Density</Link>
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal">
             {`${item.pixeldensity} dpi`}
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
-            Screen Type
+            <Link to={{ pathname: '/wiki', hash: '#screen' }}>Screen Type</Link>
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal">
             {item.screentype}
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
-            IPD Adjustement
+            <Link to={{ pathname: '/wiki', hash: '#ipd' }}>IPD Adjustement</Link>
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal">
             {item.ipd ? <CheckOutlined /> : <CloseOutlined />}
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
-            Flip-Up
+            <Link to={{ pathname: '/wiki', hash: '#flipup' }}>Flip-Up</Link>
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal">
             {item.flipup ? <CheckOutlined /> : <CloseOutlined />}
@@ -140,7 +141,7 @@ const HeadsetDetails = (props) => {
           </Card.Grid>
 
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
-            Tracking
+            <Link to={{ pathname: '/wiki', hash: '#tracking' }}>Tracking</Link>
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal">
             {item.tracking}
@@ -152,19 +153,19 @@ const HeadsetDetails = (props) => {
             {item.controller}
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
-            Hand Tracking
+            <Link to={{ pathname: '/wiki', hash: '#hand' }}>Hand Tracking</Link>
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal">
             {item.handtracking ? <CheckOutlined /> : <CloseOutlined />}
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
-            Eye Tracking
+            <Link to={{ pathname: '/wiki', hash: '#eye' }}>Eye Tracking</Link>
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal">
             {item.eyetracking ? <CheckOutlined /> : <CloseOutlined />}
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
-            Facial Recognition
+            <Link to={{ pathname: '/wiki', hash: '#facial' }}>Facial Recognition</Link>
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal">
             {item.facialrecognition ? <CheckOutlined /> : <CloseOutlined />}
@@ -192,13 +193,13 @@ const HeadsetDetails = (props) => {
             {item.mic ? <CheckOutlined /> : <CloseOutlined />}
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
-            Wireless
+            <Link to={{ pathname: '/wiki', hash: '#wireless' }}> Wireless</Link>
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal">
             {item.wireless ? <CheckOutlined /> : <CloseOutlined />}
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal-text">
-            Standalone
+            <Link to={{ pathname: '/wiki', hash: '#standalone' }}>Standalone</Link>
           </Card.Grid>
           <Card.Grid hoverable={false} className="headset-card-details-normal">
             {item.standalone ? (
@@ -320,7 +321,7 @@ const HeadsetDetails = (props) => {
           </Card.Grid>
 
           <Card.Grid hoverable={false} className="headset-card-details-title">
-            PC Requirement
+            <Link to={{ pathname: '/wiki', hash: '#pc' }}>PC Requirement</Link>
           </Card.Grid>
 
           <Card.Grid hoverable={false} className="headset-card-details-large-text">

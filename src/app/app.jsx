@@ -14,6 +14,7 @@ import Page404 from './pages/page404';
 import Page500 from './pages/page500';
 import Headset from './pages/headset';
 import Construction from './pages/pageconstruction';
+import Wiki from './pages/wiki';
 
 class App extends React.Component {
   componentDidMount() {
@@ -57,7 +58,7 @@ class App extends React.Component {
                 <Construction />
               </Route>
               <Route path="/wiki" exact>
-                <Construction />
+                <Wiki />
               </Route>
               <Route path="/vr-games" exact>
                 <Construction />
