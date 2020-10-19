@@ -51,7 +51,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "precommit": "pretty-quick --staged",
-    "lint": "eslint ./src",
+    "lint": "eslint ./src/**",
     "add-headset": "node src/scripts/add-empty-headset.js",
     "update-headset": "node src/scripts/update-headsets.js"
   },
