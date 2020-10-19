@@ -357,7 +357,7 @@ const HeadsetDetails = (props) => {
           <Card.Grid className="headset-card-details-title" hoverable={false}>
             What we think
           </Card.Grid>
-          <Card.Grid hoverable={false} className="headset-card-details-large">
+          <Card.Grid hoverable={false} className="headset-card-details-large description">
             {item.description}
           </Card.Grid>
         </Card>
