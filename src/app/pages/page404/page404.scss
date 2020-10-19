@@ -3,29 +3,25 @@
 
 @include theme {
   .layout-404 {
-    .ant-layout-content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   &.dark {
     .layout-404 {
-      .layout-content {
-        svg {
-          path {
-            &:nth-child(11) {
-              fill: $dark-main-hover;
-            }
+      svg {
+        path {
+          &:nth-child(11) {
+            fill: $dark-main-hover;
           }
         }
-        .ant-btn {
-          border-color: $dark-main-hover;
-          background-color: $dark-main-hover;
-          &:hover {
-            border-color: $dark-main-link;
-            background-color: $dark-main-link;
-          }
+      }
+      .ant-btn {
+        border-color: $dark-main-hover;
+        background-color: $dark-main-hover;
+        &:hover {
+          border-color: $dark-main-link;
+          background-color: $dark-main-link;
         }
       }
     }

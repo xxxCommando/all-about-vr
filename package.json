@@ -1,6 +1,6 @@
 {
   "name": "all-about-vr",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "All you need to know about vr in one application.",
   "bugs": {
     "url": "https://github.com/Bleuh/all-about-vr/issues",
@@ -51,7 +51,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "precommit": "pretty-quick --staged",
-    "lint": "eslint ./src",
+    "lint": "eslint ./src/**",
     "add-headset": "node src/scripts/add-empty-headset.js",
     "update-headset": "node src/scripts/update-headsets.js"
   },
