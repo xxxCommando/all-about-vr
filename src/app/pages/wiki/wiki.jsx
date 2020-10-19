@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Collapse, Layout, Typography, Divider,
 } from 'antd';
@@ -17,7 +18,7 @@ const refreshrate = `
 The refresh rate is the number of times the monitor updates with new images each second. The higher the refresh rate, the smoother the delivered visuals and the powerfull you're computer must be.
 `;
 const resolution = `
-The display resolution of a display device is the number of distinct pixels in each dimension that can be displayed. It is usually quoted as width × height, with the units in pixels: for example, 1024 × 768 means the width is 1024 pixels and the height is 768 pixels. The higher the resolution, the higher the delivered visuals details and the powerfull you're computer must be.
+The display resolution of a display device is the number of distinct pixels in each dimension that can be displayed. It is usually quoted as width × height, with the units in pixels: for example, 1024 × 768 means the width is 1024 pixels and the height is 768 pixels. The higher the resolution, the higher the delivered visuals details and the powerfull you're computer must be.
 `;
 const pixeldensity = `
 Pixels per inch (ppi) and pixels per centimetre (ppcm or pixels/cm) are measurements of the pixel density of an electronic image device. PPI (monitor) = Number of Pixels / Size in inches
@@ -64,7 +65,8 @@ class Wiki extends React.Component {
   }
 
   componentDidMount() {
-    const { hash } = this.props.location;
+    const { location } = this.props;
+    const { hash } = location;
     const newHash = hash.replace('#', '');
     const element = document.getElementById(newHash);
     if (element) element.scrollIntoView();
@@ -148,5 +150,11 @@ class Wiki extends React.Component {
     );
   }
 }
+
+Wiki.propTypes = {
+  location: PropTypes.shape({
+    hash: PropTypes.string,
+  }).isRequired,
+};
 
 export default withRouter(Wiki);
