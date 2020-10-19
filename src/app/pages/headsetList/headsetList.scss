@@ -196,7 +196,23 @@
     }
     &.headsets {
       > div {
-        padding: 0 8px;
+        &:nth-child(4n+1) {
+          padding-left: 0;
+          padding-right: 10px;
+        }
+        &:nth-child(4n+2) {
+          padding-left: 2px;
+          padding-right: 6px;
+        }
+        &:nth-child(4n+3) {
+          padding-left: 6px;
+          padding-right: 2px;
+        }
+        &:nth-child(4n) {
+          padding-left: 10px;
+          padding-right: 0;
+        }
+        padding: 0;
         &.normal-mode {
           width: 25%;
           .ant-card-body {
@@ -211,10 +227,29 @@
             }
           }
           @include lg {
-            width: 33%;
+            width: 33.333%;
+            &:nth-child(3n+1) {
+              padding-left: 0;
+              padding-right: 10px;
+            }
+            &:nth-child(3n+2) {
+              padding-left: 2px;
+              padding-right: 2px;
+            }
+            &:nth-child(3n) {
+              padding-left: 10px;
+              padding-right: 0;
+            }
           }
           @include sm {
-            padding: 0 4px;
+            &:nth-child(2n+1) {
+              padding-left: 0;
+              padding-right: 3px;
+            }
+            &:nth-child(2n) {
+              padding-left: 3px;
+              padding-right: 0px;
+            }
             width: 50%;
           }
         }
@@ -263,8 +298,12 @@
   }
 
   .price-info {
-    text-align: left;
-    padding: 10px;
-    color: grey;
+    display: flex;
+    justify-content: space-between;
+    p {
+      text-align: left;
+      padding: 10px;
+      color: grey;
+    }
   }
 }

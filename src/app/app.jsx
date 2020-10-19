@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ReactGa from 'react-ga';
 
 import './app.scss';
-import { HeadsetShape } from './shape';
 
 import HeadsetList from './pages/headsetList';
 import Header from './components/header';
@@ -31,7 +30,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { formatedHeadset, isLoaded, fatalError } = this.props;
+    const { isLoaded, fatalError } = this.props;
 
     return (
       <Router>
@@ -43,7 +42,7 @@ class App extends React.Component {
           ) : (
             <Switch>
               <Route path="/" exact>
-                <HeadsetList items={formatedHeadset} />
+                <HeadsetList />
               </Route>
               <Route
                 path="/headset/:id"
@@ -81,7 +80,6 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  formatedHeadset: PropTypes.arrayOf(HeadsetShape).isRequired,
   darkMode: PropTypes.bool.isRequired,
   isLoaded: PropTypes.bool.isRequired,
   fatalError: PropTypes.bool.isRequired,

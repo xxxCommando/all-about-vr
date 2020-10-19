@@ -9,8 +9,11 @@ import {
   doCompare,
   doClear,
 } from '../../redux/compare/actions';
+import getVisibleHeadsets from '../../redux/headsets/selectors';
 
 const mapStateToProps = (state) => ({
+  items: getVisibleHeadsets(state),
+  isFiltered: state.headsets.isFiltered,
   selected: state.compare.selected,
   inputMapping: state.compare.inputMapping,
   selectedIds: state.compare.selectedIds,
