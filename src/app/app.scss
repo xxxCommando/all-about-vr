@@ -29,6 +29,21 @@
           margin: 24px;
         }
       }
+
+      .single-pushed-content.ant-layout {
+        margin-bottom: 40px;
+        background: white;
+        text-align: justify;
+        .ant-col{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .right {
+          flex-direction: row-reverse;
+        }
+      }
+
     }
   }
 
@@ -37,6 +52,9 @@
       &.App {
         .layout-content-article {
           background-color: #1f1f1f;
+        }
+        .single-pushed-content.ant-layout {
+          background: #1f1f1f; 
         }
       }
     }

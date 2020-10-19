@@ -1,8 +1,10 @@
 import React from 'react';
-
 import {
   Image, Row, Col, Typography, Layout,
 } from 'antd';
+import HeadsetSpecs from '../../components/headsetSpecs';
+import HeadsetSpecsCard from '../../components/headsetSpecsCard';
+
 import { HeadsetShape } from '../../shape';
 
 import './headset.scss';
@@ -11,7 +13,7 @@ const Headset = (props) => {
   const { item } = props;
 
   return (
-    <Layout.Content className="layout-content">
+    <Layout.Content className="layout-content-article">
       <Typography.Title level={1}>{item.name}</Typography.Title>
 
       {item.pushedContents.map((content, index) => (
@@ -26,6 +28,10 @@ const Headset = (props) => {
           </Row>
         </Layout>
       ))}
+      <HeadsetSpecsCard item={item}>
+        <HeadsetSpecs item={item} />
+      </HeadsetSpecsCard>
+
     </Layout.Content>
   );
 };

@@ -47,14 +47,12 @@ class App extends React.Component {
               </Route>
               <Route
                 path="/headset/:id"
-                // component={({ match }) => (isLoaded ? (
-                //   <Headset
-                //     item={formatedHeadset.find((headset) => headset.id === match.params.id)}
-                //   />
-                // ) : null)}
-              >
-                <Construction />
-              </Route>
+                component={({ match }) => (isLoaded ? (
+                  <Headset
+                    item={formatedHeadset.find((headset) => headset.id === match.params.id)}
+                  />
+                ) : null)}
+              />
               <Route path="/headsets" exact>
                 <Construction />
               </Route>
