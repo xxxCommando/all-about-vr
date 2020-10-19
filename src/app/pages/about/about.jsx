@@ -16,7 +16,7 @@ const About = () => (
         The world of virtual reality (VR) is a growing world,
         the consequence is that there are many VR headsets available
         on the market. Consumers will wonder what is the best VR
-        headset or what makes a VR headset good?
+        headset or what makes a VR headset good ?
         As VR enthusiasts and wanting to help people who want to
         enter the world of VR or just improve their experience, we created All About VR.
       </p>
