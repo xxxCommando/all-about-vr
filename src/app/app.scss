@@ -1,7 +1,7 @@
-@import '~all-about-vr-compare/dark.css';
-@import '../assets/scss/global.scss';
-@import '~antd/dist/antd.min.css';
-@import '../assets/scss/mixin.scss';
+@import "~all-about-vr-compare/dark.css";
+@import "../assets/scss/global.scss";
+@import "~antd/dist/antd.min.css";
+@import "../assets/scss/mixin.scss";
 
 @include theme {
   .ant-layout {
@@ -19,7 +19,7 @@
         }
       }
 
-      .layout-content-article{
+      .layout-content-article {
         margin: 30px 100px;
         padding: 24px;
         height: 100%;
@@ -28,7 +28,17 @@
           padding: 24px 12px;
           margin: 24px;
         }
+      }
+    }
+  }
+
+  &.dark {
+    .ant-layout {
+      &.App {
+        .layout-content-article {
+          background-color: #1f1f1f;
         }
+      }
     }
   }
 }
