@@ -35,10 +35,13 @@
           display: flex;
           justify-content: center;
           align-items: center;
-
           font-weight: bold;
           @include md {
             padding: 0 30px !important;
+          }
+          & a{
+            color: inherit;
+            text-decoration: underline;
           }
           &-smile {
             display: flex;
@@ -81,6 +84,10 @@
               width: 100%;
               font-weight: 600;
             }
+            a{
+              color: inherit;
+              text-decoration: underline;
+             }
           }
         }
         &-large {
@@ -88,6 +95,10 @@
           display: flex;
           justify-content: center;
           align-items: center;
+          &.description{
+            padding: 12px;
+            text-align: justify;
+          }
           @include md {
             padding: 5px !important;
           }
@@ -115,12 +126,25 @@
     .button-standalone{
       background-color: #503d4d;
       border-color: #503d4d;
+      &:active{
+        background-color: #503d4d;
+    border-color: #503d4d;
+        color: $white-text;
+      }
+      &:focus{
+        background-color: #503d4d;
+    border-color: #503d4d;
+        color: $white-text;
+      }
     }
     .headset-card {
       .ant-card-body {
         .headset-card-details {
           &-title {
             background-color: #503d4d;
+            & a{
+              color: $white-text;
+            }
             &-smile {
               svg {
                 border-radius: 30px;

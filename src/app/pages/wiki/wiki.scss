@@ -1,0 +1,25 @@
+@import "../../../assets/scss/global.scss";
+@import "../../../assets/scss/mixin.scss";
+
+.wiki {
+  margin-left: 10%;
+  margin-right: 10%;
+  @include lg {
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+  }
+  .ant-collapse-header {
+    font-weight: 600;
+    font-size: 18px;
+    margin: 15px;
+  }
+  
+  p {
+    text-align: justify;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 0 24px;
+  }
+}
+
+

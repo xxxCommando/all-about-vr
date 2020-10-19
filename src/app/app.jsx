@@ -14,6 +14,8 @@ import Page404 from './pages/page404';
 import Page500 from './pages/page500';
 import Headset from './pages/headset';
 import Construction from './pages/pageconstruction';
+import Wiki from './pages/wiki';
+import About from './pages/about';
 
 class App extends React.Component {
   componentDidMount() {
@@ -29,50 +31,48 @@ class App extends React.Component {
   }
 
   render() {
-    const {
-      formatedHeadset, isLoaded, fatalError, mainClassName,
-    } = this.props;
+    const { formatedHeadset, isLoaded, fatalError } = this.props;
 
     return (
       <Router>
-        <Layout className={mainClassName}>
+        <Layout className="App">
           <Header />
-          <Layout.Content className="layout-content">
-            {fatalError ? (
-              <Page500 />
-            ) : (
-              <Switch>
-                <Route path="/" exact>
-                  <HeadsetList items={formatedHeadset} />
-                </Route>
-                <Route
-                  path="/headset/:id"
-                  // component={({ match }) => (isLoaded ? (
-                  //   <Headset
-                  //     item={formatedHeadset.find((headset) => headset.id === match.params.id)}
-                  //   />
-                  // ) : null)}
-                >
-                  <Construction />
-                </Route>
-                <Route path="/headsets" exact>
-                  <Construction />
-                </Route>
-                <Route path="/wiki" exact>
-                  <Construction />
-                </Route>
-                <Route path="/vr-games" exact>
-                  <Construction />
-                </Route>
-                <Route path="/about" exact>
-                  <Construction />
-                </Route>
-                <Route>
-                  <Page404 />
-                </Route>
-              </Switch>
-            )}
-          </Layout.Content>
+
+          {fatalError ? (
+            <Page500 />
+          ) : (
+            <Switch>
+              <Route path="/" exact>
+                <HeadsetList items={formatedHeadset} />
+              </Route>
+              <Route
+                path="/headset/:id"
+                // component={({ match }) => (isLoaded ? (
+                //   <Headset
+                //     item={formatedHeadset.find((headset) => headset.id === match.params.id)}
+                //   />
+                // ) : null)}
+              >
+                <Construction />
+              </Route>
+              <Route path="/headsets" exact>
+                <Construction />
+              </Route>
+              <Route path="/wiki" exact>
+                <Wiki />
+              </Route>
+              <Route path="/vr-games" exact>
+                <Construction />
+              </Route>
+              <Route path="/about" exact>
+                <About />
+              </Route>
+              <Route>
+                <Page404 />
+              </Route>
+            </Switch>
+          )}
+
           <Footer />
         </Layout>
       </Router>
@@ -83,7 +83,6 @@ class App extends React.Component {
 App.propTypes = {
   formatedHeadset: PropTypes.arrayOf(HeadsetShape).isRequired,
   darkMode: PropTypes.bool.isRequired,
-  mainClassName: PropTypes.arrayOf(PropTypes.string).isRequired,
   isLoaded: PropTypes.bool.isRequired,
   fatalError: PropTypes.bool.isRequired,
   fetchHeadsets: PropTypes.func.isRequired,
