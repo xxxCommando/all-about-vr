@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  List, Typography, Layout,
+  List, Typography, Layout, Divider,
 } from 'antd';
 import GameCard from '../../components/gameCard/gameCard';
 import './games.scss';
@@ -14,6 +14,9 @@ const Games = (props) => {
     <>
       <Layout>
         <Typography.Title level={1}>VR Games</Typography.Title>
+        <Divider />
+        <p className="price-info">* Here is a non-exhaustive list of VR games.</p>
+
         <List
           grid={{
             gutter: 16,

@@ -7,6 +7,9 @@
 
     .ant-card {
       text-align: center;
+      &-actions{
+        display:flex;
+      }
       &-meta-description {
         margin: 24px;
       }

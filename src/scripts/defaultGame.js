@@ -5,6 +5,7 @@ const defaultDataGame = {
   steam: 'http',
   summary: "I'm a super VR Headset",
   type: 1,
+  platform: [1, 2],
 
 };
 
