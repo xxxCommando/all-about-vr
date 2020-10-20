@@ -38,7 +38,7 @@ const GameCard = (props) => {
           hoverable
           bordered
           title={item.name}
-          className={selected ? 'selected' : ''}
+          className={selected ? 'selected game-card' : 'game-card'}
           cover={<Image src={item.img} preview={false} alt={item.name} />}
           extra={
             item.platform.map((platform) => {

@@ -3,7 +3,9 @@
 
 @include theme {
 
-
+.game-card{
+  min-height: 400px;
+}
   .headset-card {
     position: relative;
     
