@@ -31,22 +31,6 @@ const GameCard = (props) => {
     return '';
   };
 
-  const getGamePlatform = (game) => {
-    game.platform.map((platform) => {
-      console.log(platform);
-      switch (platform) {
-        case 1:
-          return <Icon component={Steam} className="headset-card-details-logo" />;
-        case 2:
-          return <Icon component={Playstation} className="headset-card-details-logo" />;
-        case 3:
-          return <Icon component={Oculus} className="headset-card-details-logo" />;
-        default:
-          return '';
-      }
-    });
-  };
-
   return (
     <div className="headset-card">
       <a href={item.steam} target="_blank" rel="noopener noreferrer">
@@ -56,15 +40,15 @@ const GameCard = (props) => {
           title={item.name}
           className={selected ? 'selected' : ''}
           cover={<Image src={item.img} preview={false} alt={item.name} />}
-          actions={
+          extra={
             item.platform.map((platform) => {
               switch (platform) {
                 case 1:
-                  return <Icon component={Steam} className="headset-card-details-logo" />;
+                  return <Icon component={Steam} />;
                 case 2:
-                  return <Icon component={Playstation} className="headset-card-details-logo" />;
+                  return <Icon component={Playstation} />;
                 case 3:
-                  return <Icon component={Oculus} className="headset-card-details-logo" />;
+                  return <Icon component={Oculus} />;
                 default:
                   return '';
               }

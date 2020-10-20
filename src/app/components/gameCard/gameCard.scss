@@ -2,9 +2,11 @@
 @import "../../../assets/scss/mixin.scss";
 
 @include theme {
+
+
   .headset-card {
     position: relative;
-
+    
     .ant-card {
       text-align: center;
       &-actions{
@@ -12,6 +14,14 @@
       }
       &-meta-description {
         margin: 24px;
+      }
+      &-extra span{
+        padding:3px;
+      }
+      &-head{
+        &-title{
+          margin-left: 20px;
+        }
       }
  
       @include sm {
