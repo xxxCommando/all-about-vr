@@ -15,6 +15,8 @@ import Page500 from './pages/page500';
 import Headset from './pages/headset';
 import Games from './pages/games';
 import Construction from './pages/pageconstruction';
+import Wiki from './pages/wiki';
+import About from './pages/about';
 
 class App extends React.Component {
   componentDidMount() {
@@ -32,14 +34,13 @@ class App extends React.Component {
 
   render() {
     const {
-      formatedHeadset, formatedGame, isLoaded, fatalError, mainClassName,
+      formatedHeadset, formatedGame, isLoaded, fatalError,
     } = this.props;
 
     return (
       <Router>
-        <Layout className={mainClassName}>
+        <Layout className="App">
           <Header />
-          <Layout.Content className="layout-content">
             {fatalError ? (
               <Page500 />
             ) : (
@@ -74,7 +75,6 @@ class App extends React.Component {
                 </Route>
               </Switch>
             )}
-          </Layout.Content>
           <Footer />
         </Layout>
       </Router>
@@ -86,7 +86,6 @@ App.propTypes = {
   formatedHeadset: PropTypes.arrayOf(HeadsetShape).isRequired,
   formatedGame: PropTypes.arrayOf(GameShape).isRequired,
   darkMode: PropTypes.bool.isRequired,
-  mainClassName: PropTypes.arrayOf(PropTypes.string).isRequired,
   isLoaded: PropTypes.bool.isRequired,
   fatalError: PropTypes.bool.isRequired,
   fetchHeadsets: PropTypes.func.isRequired,

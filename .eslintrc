@@ -27,5 +27,5 @@
     "linebreak-style": 0,
     "no-console": 0
   },
-  "ignorePatterns": ["*.test.*"]
+  "ignorePatterns": ["*.test.*", "*.svg", "*.scss"]
 }

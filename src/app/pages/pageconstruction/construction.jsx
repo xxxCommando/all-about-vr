@@ -1,40 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Result, Button } from 'antd';
+import { Layout, Result, Button } from 'antd';
 import { FormatPainterOutlined } from '@ant-design/icons';
 
 import { Link } from 'react-router-dom';
 
 import './construction.scss';
 
-class Construction extends React.Component {
-  componentDidMount() {
-    const { toggleMainClass } = this.props;
-    toggleMainClass('layout-construction');
-  }
-
-  componentWillUnmount() {
-    const { toggleMainClass } = this.props;
-    toggleMainClass('layout-construction');
-  }
-
-  render() {
-    return (
-      <Result
-        icon={<FormatPainterOutlined />}
-        title="This page is under construction and is coming soon!"
-        extra={(
-          <Link to="/">
-            <Button type="primary">Back Home</Button>
-          </Link>
+const Construction = () => (
+  <Layout.Content className="layout-construction">
+    <Result
+      icon={<FormatPainterOutlined />}
+      title="This page is under construction and is coming soon!"
+      extra={(
+        <Link to="/">
+          <Button type="primary">Back Home</Button>
+        </Link>
         )}
-      />
-    );
-  }
-}
-
-Construction.propTypes = {
-  toggleMainClass: PropTypes.func.isRequired,
-};
+    />
+  </Layout.Content>
+);
 
 export default Construction;

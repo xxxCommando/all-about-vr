@@ -13,7 +13,6 @@ const mapStateToProps = (state) => ({
   isFetchingGame: state.games.isFetching,
   fatalErrorGame: state.games.fatalError,
   darkMode: state.allAboutVR.darkMode.darkMode,
-  mainClassName: state.allAboutVR.mainClass.mainClassName,
 });
 
 const mapDispatchToProps = (dispatch) => ({
