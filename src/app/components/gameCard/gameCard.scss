@@ -1,31 +1,31 @@
-@import "../../../assets/scss/global.scss";
-@import "../../../assets/scss/mixin.scss";
+@import '../../../assets/scss/global.scss';
+@import '../../../assets/scss/mixin.scss';
 
 @include theme {
-
-.game-card{
-  min-height: 400px;
-}
+  .game-card {
+    min-height: 400px;
+  }
   .headset-card {
     position: relative;
-    
+
     .ant-card {
       text-align: center;
-      &-actions{
-        display:flex;
+      &-actions {
+        display: flex;
       }
       &-meta-description {
         margin: 24px;
       }
-      &-extra span{
-        padding:3px;
+      &-extra {
+        padding: 3px;
+        font-size: 16px;
       }
-      &-head{
-        &-title{
+      &-head {
+        &-title {
           margin-left: 20px;
         }
       }
- 
+
       @include sm {
         .ant-card-body {
           padding: 0;
@@ -37,8 +37,8 @@
       }
 
       &.selected {
-        box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.32),
-          0 3px 6px 0 rgba(0, 0, 0, 0.24), 0 5px 12px 4px rgba(0, 0, 0, 0.18);
+        box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.32), 0 3px 6px 0 rgba(0, 0, 0, 0.24),
+          0 5px 12px 4px rgba(0, 0, 0, 0.18);
       }
       .ant-image {
         padding: 18px;
@@ -68,8 +68,7 @@
       .ant-card {
         &.selected,
         &:hover {
-          box-shadow: 0 1px 2px -2px rgba(80, 61, 77, 0.32),
-            0 3px 6px 0 rgba(80, 61, 77, 0.24),
+          box-shadow: 0 1px 2px -2px rgba(80, 61, 77, 0.32), 0 3px 6px 0 rgba(80, 61, 77, 0.24),
             0 5px 12px 4px rgba(80, 61, 77, 0.18);
           border: 1px solid rgb(80, 61, 77);
         }

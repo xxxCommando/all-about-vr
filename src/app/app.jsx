@@ -41,40 +41,35 @@ class App extends React.Component {
       <Router>
         <Layout className="App">
           <Header />
-            {fatalError ? (
-              <Page500 />
-            ) : (
-              <Switch>
-                <Route path="/" exact>
-                  <HeadsetList items={formatedHeadset} />
-                </Route>
-                <Route
-                  path="/headset/:id"
-                  // component={({ match }) => (isLoaded ? (
-                  //   <Headset
-                  //     item={formatedHeadset.find((headset) => headset.id === match.params.id)}
-                  //   />
-                  // ) : null)}
-                >
-                  <Construction />
-                </Route>
-                <Route path="/headsets" exact>
-                  <Construction />
-                </Route>
-                <Route path="/wiki" exact>
-                  <Construction />
-                </Route>
-                <Route path="/vr-games" exact>
-                  <Games items={formatedGame} />
-                </Route>
-                <Route path="/about" exact>
-                  <Construction />
-                </Route>
-                <Route>
-                  <Page404 />
-                </Route>
-              </Switch>
-            )}
+          {fatalError ? (
+            <Page500 />
+          ) : (
+            <Switch>
+              <Route path="/" exact>
+                <HeadsetList items={formatedHeadset} />
+              </Route>
+              <Route
+                path="/headset/:id"
+              >
+                <Construction />
+              </Route>
+              <Route path="/headsets" exact>
+                <Construction />
+              </Route>
+              <Route path="/wiki" exact>
+                <Wiki />
+              </Route>
+              <Route path="/vr-games" exact>
+                <Games items={formatedGame} />
+              </Route>
+              <Route path="/about" exact>
+                <About />
+              </Route>
+              <Route>
+                <Page404 />
+              </Route>
+            </Switch>
+          )}
           <Footer />
         </Layout>
       </Router>
