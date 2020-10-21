@@ -300,9 +300,11 @@
   .price-info {
     display: flex;
     justify-content: space-between;
-    p {
+    align-items: center;
+    padding: 0 10px;
+    margin-bottom: 16px;
+    >span {
       text-align: left;
-      padding: 10px;
       color: grey;
     }
   }

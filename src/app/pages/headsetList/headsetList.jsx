@@ -110,10 +110,10 @@ class HeadsetList extends React.Component {
           {compareMode ? 'Compare mode' : 'Select 2 headsets to compare'}
         </Divider>
         <div className="price-info">
-          <p>
+          <span>
             * Prices of headsets are average prices of all necessary elements to use the headset
             (headset, controllers, base-station).
-          </p>
+          </span>
           <FilterDrawer />
         </div>
         <Layout>
