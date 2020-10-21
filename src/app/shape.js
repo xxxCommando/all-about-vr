@@ -75,7 +75,7 @@ const GameShape = PropTypes.shape({
   type: PropTypes.number,
   img: PropTypes.string,
   index: PropTypes.number,
-
+  platform: PropTypes.arrayOf(PropTypes.number),
 });
 
 export {

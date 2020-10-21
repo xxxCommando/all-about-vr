@@ -13,7 +13,6 @@ import { ReactComponent as Steam } from '../../../assets/images/steam.svg';
 
 const GameCard = (props) => {
   const {
-    selected,
     item,
   } = props;
 
@@ -32,13 +31,12 @@ const GameCard = (props) => {
   };
 
   return (
-    <div className="headset-card">
+    <div className="game-card">
       <a href={item.steam} target="_blank" rel="noopener noreferrer">
         <Card
           hoverable
           bordered
           title={item.name}
-          className={selected ? 'selected game-card' : 'game-card'}
           cover={<Image src={item.img} preview={false} alt={item.name} />}
           extra={
             item.platform.map((platform) => {
@@ -65,7 +63,6 @@ const GameCard = (props) => {
 };
 
 GameCard.propTypes = {
-  selected: PropTypes.bool,
   item: GameShape,
   location: PropTypes.shape({
     pathname: PropTypes.string,
@@ -73,7 +70,6 @@ GameCard.propTypes = {
 };
 
 GameCard.defaultProps = {
-  selected: false,
   item: {},
   location: PropTypes.shape({
     pathname: '/',
