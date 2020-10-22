@@ -2,6 +2,8 @@ import {
   REQUEST_HEADSETS,
   RECEIVE_HEADSETS,
   INVALIDE_HEADSETS,
+  UPDATE_FILTERS,
+  CLEAR_FILTERS,
 } from '../types';
 
 const initialState = {
@@ -10,6 +12,16 @@ const initialState = {
   isFetching: false,
   isLoaded: false,
   fatalError: false,
+  isFiltered: false,
+  visibilityFilter: {
+    outDatated: true,
+    comingSoon: true,
+    brands: [],
+    platforms: [],
+    audience: 'all',
+    priceMin: 0,
+    priceMax: 5800,
+  },
 };
 
 export default function headsets(state = initialState, action) {
@@ -38,6 +50,27 @@ export default function headsets(state = initialState, action) {
         isFetching: false,
         fatalError: true,
       };
+
+    case UPDATE_FILTERS: {
+      return {
+        ...state,
+        isFiltered: true,
+        visibilityFilter: {
+          ...state.visibilityFilter,
+          ...action.filters,
+        },
+      };
+    }
+
+    case CLEAR_FILTERS: {
+      return {
+        ...state,
+        isFiltered: false,
+        visibilityFilter: {
+          ...initialState.visibilityFilter,
+        },
+      };
+    }
 
     default:
       return state;

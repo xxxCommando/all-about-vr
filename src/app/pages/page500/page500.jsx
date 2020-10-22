@@ -10,7 +10,6 @@ const Page500 = () => (
       status="500"
       title="500"
       subTitle="Sorry, something went wrong."
-      className="layout-500"
       extra={(
         <Link to="/">
           <Button type="primary">Back Home</Button>

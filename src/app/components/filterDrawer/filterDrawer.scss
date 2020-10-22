@@ -1,0 +1,79 @@
+@import '../../../assets/scss/global.scss';
+@import '../../../assets/scss/mixin.scss';
+
+@include theme {
+  .filters {
+    .ant-col {
+      margin: 8px 16px;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      &.inline {
+        display: inline-block;
+        .ant-col {
+          margin: 8px 0px 8px 12px;
+        }
+      }
+      > span {
+        flex: 5;
+        font-size: 14px;
+      }
+      > button {
+        flex: 3;
+        max-width: 70px;
+        span {
+          font-size: 14px;
+        }
+      }
+      > div {
+        flex: 4;
+      }
+      > input {
+        flex: 4;
+      }
+      > .ant-checkbox-group {
+        > label {
+          min-width: 50%;
+          margin: 0;
+        }
+      }
+    }
+  }
+  .button-custom {
+    font-size: 16px;
+  }
+  &.dark {
+    .button-custom {
+      border: none;
+      color: $white-text;
+      &:hover {
+        color: inherit;
+        background-color: rgba(255, 255, 255, 0.03);
+      }
+    }
+    .ant-drawer-content-wrapper {
+      .ant-switch-checked {
+        background-color: $dark-main-hover;
+        box-shadow: none;
+      }
+      .ant-checkbox-wrapper {
+        &:hover {
+          .ant-checkbox {
+            .ant-checkbox-inner {
+              border-color: $dark-main-hover;
+            }
+            &:after {
+              border: 1px solid $dark-main-hover;
+            }
+          }
+        }
+        .ant-checkbox-checked {
+          .ant-checkbox-inner {
+            background-color: $dark-main-hover;
+            border-color: $dark-main-hover;
+          }
+        }
+      }
+    }
+  }
+}
