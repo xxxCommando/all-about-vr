@@ -70,7 +70,16 @@ const HeadsetShape = PropTypes.shape({
   pushedContents: PropTypes.arrayOf(PushedContentsShape),
 });
 
+const GameShape = PropTypes.shape({
+  name: PropTypes.string,
+  type: PropTypes.number,
+  img: PropTypes.string,
+  index: PropTypes.number,
+  platform: PropTypes.arrayOf(PropTypes.number),
+});
+
 export {
   HeadsetShape,
   DateShape,
+  GameShape,
 };

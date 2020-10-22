@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ReactGa from 'react-ga';
 
 import './app.scss';
+import { GameShape } from './shape';
 
 import HeadsetList from './pages/headsetList';
 import Header from './components/header';
@@ -12,14 +13,16 @@ import Footer from './components/footer';
 import Page404 from './pages/page404';
 import Page500 from './pages/page500';
 import Headset from './pages/headset';
+import Games from './pages/games';
 import Construction from './pages/pageconstruction';
 import Wiki from './pages/wiki';
 import About from './pages/about';
 
 class App extends React.Component {
   componentDidMount() {
-    const { fetchHeadsets, darkMode } = this.props;
+    const { fetchHeadsets, fetchGames, darkMode } = this.props;
     fetchHeadsets();
+    fetchGames();
     document.body.classList = darkMode ? ['dark'] : ['light'];
     const metaThemeColor = document.querySelector('meta[name=theme-color]');
     metaThemeColor.setAttribute('content', !darkMode ? '#1890ff' : '#503D4D');
@@ -30,13 +33,14 @@ class App extends React.Component {
   }
 
   render() {
-    const { isLoaded, fatalError } = this.props;
+    const {
+      formatedGame, isLoaded, fatalError,
+    } = this.props;
 
     return (
       <Router>
         <Layout className="App">
           <Header />
-
           {fatalError ? (
             <Page500 />
           ) : (
@@ -46,11 +50,6 @@ class App extends React.Component {
               </Route>
               <Route
                 path="/headset/:id"
-                // component={({ match }) => (isLoaded ? (
-                //   <Headset
-                //     item={formatedHeadset.find((headset) => headset.id === match.params.id)}
-                //   />
-                // ) : null)}
               >
                 <Construction />
               </Route>
@@ -61,7 +60,7 @@ class App extends React.Component {
                 <Wiki />
               </Route>
               <Route path="/vr-games" exact>
-                <Construction />
+                <Games items={formatedGame} />
               </Route>
               <Route path="/about" exact>
                 <About />
@@ -71,7 +70,6 @@ class App extends React.Component {
               </Route>
             </Switch>
           )}
-
           <Footer />
         </Layout>
       </Router>
@@ -80,10 +78,12 @@ class App extends React.Component {
 }
 
 App.propTypes = {
+  formatedGame: PropTypes.arrayOf(GameShape).isRequired,
   darkMode: PropTypes.bool.isRequired,
   isLoaded: PropTypes.bool.isRequired,
   fatalError: PropTypes.bool.isRequired,
   fetchHeadsets: PropTypes.func.isRequired,
+  fetchGames: PropTypes.func.isRequired,
 };
 
 export default App;

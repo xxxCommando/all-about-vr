@@ -1,0 +1,4 @@
+export const REQUEST_GAMES = 'REQUEST_GAMES';
+export const RECEIVE_GAMES = 'RECEIVE_GAMES';
+export const INVALIDE_GAMES = 'INVALIDE_GAMES';
+export const FORMAT_GAMES = 'FORMAT_GAMES';
