@@ -105,7 +105,7 @@ class Header extends React.Component {
           </div>
         </Link>
         <div className="right desktop">
-          <span className="version">{`v${packageJson.version}`}</span>
+          <span className="version"><a href={`https://github.com/Bleuh/all-about-vr/tree/${packageJson.version}`} target="_blank" rel="noopener noreferrer">{`v${packageJson.version}`}</a></span>
           <ButtonDarkMode toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
         </div>
         <MenuNav mode="horizontal" className="nav-menu" pathname={pathname} />
@@ -128,7 +128,7 @@ class Header extends React.Component {
           visible={visible}
           footer={(
             <div className="right">
-              <span className="version">{`v${packageJson.version}`}</span>
+              <span className="version"><a href={`https://github.com/Bleuh/all-about-vr/tree/${packageJson.version}`} target="_blank" rel="noopener noreferrer">{`v${packageJson.version}`}</a></span>
               <ButtonDarkMode toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
             </div>
           )}

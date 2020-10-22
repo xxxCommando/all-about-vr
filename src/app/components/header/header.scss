@@ -51,6 +51,9 @@
     span.version {
       color: $white-text;
       margin-right: 15px;
+      a {
+        color: $white-text;
+      }
     }
     button.ant-btn {
       color: $white-text;
