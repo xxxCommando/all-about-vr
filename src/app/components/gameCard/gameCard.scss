@@ -5,11 +5,14 @@
   .game-card {
     .ant-card {
       height: 400px;
+      position: relative;
+      text-align: center;
       @include sm {
         height: 360px;
       }
-      position: relative;
-      text-align: center;
+      &-head{
+        padding: 0 42px;
+      }
       &-actions {
         display: flex;
       }
