@@ -6,7 +6,7 @@ import {
 
 const initialState = {
   collectionRef: null,
-  formatedGame: [],
+  formatedGames: [],
   isFetching: false,
   isLoaded: false,
   fatalError: false,
@@ -26,7 +26,7 @@ export default function games(state = initialState, action) {
         isFetching: false,
         isLoaded: true,
         collectionRef: action.gamesRef,
-        formatedGame: action.gamesRef.docs.map((doc) => ({
+        formatedGames: action.gamesRef.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         })),

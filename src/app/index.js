@@ -4,13 +4,11 @@ import { fetchHeadsets } from './redux/headsets/actions';
 import { fetchGames } from './redux/games/actions';
 
 const mapStateToProps = (state) => ({
-  formatedHeadset: state.headsets.formatedHeadset,
   isLoaded: state.headsets.isLoaded,
   isFetching: state.headsets.isFetching,
-  fatalError: state.headsets.fatalError,
-  formatedGame: state.games.formatedGame,
   isLoadedGame: state.games.isLoaded,
   isFetchingGame: state.games.isFetching,
+  fatalError: state.headsets.fatalError,
   fatalErrorGame: state.games.fatalError,
   darkMode: state.allAboutVR.darkMode.darkMode,
 });

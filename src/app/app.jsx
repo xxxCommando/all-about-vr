@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ReactGa from 'react-ga';
 
 import './app.scss';
-import { GameShape } from './shape';
 
 import HeadsetList from './pages/headsetList';
 import Header from './components/header';
@@ -34,14 +33,14 @@ class App extends React.Component {
 
   render() {
     const {
-      formatedGame, isLoaded, fatalError,
+      isLoaded, fatalError, fatalErrorGame,
     } = this.props;
 
     return (
       <Router>
         <Layout className="App">
           <Header />
-          {fatalError ? (
+          {fatalError || fatalErrorGame ? (
             <Page500 />
           ) : (
             <Switch>
@@ -60,7 +59,7 @@ class App extends React.Component {
                 <Wiki />
               </Route>
               <Route path="/vr-games" exact>
-                <Games items={formatedGame} />
+                <Games />
               </Route>
               <Route path="/about" exact>
                 <About />
@@ -78,10 +77,10 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  formatedGame: PropTypes.arrayOf(GameShape).isRequired,
   darkMode: PropTypes.bool.isRequired,
   isLoaded: PropTypes.bool.isRequired,
   fatalError: PropTypes.bool.isRequired,
+  fatalErrorGame: PropTypes.bool.isRequired,
   fetchHeadsets: PropTypes.func.isRequired,
   fetchGames: PropTypes.func.isRequired,
 };
