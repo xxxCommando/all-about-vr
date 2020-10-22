@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import * as types from './types';
+import { doClear } from '../compare/actions';
 
 export function requestHeadsets() {
   return {
@@ -31,5 +32,21 @@ export function fetchHeadsets() {
       .get()
       .then((response) => dispatch(receiveHeadsets(response)))
       .catch(() => dispatch(catchHeadsets()));
+  };
+}
+
+export function updateFilters(filters) {
+  return ((dispatch) => {
+    dispatch(doClear());
+    return dispatch({
+      type: types.UPDATE_FILTERS,
+      filters,
+    });
+  });
+}
+
+export function clearFilters() {
+  return {
+    type: types.CLEAR_FILTERS,
   };
 }
