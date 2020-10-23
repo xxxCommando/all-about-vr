@@ -1,3 +1,6 @@
+@import './assets/scss/global.scss';
+@import './assets/scss/mixin.scss';
+
 html,
 body {
   width: 100%;
@@ -34,4 +37,13 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+@include dark {
+  a {
+    color: $dark-main-link;
+    &:hover {
+      color: $dark-main-hover;
+    }
+  }
 }

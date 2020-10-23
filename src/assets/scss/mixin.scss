@@ -48,8 +48,8 @@
 }
 
 // apply for theme
-@mixin theme {
-  body {
+@mixin dark {
+  body.dark {
     @content;
   }
 }
