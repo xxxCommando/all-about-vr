@@ -60,28 +60,40 @@ class HeadsetsTab extends React.Component {
             title: 'Name',
             dataIndex: 'name',
             width: 100,
-            sorter: (a, b) => a.amount - b.amount,
           },
           {
             title: 'Price',
             dataIndex: 'price',
             width: 100,
-            sorter: (a, b) => a.amount - b.amount,
+            sorter: (a, b) => a.price - b.price,
           },
           {
             title: 'Res. per eyes',
             dataIndex: 'resolution',
             width: 100,
+            sorter: (a, b) => {
+              const one = a.resolution.split('x');
+              const two = b.resolution.split('x');
+              const ax = one[0];
+              const ay = one[1];
+              const bx = two[0];
+              const by = two[1];
+              console.log(ax);
+              console.log((ax * ay) - (bx * by));
+              return (ax * ay) - (bx * by);
+            },
           },
           {
             title: 'Refresh Rate',
-            key: 'refreshrate',
+            dataIndex: 'refreshrate',
             width: 100,
+            sorter: (a, b) => a.refreshrate - b.refreshrate,
           },
           {
             title: 'FOV',
-            key: 'fov',
+            dataIndex: 'fov',
             width: 100,
+            sorter: (a, b) => a.fov - b.fov,
           },
         ],
       };
@@ -103,18 +115,14 @@ class HeadsetsTab extends React.Component {
           items,
         } = this.props;
 
-        const data = (item) => {
-          const array = [];
-          item.map((obj) => array.push(({
-            img: <Image src={obj.img} />,
-            name: obj.name,
-            price: obj.price,
-            resolution: `${obj.resolution.x} x ${obj.resolution.y}`,
-            refreshrate: obj.refreshrate,
-            fov: obj.fov,
-          })));
-          return array;
-        };
+        const data = (headsets) => headsets.map((item) => ({
+          img: <Image src={item.img} />,
+          name: item.name,
+          price: item.price,
+          resolution: `${item.resolution.x}x${item.resolution.y}`,
+          refreshrate: item.refreshrate,
+          fov: item.fov,
+        }));
 
         const columns = this.state.columns.map((col, index) => ({
           ...col,
