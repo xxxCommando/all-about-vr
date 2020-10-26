@@ -101,7 +101,7 @@ class Header extends React.Component {
         <Link to="/" onClick={() => doClear()}>
           <div className="logo">
             <LogoAllAboutVR />
-            <p>AllAboutVR</p>
+            <span>AllAboutVR</span>
           </div>
         </Link>
         <div className="right desktop">
@@ -114,7 +114,7 @@ class Header extends React.Component {
           <Button
             type="ghost"
             onClick={this.showDrawer}
-            className={`open-menu ${darkMode ? 'dark' : 'light'}`}
+            className={`open-menu ${darkMode ? 'dark' : ''}`}
             icon={<MenuOutlined />}
             size="large"
           />

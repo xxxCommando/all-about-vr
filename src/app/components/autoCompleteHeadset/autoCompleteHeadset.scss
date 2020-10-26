@@ -1,96 +1,91 @@
 @import '../../../assets/scss/global.scss';
 @import '../../../assets/scss/mixin.scss';
 
-@include theme {
-  .auto-complete-headset-dropdown {
-    .auto-complete-card {
-      .ant-card-meta {
-        display: flex;
-        align-items: center;
-        justify-items: center;
-        .ant-avatar {
+.auto-complete-headset-dropdown {
+  .auto-complete-card {
+    .ant-card-meta {
+      display: flex;
+      align-items: center;
+      justify-items: center;
+      .ant-avatar {
+        width: 80px;
+        height: auto;
+        img {
+          object-fit: contain;
+        }
+      }
+      .ant-card-meta-detail {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+}
+.ant-select {
+  &.auto-complete-headset {
+    width: 100%;
+    .ant-select-selection-search {
+      > span {
+        height: 80px;
+        .ant-input-prefix {
           width: 80px;
-          height: auto;
-          img {
-            object-fit: contain;
+          .ant-avatar {
+            width: auto;
+            height: auto;
+            img {
+              object-fit: contain;
+            }
           }
         }
-        .ant-card-meta-detail {
-          width: 100%;
+        input {
           text-align: center;
+        }
+        .ant-input-suffix {
+          width: 80px;
+          display: flex;
+          flex-direction: row-reverse;
         }
       }
     }
   }
-  &.dark {
-    .auto-complete-headset-dropdown {
-      .ant-select-item-option-selected {
-        background-color: $dark-main-hover !important;
-      }
-    }
-    .ant-select {
-      &.auto-complete-headset {
-        .ant-input-affix-wrapper {
-          &:hover {
-            border-color: $dark-main-hover !important;
-          }
-          &:focus {
-            border-color: $dark-main-hover !important;
-            box-shadow: none;
-          }
-        }
-      }
+}
+.auto-complete-headset-delete {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+@include dark {
+  .auto-complete-headset-dropdown {
+    .ant-select-item-option-selected {
+      background-color: $dark-main-hover !important;
     }
   }
   .ant-select {
     &.auto-complete-headset {
-      width: 100%;
-      .ant-select-selection-search {
-        > span {
-          height: 80px;
-          .ant-input-prefix {
-            width: 80px;
-            .ant-avatar {
-              width: auto;
-              height: auto;
-              img {
-                object-fit: contain;
-              }
-            }
-          }
-          input {
-            text-align: center;
-          }
-          .ant-input-suffix {
-            width: 80px;
-            display: flex;
-            flex-direction: row-reverse;
-          }
+      .ant-input-affix-wrapper {
+        &:hover {
+          border-color: $dark-main-hover !important;
         }
+        &:focus {
+          border-color: $dark-main-hover !important;
+          box-shadow: none;
+        }
+      }
+    }
+    .ant-select-selector {
+      border-color: $dark-main-hover !important;
+      .ant-input-affix-wrapper-focused {
+        border-color: $dark-main-hover !important;
+        box-shadow: 0 0 0 2px rgba(80, 61, 77, 0.2);
       }
     }
   }
   .auto-complete-headset-delete {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-  }
-  &.dark {
-    .ant-select {
-      .ant-select-selector {
-        border-color: $dark-main-hover !important;
-        .ant-input-affix-wrapper-focused {
-          border-color: $dark-main-hover !important;
-          box-shadow: 0 0 0 2px rgba(80, 61, 77, 0.2);
-        }
-      }
-    }
-    .auto-complete-headset-delete {
-      .ant-btn {
-        background-color: $dark-main-hover;
-        border-color: $dark-main-hover;
-        color: $white-text;
-      }
+    .ant-btn {
+      background-color: $dark-main-hover;
+      border-color: $dark-main-hover;
+      color: $white-text;
     }
   }
 }
