@@ -1,89 +1,87 @@
 @import '../../../assets/scss/global.scss';
 @import '../../../assets/scss/mixin.scss';
 
-@include theme {
-  .game-card {
-    .ant-card {
-      height: 400px;
-      position: relative;
-      text-align: center;
-      @include sm {
-        height: 360px;
+.game-card {
+  .ant-card {
+    height: 400px;
+    position: relative;
+    text-align: center;
+    @include sm {
+      height: 360px;
+    }
+    &-head {
+      padding: 0 42px;
+    }
+    &-actions {
+      display: flex;
+    }
+    &-meta-description {
+      margin: 24px;
+    }
+    &-extra {
+      position: absolute;
+      right: 20px;
+      span {
+        padding: 3px;
+        font-size: 16px;
       }
-      &-head{
-        padding: 0 42px;
-      }
-      &-actions {
-        display: flex;
-      }
-      &-meta-description {
-        margin: 24px;
-      }
-      &-extra {
-        position: absolute;
-        right: 20px;
-        span {
-          padding: 3px;
-          font-size: 16px;
-        }
-      }
+    }
 
-      @include sm {
-        .ant-card-body {
-          padding: 0;
+    @include sm {
+      .ant-card-body {
+        padding: 0;
 
-          .headset-card-body-summary {
-            margin: 24px;
-          }
-        }
-      }
-
-      &.selected {
-        box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.32), 0 3px 6px 0 rgba(0, 0, 0, 0.24),
-          0 5px 12px 4px rgba(0, 0, 0, 0.18);
-      }
-      &-cover {
-        height: 200px;
-        .ant-image {
-          padding: 0;
-          margin: 20px;
-          width: auto;
-          img {
-            height: 160px;
-            object-fit: contain;
-          }
+        .headset-card-body-summary {
+          margin: 24px;
         }
       }
     }
-    .card-link {
-      @include xxs {
-        display: none;
-      }
-      color: inherit;
-      position: absolute;
-      top: 0;
-      right: 0;
-      padding: 22px;
-      transition: color 0.7s ease;
-      &:hover {
-        color: $light-main-hover;
+
+    &.selected {
+      box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.32), 0 3px 6px 0 rgba(0, 0, 0, 0.24),
+        0 5px 12px 4px rgba(0, 0, 0, 0.18);
+    }
+    &-cover {
+      height: 200px;
+      .ant-image {
+        padding: 0;
+        margin: 20px;
+        width: auto;
+        img {
+          height: 160px;
+          object-fit: contain;
+        }
       }
     }
   }
-  &.dark {
-    .game-card {
-      .ant-card {
-        &.selected,
-        &:hover {
-          box-shadow: 0 1px 2px -2px rgba(80, 61, 77, 0.32), 0 3px 6px 0 rgba(80, 61, 77, 0.24),
-            0 5px 12px 4px rgba(80, 61, 77, 0.18);
-          border: 1px solid rgb(80, 61, 77);
-        }
+  .card-link {
+    @include xxs {
+      display: none;
+    }
+    color: inherit;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 22px;
+    transition: color 0.7s ease;
+    &:hover {
+      color: $light-main-hover;
+    }
+  }
+}
+@include dark {
+  .game-card {
+    .ant-card {
+      &.selected,
+      &:hover {
+        box-shadow: 0 1px 2px -2px rgba(80, 61, 77, 0.32), 0 3px 6px 0 rgba(80, 61, 77, 0.24),
+          0 5px 12px 4px rgba(80, 61, 77, 0.18);
+        border: 1px solid rgb(80, 61, 77);
       }
-      .card-link {
-        &:hover {
-          color: $dark-main-link;
-        }
+    }
+    .card-link {
+      &:hover {
+        color: $dark-main-link;
       }
     }
   }

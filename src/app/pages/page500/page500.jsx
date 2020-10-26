@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import './page500.scss';
 
 const Page500 = () => (
-  <Layout.Content className="layout-500">
+  <Layout.Content className="layout-single layout-500">
     <Result
       status="500"
       title="500"

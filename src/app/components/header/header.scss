@@ -1,119 +1,153 @@
 @import '../../../assets/scss/global.scss';
 @import '../../../assets/scss/mixin.scss';
 
-@include theme {
-  .ant-layout-header.header {
-    @include xs {
-      padding: 0 5px;
-    }
+.ant-layout-header.header {
+  @include xs {
+    padding: 0 5px;
   }
-  .logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: auto;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 40px;
+  margin: 12px 24px 12px 0;
+  @include xs {
+    margin: 12px 6px 12px 12px;
+  }
+  float: left;
+  svg {
     height: 40px;
-    margin: 12px 24px 12px 0;
-    @include xs {
-      margin: 12px 6px 12px 12px;
-    }
-    float: left;
-    svg {
-      height: 40px;
-      width: 40px;
-    }
-    p {
-      font-size: 30px;
-      color: $white-text;
-      height: 100%;
-      line-height: normal;
-      margin: 0 0 0 12px;
-      font-weight: 400;
-      @include lg {
-        display: none;
-      }
-      @include md {
-        display: block;
-      }
-    }
+    width: 40px;
   }
-
-  .ant-menu {
-    &.nav-menu {
-      @include md {
-        display: none;
-      }
-    }
-  }
-
-  .right {
-    float: right;
-    span.version {
-      color: $white-text;
-      margin-right: 15px;
-      a {
-        color: $white-text;
-      }
-    }
-    button.ant-btn {
-      color: $white-text;
-      border: 2px solid;
-      &:focus {
-        color: $white-text;
-        border-color: $white-text;
-      }
-    }
-    &.desktop {
-      display: block;
-      @include md {
-        display: none;
-      }
-    }
-    &.mobile {
+  span {
+    font-size: 30px;
+    color: $white-text;
+    align-self: center;
+    margin: 0 0 0 12px;
+    font-weight: 400;
+    height: 40px;
+    line-height: 40px;
+    @include lg {
       display: none;
-      @include md {
-        display: block;
+    }
+    @include md {
+      display: block;
+    }
+  }
+}
+
+.ant-menu {
+  &.nav-menu {
+    @include md {
+      display: none;
+    }
+  }
+}
+
+.right {
+  float: right;
+  span.version {
+    color: $white-text;
+    margin-right: 15px;
+    a {
+      color: $white-text;
+      &:hover {
+        color: $white-text;
       }
     }
   }
+  button.ant-btn {
+    color: $white-text;
+    border: 2px solid;
+    &:focus {
+      color: $white-text;
+      border-color: $white-text;
+    }
+  }
+  &.desktop {
+    display: block;
+    @include md {
+      display: none;
+    }
+  }
+  &.mobile {
+    display: none;
+    @include md {
+      display: block;
+    }
+  }
+}
 
-  &.light {
-    .drawer-mobile {
-      .ant-drawer-content {
-        .ant-drawer-header {
-          background-color: #001529;
-          border-bottom: none;
-          .ant-drawer-title {
-            color: $white-text;
-          }
+.drawer-mobile {
+  .ant-drawer-content {
+    .ant-drawer-header {
+      background-color: #001529;
+      border-bottom: none;
+      .ant-drawer-title {
+        color: $white-text;
+      }
+    }
+    .ant-drawer-body {
+      background-color: #001529;
+    }
+    .ant-drawer-footer {
+      background-color: #001529;
+    }
+  }
+}
+
+@include dark {
+  .logo {
+    svg {
+      #casque-color {
+        fill: $dark-main-hover;
+      }
+    }
+  }
+  .right {
+    button.ant-btn {
+      color: $dark-main;
+      border: none;
+      background-color: $white-text;
+    }
+  }
+  .ant-menu.ant-menu-dark.nav-menu {
+    background: $dark-main;
+    > .ant-menu-item {
+      &-selected {
+        background-color: $dark-main-hover;
+        a {
+          color: $white-text;
         }
-        .ant-drawer-body {
-          background-color: #001529;
-        }
-        .ant-drawer-footer {
-          background-color: #001529;
+      }
+      &:hover {
+        background-color: $dark-main-hover;
+        a {
+          color: $white-text;
         }
       }
     }
   }
-
-  &.dark {
-    .logo {
-      svg {
-        #casque-color {
-          fill: $dark-main-hover;
+  .drawer-mobile {
+    .ant-drawer-content {
+      .ant-drawer-header {
+        background-color: $dark-main;
+        border-bottom: none;
+        .ant-drawer-title {
+          color: $white-text;
         }
       }
-    }
-    .right {
-      button.ant-btn {
-        color: $dark-main;
-        border: none;
-        background-color: $white-text;
+      .ant-drawer-body {
+        background-color: $dark-main;
+      }
+      .ant-drawer-footer {
+        background-color: $dark-main;
       }
     }
-    .ant-menu.ant-menu-dark.nav-menu {
-      background: $dark-main;
+    .ant-menu.ant-menu-dark {
+      background-color: $dark-main;
       > .ant-menu-item {
         &-selected {
           background-color: $dark-main-hover;
@@ -125,25 +159,6 @@
           background-color: $dark-main-hover;
           a {
             color: $white-text;
-          }
-        }
-      }
-    }
-    .drawer-mobile {
-      .ant-menu.ant-menu-dark {
-        background-color: $dark-main;
-        > .ant-menu-item {
-          &-selected {
-            background-color: $dark-main-hover;
-            a {
-              color: $white-text;
-            }
-          }
-          &:hover {
-            background-color: $dark-main-hover;
-            a {
-              color: $white-text;
-            }
           }
         }
       }

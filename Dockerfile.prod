@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:experimental
 
 # Stage 1 - the build process
-FROM node:alpine as build
+FROM node:14.13.1-alpine3.12 as build
 WORKDIR /app
 
 ARG REACT_APP_APIKEY

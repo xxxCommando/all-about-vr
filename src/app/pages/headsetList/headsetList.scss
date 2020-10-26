@@ -96,216 +96,214 @@
   }
 }
 
-@include theme {
-  &.dark {
-    .ant-row {
-      &.auto-complete-wrapper {
-        .ant-col {
-          &.vs-animation {
-            div {
-              span {
-                animation: bounce-black 5s ease infinite;
-                color: $dark-main-hover;
-                text-shadow: 0 1px 0 #303030, 0 2px 0 #303030, 0 3px 0 #303030, 0 4px 0 #303030,
-                  0 5px 0 #303030, 0 6px 0 transparent, 0 7px 0 transparent, 0 8px 0 transparent,
-                  0 9px 0 transparent, 0 10px 10px rgba(0, 0, 0, 0.4);
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  .ant-divider-horizontal.ant-divider-with-text {
-    &::before,
-    &::after {
-      border-top: 1px solid rgba(0, 0, 0, 0.06);
-    }
-  }
+@include dark {
   .ant-row {
     &.auto-complete-wrapper {
       .ant-col {
-        &:first-child {
-          padding-left: 0;
-        }
-        &:last-child {
-          padding-right: 0;
-        }
         &.vs-animation {
-          width: 12%;
-          height: 80px;
-          z-index: 1;
-          @include md {
-            width: 100%;
-          }
-          cursor: default;
-          display: block;
-          text-align: center;
           div {
-            content: '';
-            display: inline-block;
-            &.compare-mode {
-              &:first-child {
-                animation: yAxis 1s;
-                span {
-                  animation: xAxis 1s;
-                }
-              }
-              &:last-child {
-                animation: yAxis-t 1s;
-                span {
-                  animation: xAxis-t 1s;
-                }
-              }
-            }
-            &:first-child {
-              span {
-                animation-delay: 0.1s;
-              }
-            }
             span {
-              user-select: none;
-              position: relative;
-              top: -12px;
-              display: inline-block;
-              animation: bounce 5s ease infinite;
-              font-size: 60px;
-              @include md {
-                font-size: 50px;
-              }
-              font-weight: 500;
-              color: $light-main-hover;
-              text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc, 0 4px 0 #ccc, 0 5px 0 #ccc,
-                0 6px 0 transparent, 0 7px 0 transparent, 0 8px 0 transparent, 0 9px 0 transparent,
-                0 10px 10px rgba(0, 0, 0, 0.4);
+              animation: bounce-black 5s ease infinite;
+              color: $dark-main-hover;
+              text-shadow: 0 1px 0 #303030, 0 2px 0 #303030, 0 3px 0 #303030, 0 4px 0 #303030,
+                0 5px 0 #303030, 0 6px 0 transparent, 0 7px 0 transparent, 0 8px 0 transparent,
+                0 9px 0 transparent, 0 10px 10px rgba(0, 0, 0, 0.4);
             }
-          }
-        }
-        padding-right: 6px;
-        padding-left: 6px;
-        width: 44%;
-        max-width: 700px;
-        @include md {
-          padding: 0;
-          width: 100%;
-          &:first-child {
-            padding-bottom: 20px;
           }
         }
       }
     }
-    &.headsets {
-      > div {
-        &:nth-child(4n+1) {
-          padding-left: 0;
-          padding-right: 10px;
+  }
+}
+.ant-divider-horizontal.ant-divider-with-text {
+  &::before,
+  &::after {
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+  }
+}
+.ant-row {
+  &.auto-complete-wrapper {
+    .ant-col {
+      &:first-child {
+        padding-left: 0;
+      }
+      &:last-child {
+        padding-right: 0;
+      }
+      &.vs-animation {
+        width: 12.5%;
+        height: 80px;
+        z-index: 1;
+        @include md {
+          width: 100%;
         }
-        &:nth-child(4n+2) {
-          padding-left: 2px;
-          padding-right: 6px;
-        }
-        &:nth-child(4n+3) {
-          padding-left: 6px;
-          padding-right: 2px;
-        }
-        &:nth-child(4n) {
-          padding-left: 10px;
-          padding-right: 0;
-        }
-        padding: 0;
-        &.normal-mode {
-          width: 25%;
-          .ant-card-body {
-            margin: 18px;
-            .ant-card-meta-detail {
-              display: flex;
-              min-height: 100px;
-              flex-direction: column;
-              .ant-card-meta-description {
-                margin: auto;
-              }
-            }
-          }
-          @include lg {
-            width: 33.333%;
-            &:nth-child(3n+1) {
-              padding-left: 0;
-              padding-right: 10px;
-            }
-            &:nth-child(3n+2) {
-              padding-left: 2px;
-              padding-right: 2px;
-            }
-            &:nth-child(3n) {
-              padding-left: 10px;
-              padding-right: 0;
-            }
-          }
-          @include sm {
-            &:nth-child(2n+1) {
-              padding-left: 0;
-              padding-right: 3px;
-            }
-            &:nth-child(2n) {
-              padding-left: 3px;
-              padding-right: 0px;
-            }
-            width: 50%;
-          }
-        }
-        &.compare-mode {
-          @include sm {
-            padding: 0;
+        cursor: default;
+        display: block;
+        text-align: center;
+        div {
+          content: '';
+          display: inline-block;
+          &.compare-mode {
             &:first-child {
-              padding-right: 4px;
+              animation: yAxis 1s;
+              span {
+                animation: xAxis 1s;
+              }
             }
             &:last-child {
-              padding-left: 4px;
-            }
-            .headset-card {
-              .ant-card {
-                &.selected {
-                  box-shadow: none;
-                }
+              animation: yAxis-t 1s;
+              span {
+                animation: xAxis-t 1s;
               }
             }
           }
-          transition: width 1s ease-out;
-          transition-delay: 300ms;
-          width: 50%;
-          .ant-card-body {
-            margin: 0px;
+          &:first-child {
+            span {
+              animation-delay: 0.1s;
+            }
           }
+          span {
+            user-select: none;
+            position: relative;
+            top: -12px;
+            display: inline-block;
+            animation: bounce 5s ease infinite;
+            font-size: 60px;
+            @include md {
+              font-size: 50px;
+            }
+            font-weight: 500;
+            color: $light-main-hover;
+            text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc, 0 4px 0 #ccc, 0 5px 0 #ccc,
+              0 6px 0 transparent, 0 7px 0 transparent, 0 8px 0 transparent, 0 9px 0 transparent,
+              0 10px 10px rgba(0, 0, 0, 0.4);
+          }
+        }
+      }
+      padding-right: 6px;
+      padding-left: 6px;
+      width: 43.5%;
+      max-width: 700px;
+      @include md {
+        padding: 0;
+        width: 100%;
+        &:first-child {
+          padding-bottom: 20px;
         }
       }
     }
   }
-
-  .fade-headsets-enter {
-    opacity: 0.01;
-    &.fade-headsets-enter-active {
-      opacity: 1;
-      transition: opacity 700ms ease-in;
+  &.headsets {
+    > div {
+      &:nth-child(4n + 1) {
+        padding-left: 0;
+        padding-right: 10px;
+      }
+      &:nth-child(4n + 2) {
+        padding-left: 2px;
+        padding-right: 6px;
+      }
+      &:nth-child(4n + 3) {
+        padding-left: 6px;
+        padding-right: 2px;
+      }
+      &:nth-child(4n) {
+        padding-left: 10px;
+        padding-right: 0;
+      }
+      padding: 0;
+      &.normal-mode {
+        width: 25%;
+        .ant-card-body {
+          margin: 18px;
+          .ant-card-meta-detail {
+            display: flex;
+            min-height: 100px;
+            flex-direction: column;
+            .ant-card-meta-description {
+              margin: auto;
+            }
+          }
+        }
+        @include lg {
+          width: 33.333%;
+          &:nth-child(3n + 1) {
+            padding-left: 0;
+            padding-right: 10px;
+          }
+          &:nth-child(3n + 2) {
+            padding-left: 2px;
+            padding-right: 2px;
+          }
+          &:nth-child(3n) {
+            padding-left: 10px;
+            padding-right: 0;
+          }
+        }
+        @include sm {
+          &:nth-child(2n + 1) {
+            padding-left: 0;
+            padding-right: 3px;
+          }
+          &:nth-child(2n) {
+            padding-left: 3px;
+            padding-right: 0px;
+          }
+          width: 50%;
+        }
+      }
+      &.compare-mode {
+        @include sm {
+          padding: 0;
+          &:first-child {
+            padding-right: 4px;
+          }
+          &:last-child {
+            padding-left: 4px;
+          }
+          .headset-card {
+            .ant-card {
+              &.selected {
+                box-shadow: none;
+              }
+            }
+          }
+        }
+        transition: width 1s ease-out;
+        transition-delay: 300ms;
+        width: 50%;
+        .ant-card-body {
+          margin: 0px;
+        }
+      }
     }
   }
+}
 
-  .fade-headsets-leave {
+.fade-headsets-enter {
+  opacity: 0.01;
+  &.fade-headsets-enter-active {
     opacity: 1;
-    &.fade-headsets-leave-active {
-      opacity: 0.01;
-      transition: opacity 300ms ease-in;
-    }
+    transition: opacity 700ms ease-in;
   }
+}
 
-  .price-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 10px;
-    margin-bottom: 16px;
-    >span {
-      text-align: left;
-      color: grey;
-    }
+.fade-headsets-leave {
+  opacity: 1;
+  &.fade-headsets-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+  }
+}
+
+.price-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  margin-bottom: 16px;
+  > span {
+    text-align: left;
+    color: grey;
   }
 }
