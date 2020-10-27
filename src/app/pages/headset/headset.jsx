@@ -23,7 +23,7 @@ const Headset = (props) => {
               <Image width={300} src={content.img} preview={false} alt={item.name} />
             </Col>
             <Col flex="0 0 400px">
-              <Typography.Paragraph>{content.text}</Typography.Paragraph>
+              <Typography.Paragraph className="content">{content.text}</Typography.Paragraph>
             </Col>
           </Row>
         </Layout>

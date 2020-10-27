@@ -1,3 +1,9 @@
 @import '../../../assets/scss/global.scss';
 @import '../../../assets/scss/mixin.scss';
 
+.layout-content-article{
+    .content{
+        margin-top:24px;
+        margin-bottom: 24px;
+    }
+}

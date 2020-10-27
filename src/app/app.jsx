@@ -16,6 +16,7 @@ import Headset from './pages/headset';
 import Construction from './pages/pageconstruction';
 import Wiki from './pages/wiki';
 import About from './pages/about';
+import ScrollToTop from './components/scrollToTop';
 
 class App extends React.Component {
   componentDidMount() {
@@ -35,6 +36,7 @@ class App extends React.Component {
 
     return (
       <Router>
+        <ScrollToTop />
         <Layout className="App">
           <Header />
 

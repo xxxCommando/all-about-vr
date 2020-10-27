@@ -37,7 +37,7 @@ Why we decided to create All about VR ?
   - Storage
 - Docker
   - Developement
-  - TDD
+  - Prod deployment
 - CI and server
   - Github action
   - Dockerize on Docker Hub
