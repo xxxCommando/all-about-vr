@@ -147,7 +147,7 @@ class FilterSider extends React.Component {
           ) : null}
 
         </div>
-        <div>
+        <div className="filterSider">
           <Row align="middle" justify="center" className="filters">
             <Col>
               <span>Outdated</span>
