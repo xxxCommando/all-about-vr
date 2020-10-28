@@ -1,17 +1,42 @@
-@import '../../../assets/scss/global.scss';
-@import '../../../assets/scss/mixin.scss';
+@import "../../../assets/scss/global.scss";
+@import "../../../assets/scss/mixin.scss";
 
 #components-table-demo-resizable-column .react-resizable {
-    position: relative;
-    background-clip: padding-box;
+  position: relative;
+  background-clip: padding-box;
+}
+
+#components-table-demo-resizable-column .react-resizable-handle {
+  position: absolute;
+  right: -5px;
+  bottom: 0;
+  z-index: 1;
+  width: 10px;
+  height: 100%;
+  cursor: col-resize;
+}
+
+@media only screen and (min-width: 876px) {
+  .layout-content {
+    .filter {
+      display: none;
+    }
   }
-  
-  #components-table-demo-resizable-column .react-resizable-handle {
-    position: absolute;
-    right: -5px;
-    bottom: 0;
-    z-index: 1;
-    width: 10px;
-    height: 100%;
-    cursor: col-resize;
+}
+
+@media only screen and (max-width: 875px) {
+  .sider {
+    display: none;
   }
+}
+
+.headsetTab {
+  text-align: left;
+  .title {
+    text-align: center;
+  }
+
+  .sider {
+    background-color: white;
+  }
+}
