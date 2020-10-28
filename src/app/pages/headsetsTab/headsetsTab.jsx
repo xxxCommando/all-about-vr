@@ -54,23 +54,29 @@ class HeadsetsTab extends React.Component {
           {
             title: 'Headset',
             dataIndex: 'img',
-            width: 200,
+            width: 100,
+            responsive: ['sm'],
+            align: 'center',
           },
           {
             title: 'Name',
             dataIndex: 'name',
             width: 100,
+            align: 'center',
           },
           {
             title: 'Price',
             dataIndex: 'price',
             width: 100,
             sorter: (a, b) => a.price - b.price,
+            responsive: ['md'],
+            align: 'center',
           },
           {
             title: 'Res. per eyes',
             dataIndex: 'resolution',
             width: 100,
+            align: 'center',
             sorter: (a, b) => {
               const one = a.resolution.split('x');
               const two = b.resolution.split('x');
@@ -87,12 +93,15 @@ class HeadsetsTab extends React.Component {
             title: 'Refresh Rate',
             dataIndex: 'refreshrate',
             width: 100,
+            align: 'center',
             sorter: (a, b) => a.refreshrate - b.refreshrate,
+
           },
           {
             title: 'FOV',
             dataIndex: 'fov',
             width: 100,
+            align: 'center',
             sorter: (a, b) => a.fov - b.fov,
           },
         ],
@@ -145,7 +154,7 @@ class HeadsetsTab extends React.Component {
                 <Divider />
                 <div className="filter"><FilterDrawer /></div>
 
-                <Table bordered components={this.components} columns={columns} dataSource={data(items)} />
+                <Table size="small" responsive bordered components={this.components} columns={columns} dataSource={data(items)} />
               </Layout.Content>
             </Layout>
           </>
