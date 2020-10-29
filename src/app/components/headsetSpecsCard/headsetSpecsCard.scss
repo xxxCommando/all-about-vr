@@ -1,55 +1,53 @@
 @import "../../../assets/scss/global.scss";
 @import "../../../assets/scss/mixin.scss";
 
-@include theme {
-  .specs-headset-card {
-    position: relative;
+.specs-headset-card {
+  position: relative;
 
-    .ant-card {
-      text-align: center;
-      @include sm {
-        .ant-card-body {
-          padding: 0;
+  .ant-card {
+    text-align: center;
+    @include sm {
+      .ant-card-body {
+        padding: 0;
 
-          .specs-headset-card-body-summary {
-            margin: 24px;
-          }
-        }
-      }
-
-      &.selected {
-        box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.32),
-          0 3px 6px 0 rgba(0, 0, 0, 0.24), 0 5px 12px 4px rgba(0, 0, 0, 0.18);
-      }
-      .ant-image {
-        padding: 18px;
-        img {
-          height: 200px;
-          object-fit: contain;
+        .specs-headset-card-body-summary {
+          margin: 24px;
         }
       }
     }
-    .card-link {
-      @include xxs {
-        display: none;
-      }
-      color: inherit;
-      position: absolute;
-      top: 0;
-      right: 0;
-      padding: 22px;
-      transition: color 0.7s ease;
-      &:hover {
-        color: $light-main-hover;
+
+    &.selected {
+      box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.32),
+        0 3px 6px 0 rgba(0, 0, 0, 0.24), 0 5px 12px 4px rgba(0, 0, 0, 0.18);
+    }
+    .ant-image {
+      padding: 18px;
+      img {
+        height: 200px;
+        object-fit: contain;
       }
     }
   }
-  &.dark {
-    .specs-headset-card {
-      .card-link {
-        &:hover {
-          color: $dark-main-link;
-        }
+  .card-link {
+    @include xxs {
+      display: none;
+    }
+    color: inherit;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 22px;
+    transition: color 0.7s ease;
+    &:hover {
+      color: $light-main-hover;
+    }
+  }
+}
+@include dark {
+  .specs-headset-card {
+    .card-link {
+      &:hover {
+        color: $dark-main-link;
       }
     }
   }

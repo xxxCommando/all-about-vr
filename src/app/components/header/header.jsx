@@ -101,11 +101,11 @@ class Header extends React.Component {
         <Link to="/" onClick={() => doClear()}>
           <div className="logo">
             <LogoAllAboutVR />
-            <p>AllAboutVR</p>
+            <span>AllAboutVR</span>
           </div>
         </Link>
         <div className="right desktop">
-          <span className="version">{`v${packageJson.version}`}</span>
+          <span className="version"><a href={`https://github.com/Bleuh/all-about-vr/tree/${packageJson.version}`} target="_blank" rel="noopener noreferrer">{`v${packageJson.version}`}</a></span>
           <ButtonDarkMode toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
         </div>
         <MenuNav mode="horizontal" className="nav-menu" pathname={pathname} />
@@ -114,7 +114,7 @@ class Header extends React.Component {
           <Button
             type="ghost"
             onClick={this.showDrawer}
-            className={`open-menu ${darkMode ? 'dark' : 'light'}`}
+            className={`open-menu ${darkMode ? 'dark' : ''}`}
             icon={<MenuOutlined />}
             size="large"
           />
@@ -128,7 +128,7 @@ class Header extends React.Component {
           visible={visible}
           footer={(
             <div className="right">
-              <span className="version">{`v${packageJson.version}`}</span>
+              <span className="version"><a href={`https://github.com/Bleuh/all-about-vr/tree/${packageJson.version}`} target="_blank" rel="noopener noreferrer">{`v${packageJson.version}`}</a></span>
               <ButtonDarkMode toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
             </div>
           )}

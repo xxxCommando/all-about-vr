@@ -1,33 +1,31 @@
-@import "~all-about-vr-compare/dark.css";
-@import "../assets/scss/global.scss";
-@import "~antd/dist/antd.min.css";
-@import "../assets/scss/mixin.scss";
+@import '~all-about-vr-compare/dark.css';
+@import '../assets/scss/global.scss';
+@import '~antd/dist/antd.min.css';
+@import '../assets/scss/mixin.scss';
 
-@include theme {
-  .ant-layout {
-    &.App {
-      text-align: center;
-      min-height: 100vh;
-      .layout-content {
-        margin: 24px 16px;
-        padding: 0 24px;
-        height: 100%;
+.ant-layout {
+  &.App {
+    text-align: center;
+    min-height: 100vh;
+    .layout-content {
+      margin: 24px 16px;
+      padding: 0 24px;
+      height: 100%;
 
-        @include sm {
-          padding: 0;
-          margin: 24px 8px;
-        }
+      @include sm {
+        padding: 0;
+        margin: 24px 8px;
       }
+    }
 
-      .layout-content-article {
-        margin: 30px 100px;
-        padding: 24px;
-        height: 100%;
-        background-color: white;
-        @include sm {
-          padding: 24px 12px;
-          margin: 24px;
-        }
+    .layout-content-article {
+      margin: 30px 100px;
+      padding: 24px;
+      height: 100%;
+      background-color: white;
+      @include sm {
+        padding: 24px 12px;
+        margin: 24px;
       }
 
       .single-pushed-content.ant-layout {
@@ -45,17 +43,21 @@
       }
 
     }
-  }
 
-  &.dark {
-    .ant-layout {
-      &.App {
-        .layout-content-article {
-          background-color: #1f1f1f;
-        }
-        .single-pushed-content.ant-layout {
-          background: #1f1f1f; 
-        }
+    .layout-single {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+
+@include dark {
+  .ant-layout {
+    &.App {
+      .layout-content-article {
+        background-color: #1f1f1f;
       }
     }
   }

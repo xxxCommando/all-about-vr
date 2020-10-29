@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import './page404.scss';
 
 const Page404 = () => (
-  <Layout.Content className="layout-404">
+  <Layout.Content className="layout-single layout-404">
     <Result
       status="404"
       title="404"

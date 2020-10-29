@@ -1,21 +1,14 @@
 @import '../../../assets/scss/global.scss';
 @import '../../../assets/scss/mixin.scss';
 
-@include theme {
+@include dark {
   .layout-500 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  &.dark {
-    .layout-500 {
-      .ant-btn {
-        border-color: $dark-main-hover;
-        background-color: $dark-main-hover;
-        &:hover {
-          border-color: $dark-main-link;
-          background-color: $dark-main-link;
-        }
+    .ant-btn {
+      border-color: $dark-main-hover;
+      background-color: $dark-main-hover;
+      &:hover {
+        border-color: $dark-main-link;
+        background-color: $dark-main-link;
       }
     }
   }

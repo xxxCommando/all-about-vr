@@ -13,6 +13,7 @@ import { HeadsetShape } from '../../shape';
 import HeadsetDetails from '../../components/headsetDetails';
 import AutoCompleteHeadset from '../../components/autoCompleteHeadset';
 import BackTopCustom from '../../components/backTopCustom';
+import FilterDrawer from '../../components/filterDrawer';
 
 import { MAX_SELECT } from '../../redux/compare/reducers/compare';
 
@@ -57,7 +58,14 @@ class HeadsetList extends React.Component {
 
   render() {
     const {
-      items, compareMode, compareResult, inputMapping, selectedIds, selected, doClear,
+      items,
+      compareMode,
+      compareResult,
+      inputMapping,
+      selectedIds,
+      selected,
+      doClear,
+      isFiltered,
     } = this.props;
 
     return (
@@ -107,7 +115,13 @@ class HeadsetList extends React.Component {
         <Divider orientation="left">
           {compareMode ? 'Compare mode' : 'Select 2 headsets to compare'}
         </Divider>
-        <p className="price-info">* Prices of headsets are average prices of all necessary elements to use the headset (headset, controllers, base-station).</p>
+        <div className="price-info">
+          <span>
+            * Prices of headsets are average prices of all necessary elements to use the headset
+            (headset, controllers, base-station).
+          </span>
+          <FilterDrawer />
+        </div>
         <Layout>
           <List
             grid={{
@@ -117,7 +131,7 @@ class HeadsetList extends React.Component {
               lg: compareMode ? 2 : 3,
             }}
           >
-            {items.length === 0 ? (
+            {items.length === 0 && !isFiltered ? (
               <div className="ant-row headsets">
                 {waitData.map((name) => (
                   <div className="normal-mode" key={name}>
@@ -136,19 +150,23 @@ class HeadsetList extends React.Component {
                 transitionLeaveTimeout={300}
                 className="ant-row headsets"
               >
-                {items.map((item) => (compareMode && !selected[item.id] ? undefined : (
-                  <div className={compareMode ? 'compare-mode' : 'normal-mode'} key={item.id}>
-                    <List.Item>
-                      <HeadsetDetails
-                        selected={selected[item.id] !== undefined}
-                        item={item}
-                        compareMode={compareMode}
-                        onClick={(id) => this.toggleSelected(id)}
-                        compareResult={compareResult}
-                      />
-                    </List.Item>
-                  </div>
-                )))}
+                {items.length === 0 ? (
+                  <span>No result ! Please reset or change your filters !</span>
+                ) : (
+                  items.map((item) => (compareMode && !selected[item.id] ? undefined : (
+                    <div className={compareMode ? 'compare-mode' : 'normal-mode'} key={item.id}>
+                      <List.Item>
+                        <HeadsetDetails
+                          selected={selected[item.id] !== undefined}
+                          item={item}
+                          compareMode={compareMode}
+                          onClick={(id) => this.toggleSelected(id)}
+                          compareResult={compareResult}
+                        />
+                      </List.Item>
+                    </div>
+                  )))
+                )}
               </ReactCSSTransitionGroup>
             )}
           </List>
@@ -173,6 +191,7 @@ HeadsetList.propTypes = {
   doCompare: PropTypes.func.isRequired,
   setCompareMode: PropTypes.func.isRequired,
   doClear: PropTypes.func.isRequired,
+  isFiltered: PropTypes.bool.isRequired,
 };
 
 HeadsetList.defaultProps = {
