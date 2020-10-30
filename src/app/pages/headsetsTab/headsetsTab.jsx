@@ -13,11 +13,11 @@ const { Sider } = Layout;
 
 const ResizableTitle = (props) => {
   const {
-    onResize, width, ...restProps
+    onResize, width, className, colSpan, onClick, rowSpan, style, title,
   } = props;
 
   if (!width) {
-    return <th {...restProps} />;
+    return <th aria-label="resizable" className={className} colSpan={colSpan} onClick={onClick} rowSpan={rowSpan} style={style} title={title} />;
   }
 
   return (
@@ -26,6 +26,8 @@ const ResizableTitle = (props) => {
       height={0}
       handle={(
         <span
+          role="presentation"
+          aria-label="resizable"
           className="react-resizable-handle"
           onClick={(e) => {
             e.stopPropagation();
@@ -35,9 +37,20 @@ const ResizableTitle = (props) => {
       onResize={onResize}
       draggableOpts={{ enableUserSelectHack: false }}
     >
-      <th {...restProps} />
+      <th aria-label="resizable" className={className} colSpan={colSpan} onClick={onClick} rowSpan={rowSpan} style={style} title={title} />
     </Resizable>
   );
+};
+
+ResizableTitle.propTypes = {
+  onResize: PropTypes.func.isRequired,
+  width: PropTypes.number.isRequired,
+  className: PropTypes.element.isRequired,
+  colSpan: PropTypes.element.isRequired,
+  onClick: PropTypes.element.isRequired,
+  rowSpan: PropTypes.element.isRequired,
+  style: PropTypes.element.isRequired,
+  title: PropTypes.element.isRequired,
 };
 
 class HeadsetsTab extends React.Component {
@@ -84,8 +97,6 @@ class HeadsetsTab extends React.Component {
               const ay = one[1];
               const bx = two[0];
               const by = two[1];
-              console.log(ax);
-              console.log((ax * ay) - (bx * by));
               return (ax * ay) - (bx * by);
             },
           },
@@ -127,13 +138,15 @@ class HeadsetsTab extends React.Component {
         const data = (headsets) => headsets.map((item) => ({
           img: <Image src={item.img} />,
           name: item.name,
-          price: item.price,
+          price: `${item.price} $`,
           resolution: `${item.resolution.x}x${item.resolution.y}`,
-          refreshrate: item.refreshrate,
-          fov: item.fov,
+          refreshrate: `${item.refreshrate} Hz`,
+          fov: `${item.fov}°`,
         }));
 
-        const columns = this.state.columns.map((col, index) => ({
+        const { state } = this;
+        const colState = state.columns;
+        const columns = colState.map((col, index) => ({
           ...col,
           onHeaderCell: (column) => ({
             width: column.width,
