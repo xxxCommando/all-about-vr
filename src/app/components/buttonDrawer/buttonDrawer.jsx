@@ -8,23 +8,12 @@ import { FilterOutlined, ClearOutlined } from '@ant-design/icons';
 import Filter from '../filter';
 import './buttonDrawer.scss';
 
-const initialState = {
-  outDatated: true,
-  comingSoon: true,
-  brands: [],
-  platforms: [],
-  audience: 'all',
-  min: 0,
-  max: 5800,
-};
-
 class buttonDrawer extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       visible: false,
-      ...initialState,
     };
   }
 
@@ -42,9 +31,6 @@ class buttonDrawer extends React.Component {
 
   doClear = () => {
     const { clearFilters } = this.props;
-    this.setState({
-      ...initialState,
-    });
     clearFilters();
   };
 
