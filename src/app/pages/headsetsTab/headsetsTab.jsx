@@ -7,7 +7,7 @@ import { Resizable } from 'react-resizable';
 import './headsetsTab.scss';
 import { HeadsetShape } from '../../shape';
 import ButtonDrawer from '../../components/buttonDrawer';
-import FilterSider from '../../components/filterSider';
+import FilterSider from '../../components/filter';
 
 const { Sider } = Layout;
 
@@ -75,7 +75,13 @@ class HeadsetsTab extends React.Component {
             title: 'Price',
             dataIndex: 'price',
             width: 100,
-            sorter: (a, b) => a.price - b.price,
+            sorter: (a, b) => {
+              const one = a.price.split(' ');
+              const two = b.price.split(' ');
+              const aPrice = one[0];
+              const bPrice = two[0];
+              return aPrice - bPrice;
+            },
             responsive: ['md'],
             align: 'center',
           },
@@ -99,7 +105,13 @@ class HeadsetsTab extends React.Component {
             dataIndex: 'refreshrate',
             width: 100,
             align: 'center',
-            sorter: (a, b) => a.refreshrate - b.refreshrate,
+            sorter: (a, b) => {
+              const one = a.refreshrate.split(' ');
+              const two = b.refreshrate.split(' ');
+              const aRefresh = one[0];
+              const bRefresh = two[0];
+              return aRefresh - bRefresh;
+            },
 
           },
           {
@@ -107,7 +119,13 @@ class HeadsetsTab extends React.Component {
             dataIndex: 'fov',
             width: 100,
             align: 'center',
-            sorter: (a, b) => a.fov - b.fov,
+            sorter: (a, b) => {
+              const one = a.fov.split(' ');
+              const two = b.fov.split(' ');
+              const aFov = one[0];
+              const bFov = two[0];
+              return aFov - bFov;
+            },
           },
         ],
       };
@@ -135,7 +153,7 @@ class HeadsetsTab extends React.Component {
           price: `${item.price} $`,
           resolution: `${item.resolution.x}x${item.resolution.y}`,
           refreshrate: `${item.refreshrate} Hz`,
-          fov: `${item.fov}°`,
+          fov: `${item.fov} °`,
         }));
 
         const { state } = this;

@@ -5,7 +5,7 @@ import {
   Drawer, Button,
 } from 'antd';
 import { FilterOutlined, ClearOutlined } from '@ant-design/icons';
-import FilterSider from '../filterSider';
+import Filter from '../filter';
 import './buttonDrawer.scss';
 
 const initialState = {
@@ -78,7 +78,7 @@ class buttonDrawer extends React.Component {
           </Button>
         </div>
         <Drawer title="Filters" placement="right" closable onClose={this.onClose} visible={visible}>
-          <FilterSider />
+          <Filter />
         </Drawer>
       </>
     );
