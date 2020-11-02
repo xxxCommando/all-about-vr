@@ -187,7 +187,7 @@ class FilterSider extends React.Component {
                 <Col>
                   <span>Max.</span>
                   <Input
-                    value={min}
+                    value={max}
                     addonAfter="$"
                     onChange={(e) => this.onChangeMin(e.target.value)}
                   />
@@ -195,7 +195,7 @@ class FilterSider extends React.Component {
                 <Col>
                   <span>Min.</span>
                   <Input
-                    value={max}
+                    value={min}
                     addonAfter="$"
                     onChange={(e) => this.onChangeMax(e.target.value)}
                   />

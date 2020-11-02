@@ -6,18 +6,18 @@ import {
 import { Resizable } from 'react-resizable';
 import './headsetsTab.scss';
 import { HeadsetShape } from '../../shape';
-import FilterDrawer from '../../components/filterDrawer';
+import ButtonDrawer from '../../components/buttonDrawer';
 import FilterSider from '../../components/filterSider';
 
 const { Sider } = Layout;
 
 const ResizableTitle = (props) => {
   const {
-    onResize, width, className, colSpan, onClick, rowSpan, style, title,
+    onResize, width, ...restProps
   } = props;
 
   if (!width) {
-    return <th aria-label="resizable" className={className} colSpan={colSpan} onClick={onClick} rowSpan={rowSpan} style={style} title={title} />;
+    return <th {...restProps} />;
   }
 
   return (
@@ -37,7 +37,7 @@ const ResizableTitle = (props) => {
       onResize={onResize}
       draggableOpts={{ enableUserSelectHack: false }}
     >
-      <th aria-label="resizable" className={className} colSpan={colSpan} onClick={onClick} rowSpan={rowSpan} style={style} title={title} />
+      <th {...restProps} />
     </Resizable>
   );
 };
@@ -45,12 +45,6 @@ const ResizableTitle = (props) => {
 ResizableTitle.propTypes = {
   onResize: PropTypes.func.isRequired,
   width: PropTypes.number.isRequired,
-  className: PropTypes.element.isRequired,
-  colSpan: PropTypes.element.isRequired,
-  onClick: PropTypes.element.isRequired,
-  rowSpan: PropTypes.element.isRequired,
-  style: PropTypes.element.isRequired,
-  title: PropTypes.element.isRequired,
 };
 
 class HeadsetsTab extends React.Component {
@@ -165,7 +159,9 @@ class HeadsetsTab extends React.Component {
 
                 <Typography.Title level={1} className="title">Headsets</Typography.Title>
                 <Divider />
-                <div className="filter"><FilterDrawer /></div>
+                <div className="filter">
+                  <ButtonDrawer />
+                </div>
 
                 <Table size="small" responsive bordered components={this.components} columns={columns} dataSource={data(items)} />
               </Layout.Content>
