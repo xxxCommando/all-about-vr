@@ -137,7 +137,7 @@ class Header extends React.Component {
             </div>
           )}
         >
-          <MenuNav pathname={pathname} mode="vertical" />
+          <MenuNav pathname={pathname} mode="vertical" clearFilters={clearFilters} />
         </Drawer>
       </Layout.Header>
     );

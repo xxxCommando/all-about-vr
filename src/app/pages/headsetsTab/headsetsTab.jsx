@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Typography, Layout, Divider, Table, Image,
+  Typography, Layout, Divider, Table, Image, Button,
 } from 'antd';
 import { Resizable } from 'react-resizable';
 import './headsetsTab.scss';
+import { ClearOutlined } from '@ant-design/icons';
 import { HeadsetShape } from '../../shape';
 import ButtonDrawer from '../../components/buttonDrawer';
 import FilterSider from '../../components/filter';
@@ -142,9 +143,15 @@ class HeadsetsTab extends React.Component {
         });
       };
 
+      doClear = () => {
+        const { clearFilters } = this.props;
+        clearFilters();
+      };
+
       render() {
         const {
           items,
+          isFiltered,
         } = this.props;
 
         const data = (headsets) => headsets.map((item) => ({
@@ -171,6 +178,16 @@ class HeadsetsTab extends React.Component {
             <Layout className="headsetTab">
 
               <Sider width={250} className="sider">
+                {isFiltered ? (
+                  <Button
+                    type="text"
+                    className="button-custom"
+                    onClick={() => this.doClear()}
+                  >
+                    Reset
+                    <ClearOutlined />
+                  </Button>
+                ) : null}
                 <FilterSider />
               </Sider>
               <Layout.Content className="layout-content">
@@ -191,6 +208,8 @@ class HeadsetsTab extends React.Component {
 
 HeadsetsTab.propTypes = {
   items: PropTypes.arrayOf(HeadsetShape),
+  isFiltered: PropTypes.bool.isRequired,
+  clearFilters: PropTypes.bool.isRequired,
 };
 
 HeadsetsTab.defaultProps = {
