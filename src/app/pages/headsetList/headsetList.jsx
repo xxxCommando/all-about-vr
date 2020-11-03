@@ -36,7 +36,6 @@ class HeadsetList extends React.Component {
       doCompare,
       compareMode,
       setCompareMode,
-
     } = this.props;
     if (selected[id]) {
       remove(id);

@@ -4,9 +4,7 @@ import {
 } from 'antd';
 import HeadsetSpecs from '../../components/headsetSpecs';
 import HeadsetSpecsCard from '../../components/headsetSpecsCard';
-
 import { HeadsetShape } from '../../shape';
-
 import './headset.scss';
 
 const Headset = (props) => {
