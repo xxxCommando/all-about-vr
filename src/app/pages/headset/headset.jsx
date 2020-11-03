@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   Image, Row, Col, Typography, Layout,
 } from 'antd';
