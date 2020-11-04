@@ -14,12 +14,27 @@ const { Sider } = Layout;
 
 const ResizableTitle = (props) => {
   const {
-    onResize, width, children, className, colSpan, rowSpan, style, title,
+    onResize,
+    width,
+    children,
+    className,
+    colSpan,
+    rowSpan,
+    style,
+    title,
+    onClick,
   } = props;
 
   if (!width) {
     return (
-      <th className={className} colSpan={colSpan} rowSpan={rowSpan} style={style} title={title}>
+      <th
+        className={className}
+        colSpan={colSpan}
+        rowSpan={rowSpan}
+        style={style}
+        title={title}
+        onClick={onClick}
+      >
         {children}
       </th>
     );
@@ -42,7 +57,14 @@ const ResizableTitle = (props) => {
       onResize={onResize}
       draggableOpts={{ enableUserSelectHack: false }}
     >
-      <th className={className} colSpan={colSpan} rowSpan={rowSpan} style={style} title={title}>
+      <th
+        className={className}
+        colSpan={colSpan}
+        rowSpan={rowSpan}
+        style={style}
+        title={title}
+        onClick={onClick}
+      >
         {children}
       </th>
     </Resizable>
@@ -58,6 +80,7 @@ ResizableTitle.propTypes = {
   rowSpan: PropTypes.element.isRequired,
   style: PropTypes.shape.isRequired,
   title: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 class HeadsetsTab extends React.Component {
@@ -186,7 +209,11 @@ class HeadsetsTab extends React.Component {
           <div className="filters-container">
             <Filters />
             {isFiltered ? (
-              <Button type="text" className="button-custom" onClick={() => this.doClear()}>
+              <Button
+                type="text"
+                className="button-custom"
+                onClick={() => this.doClear()}
+              >
                 Reset all filters
                 <ClearOutlined />
               </Button>
