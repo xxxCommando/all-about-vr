@@ -9,7 +9,6 @@ import getVisibleHeadsets from '../../redux/headsets/selectors';
 const mapStateToProps = (state) => ({
   items: getVisibleHeadsets(state),
   isFiltered: state.headsets.isFiltered,
-  filters: state.headsets.visibilityFilter,
 });
 
 const mapDispatchToProps = (dispatch) => ({

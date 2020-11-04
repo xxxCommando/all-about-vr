@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import filter from './filter';
+import Filters from './filters';
 import {
   updateFilters,
   clearFilters,
@@ -23,4 +23,4 @@ const mapDispatchToProps = (dispatch) => ({
   clearFilters: () => dispatch(clearFilters()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(filter);
+export default connect(mapStateToProps, mapDispatchToProps)(Filters);
