@@ -1,0 +1,65 @@
+@import '../../../assets/scss/global.scss';
+@import '../../../assets/scss/mixin.scss';
+
+.headsetTab {
+  .sider {
+    border-top: 1px solid white;
+  }
+  .filters-container {
+    padding-top: 10px;
+  }
+}
+
+#components-table-demo-resizable-column {
+  .react-resizable {
+    position: relative;
+    background-clip: padding-box;
+  }
+  .react-resizable-handle {
+    position: absolute;
+    right: -5px;
+    bottom: 0;
+    z-index: 1;
+    width: 10px;
+    height: 100%;
+    cursor: col-resize;
+  }
+}
+
+@media only screen and (min-width: 876px) {
+  .layout-content {
+    .filter {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (max-width: 875px) {
+  .sider {
+    display: none;
+  }
+}
+
+.headsetTab {
+  text-align: left;
+  .title {
+    text-align: center;
+  }
+
+  .sider {
+    background-color: white;
+  }
+}
+
+@include dark {
+  .ant-table-tbody > tr > td,
+  .ant-table-small .ant-table-thead > tr > th {
+    border-right: 1px solid #303030 !important;
+  }
+  .headsetTab {
+    .sider {
+      background-color: $dark-main;
+      border-top: 1px solid #303030;
+    }
+  }
+}

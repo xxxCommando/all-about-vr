@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
-import filterDrawer from './filterDrawer';
+import HeadsetsTab from './headsetsTab';
 import {
   updateFilters,
   clearFilters,
 } from '../../redux/headsets/actions';
+import getVisibleHeadsets from '../../redux/headsets/selectors';
 
 const mapStateToProps = (state) => ({
+  items: getVisibleHeadsets(state),
   isFiltered: state.headsets.isFiltered,
-  filters: state.headsets.visibilityFilter,
-  compareMode: state.compare.compareMode,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -16,4 +16,4 @@ const mapDispatchToProps = (dispatch) => ({
   clearFilters: () => dispatch(clearFilters()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(filterDrawer);
+export default connect(mapStateToProps, mapDispatchToProps)(HeadsetsTab);

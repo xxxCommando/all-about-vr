@@ -16,7 +16,11 @@ import Games from './pages/games';
 import Construction from './pages/pageconstruction';
 import Wiki from './pages/wiki';
 import About from './pages/about';
+import HeadsetsTab from './pages/headsetsTab';
 import ScrollToTop from './components/scrollToTop';
+
+
+
 
 class App extends React.Component {
   componentDidMount() {
@@ -60,7 +64,7 @@ class App extends React.Component {
               />
 
               <Route path="/headsets" exact>
-                <Construction />
+                <HeadsetsTab />
               </Route>
               <Route path="/wiki" exact>
                 <Wiki />

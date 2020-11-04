@@ -13,7 +13,7 @@ import { HeadsetShape } from '../../shape';
 import HeadsetDetails from '../../components/headsetDetails';
 import AutoCompleteHeadset from '../../components/autoCompleteHeadset';
 import BackTopCustom from '../../components/backTopCustom';
-import FilterDrawer from '../../components/filterDrawer';
+import ButtonDrawer from '../../components/buttonDrawer';
 
 import { MAX_SELECT } from '../../redux/compare/reducers/compare';
 
@@ -119,7 +119,7 @@ class HeadsetList extends React.Component {
             * Prices of headsets are average prices of all necessary elements to use the headset
             (headset, controllers, base-station).
           </span>
-          <FilterDrawer />
+          <ButtonDrawer />
         </div>
         <Layout>
           <List

@@ -38,20 +38,9 @@
     }
   }
 }
-.button-custom {
-  font-size: 16px;
-}
-
 @include dark {
-  .button-custom {
-    border: none;
-    color: $white-text;
-    &:hover {
-      color: inherit;
-      background-color: rgba(255, 255, 255, 0.03);
-    }
-  }
-  .ant-drawer-content-wrapper {
+  .filters {
+    background-color: $dark-main;
     .ant-switch-checked {
       background-color: $dark-main-hover;
       box-shadow: none;

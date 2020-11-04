@@ -14,7 +14,10 @@ import packageJson from '../../../../package.json';
 const getPathname = (location) => location.pathname.split('/')[1];
 
 const MenuNav = (props) => {
-  const { mode, className, pathname } = props;
+  const {
+    clearFilters, mode, className, pathname,
+  } = props;
+
   return (
     <Menu
       theme="dark"
@@ -23,10 +26,10 @@ const MenuNav = (props) => {
       selectedKeys={[pathname.length ? pathname : 'home']}
     >
       <Menu.Item key="home">
-        <Link to="/">Comparator</Link>
+        <Link to="/" onClick={() => clearFilters()}>Comparator</Link>
       </Menu.Item>
       <Menu.Item key="headsets">
-        <Link to="/headsets">Headsets</Link>
+        <Link to="/headsets" onClick={() => clearFilters()}>Headsets</Link>
       </Menu.Item>
       <Menu.Item key="wiki">
         <Link to="/wiki">Wiki</Link>
@@ -42,6 +45,7 @@ const MenuNav = (props) => {
 };
 
 MenuNav.propTypes = {
+  clearFilters: PropTypes.func.isRequired,
   mode: PropTypes.string,
   className: PropTypes.string,
   pathname: PropTypes.string.isRequired,
@@ -92,7 +96,7 @@ class Header extends React.Component {
 
   render() {
     const {
-      toggleDarkMode, darkMode, location, doClear,
+      clearFilters, toggleDarkMode, darkMode, location, doClear,
     } = this.props;
     const { visible } = this.state;
     const pathname = getPathname(location);
@@ -108,7 +112,7 @@ class Header extends React.Component {
           <span className="version"><a href={`https://github.com/Bleuh/all-about-vr/tree/${packageJson.version}`} target="_blank" rel="noopener noreferrer">{`v${packageJson.version}`}</a></span>
           <ButtonDarkMode toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
         </div>
-        <MenuNav mode="horizontal" className="nav-menu" pathname={pathname} />
+        <MenuNav mode="horizontal" className="nav-menu" pathname={pathname} clearFilters={clearFilters} />
         {/* mobile */}
         <div className="right mobile">
           <Button
@@ -133,7 +137,7 @@ class Header extends React.Component {
             </div>
           )}
         >
-          <MenuNav pathname={pathname} mode="vertical" />
+          <MenuNav pathname={pathname} mode="vertical" clearFilters={clearFilters} />
         </Drawer>
       </Layout.Header>
     );
@@ -141,6 +145,7 @@ class Header extends React.Component {
 }
 
 Header.propTypes = {
+  clearFilters: PropTypes.func.isRequired,
   toggleDarkMode: PropTypes.func.isRequired,
   darkMode: PropTypes.bool.isRequired,
   location: PropTypes.shape({
