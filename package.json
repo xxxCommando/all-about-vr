@@ -1,6 +1,6 @@
 {
   "name": "all-about-vr",
-  "version": "0.5.4",
+  "version": "0.6.0",
   "description": "All you need to know about vr in one application.",
   "bugs": {
     "url": "https://github.com/Bleuh/all-about-vr/issues",
@@ -38,6 +38,7 @@
     "react-ga": "^3.1.2",
     "react-helmet": "^6.1.0",
     "react-redux": "^7.2.1",
+    "react-resizable": "^1.11.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "redux": "^4.0.5",

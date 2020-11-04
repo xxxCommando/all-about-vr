@@ -1,14 +1,32 @@
-@import '../../../assets/scss/global.scss';
-@import '../../../assets/scss/mixin.scss';
+@import "../../../assets/scss/global.scss";
+@import "../../../assets/scss/mixin.scss";
 
-.single-pushed-content.ant-layout {
-  margin-bottom: 40px;
-  .ant-col{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.layout-content-article {
+  .content {
+    margin-top: 24px;
+    margin-bottom: 24px;
   }
-  .right {
-    flex-direction: row-reverse;
+  .single-pushed-content.ant-layout {
+    margin-bottom: 40px;
+    .ant-col {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .right {
+      flex-direction: row-reverse;
+    }
+    
   }
 }
+
+@include dark {
+  .single-pushed-content.ant-layout {
+    .ant-row{
+      background-color: #1f1f1f;
+    }
+     
+  }
+}
+
+

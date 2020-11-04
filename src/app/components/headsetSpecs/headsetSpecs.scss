@@ -1,5 +1,5 @@
-@import '../../../assets/scss/global.scss';
-@import '../../../assets/scss/mixin.scss';
+@import "../../../assets/scss/global.scss";
+@import "../../../assets/scss/mixin.scss";
 
 .ant-drawer-body {
   padding: 0;
@@ -23,18 +23,17 @@
     }
   }
 }
-.headset-card {
+.specs-headset-card {
   .ant-card-body {
     padding: 0;
     margin: 0;
-    .headset-card-details {
+    .specs-headset-card-details {
       &-title {
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
         font-weight: bold;
-        background-color: #f9f9f9;
         @include md {
           padding: 0 30px !important;
         }
@@ -124,24 +123,24 @@
 
 @include dark {
   .button-standalone {
-    background-color: $dark-main-hover;
-    border-color: $dark-main-hover;
+    background-color: #503d4d;
+    border-color: #503d4d;
     &:active {
-      background-color: $dark-main-hover;
-      border-color: $dark-main-hover;
+      background-color: #503d4d;
+      border-color: #503d4d;
       color: $white-text;
     }
     &:focus {
-      background-color: $dark-main-hover;
-      border-color: $dark-main-hover;
+      background-color: #503d4d;
+      border-color: #503d4d;
       color: $white-text;
     }
   }
-  .headset-card {
+  .specs-headset-card {
     .ant-card-body {
-      .headset-card-details {
+      .specs-headset-card-details {
         &-title {
-          background-color: $dark-main-hover;
+          background-color: #503d4d;
           & a {
             color: $white-text;
           }

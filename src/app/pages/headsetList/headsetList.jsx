@@ -13,11 +13,15 @@ import { HeadsetShape } from '../../shape';
 import HeadsetDetails from '../../components/headsetDetails';
 import AutoCompleteHeadset from '../../components/autoCompleteHeadset';
 import BackTopCustom from '../../components/backTopCustom';
-import FilterDrawer from '../../components/filterDrawer';
+import ButtonDrawer from '../../components/buttonDrawer';
 
 import { MAX_SELECT } from '../../redux/compare/reducers/compare';
 
 const waitData = [...Array(12).keys()].map((index) => `Headset ${index}`);
+
+const scrollToTop = () => {
+  window.scrollTo(0, 0);
+};
 
 class HeadsetList extends React.Component {
   toggleSelected(id, selectorIndex = null) {
@@ -45,6 +49,7 @@ class HeadsetList extends React.Component {
       add(selectedItem, id);
       if (isFull) {
         doCompare();
+        scrollToTop();
         setCompareMode(isFull);
       }
     }
@@ -114,7 +119,7 @@ class HeadsetList extends React.Component {
             * Prices of headsets are average prices of all necessary elements to use the headset
             (headset, controllers, base-station).
           </span>
-          <FilterDrawer />
+          <ButtonDrawer />
         </div>
         <Layout>
           <List

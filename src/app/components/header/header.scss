@@ -83,17 +83,17 @@
 .drawer-mobile {
   .ant-drawer-content {
     .ant-drawer-header {
-      background-color: #001529;
+      background-color: $light-main;
       border-bottom: none;
       .ant-drawer-title {
         color: $white-text;
       }
     }
     .ant-drawer-body {
-      background-color: #001529;
+      background-color: $light-main;
     }
     .ant-drawer-footer {
-      background-color: #001529;
+      background-color: $light-main;
     }
   }
 }

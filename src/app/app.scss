@@ -27,6 +27,21 @@
         padding: 24px 12px;
         margin: 24px;
       }
+
+      .single-pushed-content.ant-layout {
+        margin-bottom: 40px;
+        background: white;
+        text-align: justify;
+        .ant-col{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .right {
+          flex-direction: row-reverse;
+        }
+      }
+
     }
 
     .layout-single {
@@ -37,11 +52,12 @@
   }
 }
 
+
 @include dark {
   .ant-layout {
     &.App {
       .layout-content-article {
-        background-color: #1f1f1f;
+        background-color: $dark-main;
       }
     }
   }
