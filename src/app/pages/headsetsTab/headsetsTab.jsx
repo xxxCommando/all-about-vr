@@ -6,6 +6,7 @@ import {
 import { Resizable } from 'react-resizable';
 import './headsetsTab.scss';
 import { ClearOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 import { HeadsetShape } from '../../shape';
 import ButtonDrawer from '../../components/buttonDrawer';
 import Filters from '../../components/filters';
@@ -187,7 +188,7 @@ class HeadsetsTab extends React.Component {
 
     const data = (headsets) => headsets.map((item) => ({
       img: <Image src={item.img} />,
-      name: item.name,
+      name: <Link to={`/headset/${item.id}`}>{`${item.name}`}</Link>,
       price: `${item.price} $`,
       resolution: `${item.resolution.x}x${item.resolution.y}`,
       refreshrate: `${item.refreshrate} Hz`,
