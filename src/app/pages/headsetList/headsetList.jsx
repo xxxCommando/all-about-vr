@@ -19,6 +19,10 @@ import { MAX_SELECT } from '../../redux/compare/reducers/compare';
 
 const waitData = [...Array(12).keys()].map((index) => `Headset ${index}`);
 
+const scrollToTop = () => {
+  window.scrollTo(0, 0);
+};
+
 class HeadsetList extends React.Component {
   toggleSelected(id, selectorIndex = null) {
     const {
@@ -45,6 +49,7 @@ class HeadsetList extends React.Component {
       add(selectedItem, id);
       if (isFull) {
         doCompare();
+        scrollToTop();
         setCompareMode(isFull);
       }
     }

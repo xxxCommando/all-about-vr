@@ -17,6 +17,10 @@ import Construction from './pages/pageconstruction';
 import Wiki from './pages/wiki';
 import About from './pages/about';
 import HeadsetsTab from './pages/headsetsTab';
+import ScrollToTop from './components/scrollToTop';
+
+
+
 
 class App extends React.Component {
   componentDidMount() {
@@ -39,6 +43,7 @@ class App extends React.Component {
 
     return (
       <Router>
+        <ScrollToTop />
         <Layout className="App">
           <Header />
           {fatalError || fatalErrorGame ? (
@@ -48,11 +53,16 @@ class App extends React.Component {
               <Route path="/" exact>
                 <HeadsetList />
               </Route>
+
               <Route
                 path="/headset/:id"
-              >
-                <Construction />
-              </Route>
+                component={({ match }) => (isLoaded ? (
+                  <Headset
+                    id={match.params.id}
+                  />
+                ) : null)}
+              />
+
               <Route path="/headsets" exact>
                 <HeadsetsTab />
               </Route>
@@ -78,8 +88,8 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  darkMode: PropTypes.bool.isRequired,
   isLoaded: PropTypes.bool.isRequired,
+  darkMode: PropTypes.bool.isRequired,
   fatalError: PropTypes.bool.isRequired,
   fatalErrorGame: PropTypes.bool.isRequired,
   fetchHeadsets: PropTypes.func.isRequired,
