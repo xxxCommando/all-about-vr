@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import './construction.scss';
 
 const Construction = () => (
-  <Layout.Content className="layout-construction">
+  <Layout.Content className="layout-single layout-construction">
     <Result
       icon={<FormatPainterOutlined />}
       title="This page is under construction and is coming soon!"

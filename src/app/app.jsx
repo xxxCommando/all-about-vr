@@ -23,7 +23,7 @@ class App extends React.Component {
     const { fetchHeadsets, fetchGames, darkMode } = this.props;
     fetchHeadsets();
     fetchGames();
-    document.body.classList = darkMode ? ['dark'] : ['light'];
+    document.body.classList = darkMode ? ['dark'] : [];
     const metaThemeColor = document.querySelector('meta[name=theme-color]');
     metaThemeColor.setAttribute('content', !darkMode ? '#1890ff' : '#503D4D');
     if (process.env.NODE_ENV === 'production') {
