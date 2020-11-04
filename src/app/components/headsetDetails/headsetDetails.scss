@@ -124,16 +124,16 @@
 
 @include dark {
   .button-standalone {
-    background-color: #503d4d;
-    border-color: #503d4d;
+    background-color: $dark-main-hover;
+    border-color: $dark-main-hover;
     &:active {
-      background-color: #503d4d;
-      border-color: #503d4d;
+      background-color: $dark-main-hover;
+      border-color: $dark-main-hover;
       color: $white-text;
     }
     &:focus {
-      background-color: #503d4d;
-      border-color: #503d4d;
+      background-color: $dark-main-hover;
+      border-color: $dark-main-hover;
       color: $white-text;
     }
   }
@@ -141,7 +141,7 @@
     .ant-card-body {
       .headset-card-details {
         &-title {
-          background-color: #503d4d;
+          background-color: $dark-main-hover;
           & a {
             color: $white-text;
           }

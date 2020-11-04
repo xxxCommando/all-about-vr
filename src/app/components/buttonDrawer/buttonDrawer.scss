@@ -1,0 +1,17 @@
+@import '../../../assets/scss/global.scss';
+@import '../../../assets/scss/mixin.scss';
+
+.button-custom {
+  font-size: 16px;
+}
+
+@include dark {
+  .button-custom {
+    border: none;
+    color: $white-text;
+    &:hover {
+      color: inherit;
+      background-color: rgba(255, 255, 255, 0.03);
+    }
+  }
+}
