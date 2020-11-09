@@ -35,7 +35,7 @@ const About = () => (
       </p>
       <p>
         I wanted to create a place where people can find all any informations
-        about VR because I had enough of asking who is the best VR headset for
+        about VR because I had enough of asking which is the best VR headset for
         my setup to people online. So I&apos;m one of All about VR users.
       </p>
 

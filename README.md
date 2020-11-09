@@ -20,7 +20,7 @@ Why we decided to create All about VR ?
 
 [Bleuh](https://bastien.hezflix.com/) &middot; Passionate JavaScript Developer
 
-> I wanted to create a place where people can find all any informations about VR because I had enough of asking who is the best VR headset for my setup to people online. So I'm one of All about VR users.
+> I wanted to create a place where people can find all any informations about VR because I had enough of asking which is the best VR headset for my setup to people online. So I'm one of All about VR users.
 
 [xCommando](https://github.com/xxxCommando) &middot; Web Developer
 
@@ -34,7 +34,6 @@ Why we decided to create All about VR ?
   - Redux
 - Firebase
   - Firestore
-  - Storage
 - Docker
   - Developement
   - Prod deployment
