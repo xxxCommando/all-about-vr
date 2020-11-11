@@ -102,7 +102,7 @@ class Header extends React.Component {
     const pathname = getPathname(location);
     return (
       <Layout.Header className="header">
-        <Link to="/" onClick={() => doClear()}>
+        <Link to="/" onClick={() => doClear()} title="homepage">
           <div className="logo">
             <LogoAllAboutVR />
             <span>AllAboutVR</span>
@@ -121,6 +121,7 @@ class Header extends React.Component {
             className={`open-menu ${darkMode ? 'dark' : ''}`}
             icon={<MenuOutlined />}
             size="large"
+            title="Dark Mode"
           />
         </div>
         <Drawer
