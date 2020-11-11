@@ -7,11 +7,11 @@ import {
 } from '../types';
 
 const initialState = {
-  collectionRef: null,
-  formatedHeadset: [],
+  items: [],
   isFetching: false,
   isLoaded: false,
   fatalError: false,
+  errorMessage: '',
   isFiltered: false,
   visibilityFilter: {
     outDatated: true,
@@ -37,11 +37,7 @@ export default function headsets(state = initialState, action) {
         ...state,
         isFetching: false,
         isLoaded: true,
-        collectionRef: action.headsetsRef,
-        formatedHeadset: action.headsetsRef.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        })),
+        items: action.headsets,
       };
 
     case INVALIDE_HEADSETS:
@@ -49,6 +45,7 @@ export default function headsets(state = initialState, action) {
         ...state,
         isFetching: false,
         fatalError: true,
+        errorMessage: action.message || '',
       };
 
     case UPDATE_FILTERS: {

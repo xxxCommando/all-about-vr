@@ -1,13 +1,14 @@
 import {
   createStore, combineReducers, compose, applyMiddleware,
 } from 'redux';
-import thunk from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
 import reduxCookiesMiddleware, { getStateFromCookies } from 'redux-cookies-middleware';
-import headsetsReducer from './redux/headsets/reducers';
-import compareReducer from './redux/compare/reducers';
-import allAboutVRcombine from './redux/all-about-vr/reducers';
-import { COOKIE_DARK_MODE_NAME } from './redux/all-about-vr/reducers/darkMode';
-import gamesReducer from './redux/games/reducers';
+import headsetsReducer from './state/redux/headsets/reducers';
+import compareReducer from './state/redux/compare/reducers';
+import allAboutVRcombine from './state/redux/all-about-vr/reducers';
+import { COOKIE_DARK_MODE_NAME } from './state/redux/all-about-vr/reducers/darkMode';
+import gamesReducer from './state/redux/games/reducers';
+import rootSaga from './state/sagas';
 
 let initialState = {
   allAboutVR: {
@@ -34,8 +35,15 @@ const rootReducer = combineReducers({
   allAboutVR: allAboutVRcombine,
 });
 
-export default createStore(
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore(
   rootReducer,
   initialState,
-  composeEnhancer(applyMiddleware(thunk, reduxCookiesMiddleware(cookiesPaths))),
+  composeEnhancer(applyMiddleware(sagaMiddleware, reduxCookiesMiddleware(cookiesPaths))),
 );
+
+// need to remove : redux-tunk et firebase
+sagaMiddleware.run(rootSaga);
+
+export default store;

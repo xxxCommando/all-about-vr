@@ -8,8 +8,8 @@ import {
   setCompareMode,
   doCompare,
   doClear,
-} from '../../redux/compare/actions';
-import getVisibleHeadsets from '../../redux/headsets/selectors';
+} from '../../state/redux/compare/actions';
+import getVisibleHeadsets from '../../state/redux/headsets/selectors';
 
 const mapStateToProps = (state) => ({
   items: getVisibleHeadsets(state),

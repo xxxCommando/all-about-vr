@@ -32,8 +32,9 @@ Why we decided to create All about VR ?
   - Ant design
   - Scss
   - Redux
-- Firebase
-  - Firestore
+- Data
+  - Mongodb (api)
+  - Self hosted images
 - Docker
   - Developement
   - Prod deployment
