@@ -1,6 +1,7 @@
 import {
   createStore, combineReducers, compose, applyMiddleware,
 } from 'redux';
+import thunk from 'redux-thunk';
 import createSagaMiddleware from 'redux-saga';
 import reduxCookiesMiddleware, { getStateFromCookies } from 'redux-cookies-middleware';
 import headsetsReducer from './state/redux/headsets/reducers';
@@ -40,7 +41,7 @@ const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   rootReducer,
   initialState,
-  composeEnhancer(applyMiddleware(sagaMiddleware, reduxCookiesMiddleware(cookiesPaths))),
+  composeEnhancer(applyMiddleware(thunk, sagaMiddleware, reduxCookiesMiddleware(cookiesPaths))),
 );
 
 // need to remove : redux-tunk et firebase
