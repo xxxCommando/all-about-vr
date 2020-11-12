@@ -3,8 +3,8 @@ import HeadsetsTab from './headsetsTab';
 import {
   updateFilters,
   clearFilters,
-} from '../../redux/headsets/actions';
-import getVisibleHeadsets from '../../redux/headsets/selectors';
+} from '../../state/redux/headsets/actions';
+import getVisibleHeadsets from '../../state/redux/headsets/selectors';
 
 const mapStateToProps = (state) => ({
   items: getVisibleHeadsets(state),

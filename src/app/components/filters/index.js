@@ -3,7 +3,7 @@ import Filters from './filters';
 import {
   updateFilters,
   clearFilters,
-} from '../../redux/headsets/actions';
+} from '../../state/redux/headsets/actions';
 
 const mapStateToProps = (state) => ({
   isFiltered: state.headsets.isFiltered,

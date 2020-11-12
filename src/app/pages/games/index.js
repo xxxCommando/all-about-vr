@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Games from './games';
 
 const mapStateToProps = (state) => ({
-  items: state.games.formatedGames,
+  items: state.games.items,
 });
 
 const mapDispatchToProps = () => ({

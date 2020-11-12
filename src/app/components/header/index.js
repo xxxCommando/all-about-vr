@@ -2,11 +2,11 @@ import { connect } from 'react-redux';
 import header from './header';
 import {
   doClear,
-} from '../../redux/compare/actions';
+} from '../../state/redux/compare/actions';
 import {
   clearFilters,
-} from '../../redux/headsets/actions';
-import { toggleDarkMode } from '../../redux/all-about-vr/actions';
+} from '../../state/redux/headsets/actions';
+import { toggleDarkMode } from '../../state/redux/all-about-vr/actions';
 
 const mapStateToProps = () => ({
 });

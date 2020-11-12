@@ -24,6 +24,9 @@
 .ant-select {
   &.auto-complete-headset {
     width: 100%;
+    .ant-input-affix-wrapper {
+        z-index: initial;
+    }
     .ant-select-selection-search {
       > span {
         height: 80px;
@@ -44,6 +47,7 @@
           width: 80px;
           display: flex;
           flex-direction: row-reverse;
+          z-index: 0;
         }
       }
     }

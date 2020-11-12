@@ -3,7 +3,7 @@ import buttonDrawer from './buttonDrawer';
 import {
   updateFilters,
   clearFilters,
-} from '../../redux/headsets/actions';
+} from '../../state/redux/headsets/actions';
 
 const mapStateToProps = (state) => ({
   isFiltered: state.headsets.isFiltered,
