@@ -1,1 +1,94 @@
-offline
+<!doctype html>
+<html lang="fr">
+
+
+<head>
+  <meta charset="utf-8">
+  <title>Offline</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+
+  <style>
+    .body-offline{
+        background-color: #f0f2f5;
+        font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    }
+    .button-offline{
+        color: #fff;
+        background: #1890ff;
+        border-color: #1890ff;
+        text-shadow: 0 -1px 0 rgba(0,0,0,.12);
+        box-shadow: 0 2px 0 rgba(0,0,0,.045);
+        height: 32px;
+        padding: 4px 15px;
+        font-size: 14px;
+        border-radius: 2px;
+    }
+
+    .warning {
+        position: relative;
+        border-left: 0.70em solid transparent;
+        border-right: 0.70em solid transparent;
+        border-bottom: 1.35em solid #ffdd40;
+        top: -1em;
+    }
+
+    .warning::before { 
+        content: "⚠";
+        top: 0.40em;
+        left: -0.45em;
+        position: absolute;
+        color: black;
+        font-size: 2em;
+        line-height: 1em;
+    }
+
+    .sign{
+        text-align: center;
+    }
+
+    .title{
+        margin-top: 100px;
+        text-align: center;
+    }
+
+    .btn{
+        text-align: center;
+    }
+
+    span {font-size: 1000%;}
+
+    .center {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+  </style>
+</head>
+
+<body class="body-offline">
+  <section class="section-offline"></section>
+      <div class="center">
+        <div>
+            <div class="sign">
+                <span class="warning"></span>
+            </div>
+            <div class="title">
+                <h1>There are some problems with your internet connection.</h1>
+            </div>
+            <div class="btn">
+                <form action="https://all-about-vr.com/">
+                    <input class="button-offline" type="submit" value="Go to AllAboutVR" />
+                  </form>
+            </div>  
+        </div>          
+      </div>
+  </section>
+</body>
+
+
+</html>
