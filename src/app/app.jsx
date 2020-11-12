@@ -11,6 +11,7 @@ import Header from './components/header';
 import Footer from './components/footer';
 import Page404 from './pages/page404';
 import Page500 from './pages/page500';
+import Offline from './pages/offline';
 import Headset from './pages/headset';
 import Games from './pages/games';
 import Wiki from './pages/wiki';
@@ -70,6 +71,9 @@ class App extends React.Component {
               </Route>
               <Route path="/about" exact>
                 <About />
+              </Route>
+              <Route path="/offline" exact>
+                <Offline />
               </Route>
               <Route>
                 <Page404 />
