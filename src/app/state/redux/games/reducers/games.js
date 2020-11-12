@@ -5,11 +5,11 @@ import {
 } from '../types';
 
 const initialState = {
-  collectionRef: null,
-  formatedGames: [],
+  items: [],
   isFetching: false,
   isLoaded: false,
   fatalError: false,
+  errorMessage: '',
 };
 
 export default function games(state = initialState, action) {
@@ -25,11 +25,7 @@ export default function games(state = initialState, action) {
         ...state,
         isFetching: false,
         isLoaded: true,
-        collectionRef: action.gamesRef,
-        formatedGames: action.gamesRef.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        })),
+        items: action.games,
       };
 
     case INVALIDE_GAMES:
@@ -37,6 +33,7 @@ export default function games(state = initialState, action) {
         ...state,
         isFetching: false,
         fatalError: true,
+        errorMessage: action.message || '',
       };
 
     default:

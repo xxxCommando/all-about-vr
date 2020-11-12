@@ -15,7 +15,7 @@ import AutoCompleteHeadset from '../../components/autoCompleteHeadset';
 import BackTopCustom from '../../components/backTopCustom';
 import ButtonDrawer from '../../components/buttonDrawer';
 
-import { MAX_SELECT } from '../../redux/compare/reducers/compare';
+import { MAX_SELECT } from '../../state/redux/compare/reducers/compare';
 
 const waitData = [...Array(12).keys()].map((index) => `Headset ${index}`);
 

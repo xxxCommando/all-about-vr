@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
 const getVisibilityFilter = (state) => state.headsets.visibilityFilter;
-const getHeadsets = (state) => state.headsets.formatedHeadset;
+const getHeadsets = (state) => state.headsets.items;
 
 const getVisibleHeadsets = createSelector(
   [getVisibilityFilter, getHeadsets],

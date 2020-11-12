@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import App from './app';
-import { fetchHeadsets } from './redux/headsets/actions';
-import { fetchGames } from './redux/games/actions';
+import { fetchHeadsets } from './state/redux/headsets/actions';
+import { fetchGames } from './state/redux/games/actions';
 
 const mapStateToProps = (state) => ({
   isLoaded: state.headsets.isLoaded,
