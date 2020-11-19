@@ -76,4 +76,4 @@ jobs:
           docker tag $IMAGE_NAME $IMAGE_ID:latest
 
           # Push
-          docker push $IMAGE_ID:$VERSION
+          docker push $IMAGE_ID
