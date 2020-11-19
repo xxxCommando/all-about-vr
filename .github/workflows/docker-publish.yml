@@ -1,4 +1,3 @@
-
 name: Docker
 
 on:
@@ -6,10 +5,6 @@ on:
     # Publish `master` as Docker `latest` image.
     branches:
       - master
-
-    # Publish `v1.2.3` tags as releases.
-    tags:
-      - v*
 
   # Run tests for any PRs.
   pull_request:
@@ -20,8 +15,6 @@ env:
   REACT_APP_APIURL: ${{ secrets.REACT_APP_APIURL }}
 
 jobs:
-  # Run tests.
-  # See also https://docs.docker.com/docker-hub/builds/automated-testing/
   test:
     runs-on: ubuntu-latest
 
@@ -42,10 +35,7 @@ jobs:
             DOCKER_BUILDKIT=1 docker build --file Dockerfile --ssh default=~/.ssh/id_rsa .
           fi
 
-  # Push image to GitHub Packages.
-  # See also https://docs.docker.com/docker-hub/builds/
   push:
-    # Ensure test job passes before pushing image.
     needs: test
 
     runs-on: ubuntu-latest
@@ -65,12 +55,7 @@ jobs:
           --tag $IMAGE_NAME
 
       - name: Log into GitHub Container Registry
-      # TODO: Create a PAT with `read:packages` and `write:packages` scopes and save it as an Actions secret `CR_PAT`
         run: echo "${{ secrets.CR_PAT }}" | docker login -u bleuh --password-stdin
-
-      - name: Get tag name
-        uses: olegtarasov/get-tag@v2
-        id: tagName
 
       - name: Push image to GitHub Container Registry
         run: |
@@ -80,18 +65,15 @@ jobs:
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
 
           # Strip git ref prefix from version
-          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+          VERSION=${GITHUB_REF#refs/*/}
 
-          # Strip "v" prefix from tag name
-          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
-
-          # Use Docker `latest` tag convention
-          [ "$VERSION" == "master" ] && VERSION=latest
-
+          # Logs
           echo IMAGE_ID=$IMAGE_ID
           echo VERSION=$VERSION
-          echo GIT_TAG_NAME=$GIT_TAG_NAME
 
+          # Tags
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
-          docker tag $IMAGE_NAME $IMAGE_ID:$GIT_TAG_NAME
+          docker tag $IMAGE_NAME $IMAGE_ID:latest
+
+          # Push
           docker push $IMAGE_ID:$VERSION
