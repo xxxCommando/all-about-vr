@@ -26,6 +26,10 @@ Why we decided to create All about VR ?
 
 > As a junior developer, I wanted to do a side project to learn new things. With this project and thanks to my experimented friend Bleuh I have improved my skills using React and how to code in a clean way.
 
+[Pouleyy](https://github.com/Pouleyy) &middot; Backend Developer
+
+> I wanted to help my friends on this project that could assist people decision. Moreover it was an opportunity to discover Typescript and React. Now I'm up to date on Javascript eco system and some CI/CD stuff.
+
 ## Project architecture
 
 - React

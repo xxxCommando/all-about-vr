@@ -47,6 +47,15 @@ const About = () => (
         things. With this project and thanks to my experimented friend Bleuh I
         have improved my skills using React and how to code in a clean way.
       </p>
+
+      <p className="title">
+        Pouleyy · Backend Developer
+      </p>
+      <p>
+        I wanted to help my friends on this project that could assist people decision.
+        Moreover it was an opportunity to discover Typescript and React.
+        Now I&apos;m up to date on Javascript eco system and some CI/CD stuff.
+      </p>
       <Divider className="divider">Other Informations</Divider>
       <p>
         If you want more informations about how we create this website, check our
