@@ -52,7 +52,7 @@ const HeadsetSpecs = (props) => {
         Date Release
       </Card.Grid>
       <Card.Grid hoverable={false} className="specs-headset-card-details-normal">
-        {item.releasedate ? moment(item.releasedate.toDate()).calendar() : ''}
+        {item.releasedate ? moment.unix(item.releasedate.seconds).format('YYYY-MM-DD') : ''}
       </Card.Grid>
       <Card.Grid hoverable={false} className="specs-headset-card-details-normal-text">
         Brand
