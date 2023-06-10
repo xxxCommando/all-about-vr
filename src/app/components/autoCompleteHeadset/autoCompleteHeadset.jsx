@@ -123,6 +123,7 @@ class AutoCompleteHeadset extends React.Component {
             maxLength="50"
             size="large"
             suffix={<div />}
+
           />
         </AutoComplete>
         <div className="auto-complete-headset-delete">

@@ -21,7 +21,13 @@
     }
   }
 }
+.ant-card-bordered{
+  border-radius: 10px;
+}
 .ant-select {
+  &-dropdown{
+    border-radius:15px;
+  }
   &.auto-complete-headset {
     width: 100%;
     .ant-input-affix-wrapper {
@@ -30,6 +36,7 @@
     .ant-select-selection-search {
       > span {
         height: 80px;
+        border-radius: 20px;
         .ant-input-prefix {
           width: 80px;
           .ant-avatar {
