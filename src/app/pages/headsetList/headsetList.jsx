@@ -45,6 +45,7 @@ class HeadsetList extends React.Component {
       if (selectedIds.length === MAX_SELECT) return;
       const selectedItem = items.find((item) => item.id === id);
       const isFull = selectedIds.length + 1 === MAX_SELECT;
+      console.log(isFull);
       addMapping(selectedItem, selectorIndex);
       add(selectedItem, id);
       if (isFull) {
@@ -53,6 +54,90 @@ class HeadsetList extends React.Component {
         setCompareMode(isFull);
       }
     }
+  }
+
+  displayListOfLoadingHeadsets() {
+    const { compareMode } = this.props;
+    return (
+      <List
+        grid={{
+          gutter: 16,
+          column: compareMode ? 2 : 5,
+          xs: 2,
+          sm: 2,
+          md: compareMode ? 2 : 4,
+          lg: compareMode ? 2 : 4,
+          xl: compareMode ? 2 : 5,
+          xxl: compareMode ? 2 : 5,
+        }}
+        dataSource={waitData}
+        renderItem={(item) => (
+
+          <div className="normal-mode" key={item}>
+            <List.Item>
+              <div className="headset-card">
+                <Card loading title={item} />
+              </div>
+            </List.Item>
+          </div>
+
+        )}
+      />
+    );
+  }
+
+  displayListOfHeadsets(isFiltered) {
+    const {
+      items,
+      compareMode,
+      compareResult,
+      selected,
+    } = this.props;
+
+    if (items.length === 0 && !isFiltered) {
+      // Show list of loading headset
+      return this.displayListOfLoadingHeadsets();
+    } if (items.length === 0) {
+      // Show that no headsets are available
+      return (
+        <ReactCSSTransitionGroup
+          transitionName="fade-headsets"
+          transitionEnterTimeout={700}
+          transitionLeaveTimeout={300}
+          className="ant-row headsets"
+        >
+          <span>No result ! Please reset or change your filters !</span>
+        </ReactCSSTransitionGroup>
+      );
+    }
+    return (
+
+      <ReactCSSTransitionGroup
+        transitionName="fade-headsets"
+        transitionEnterTimeout={700}
+        transitionLeaveTimeout={300}
+        className="ant-row headsets"
+      >
+        <div className={compareMode ? 'grid-container-compare' : 'grid-container'}>
+
+          {items.map((item) => (compareMode && !selected[item.id] ? null : (
+
+            <div className={compareMode ? 'compare-mode' : 'normal-mode'} key={item.id}>
+
+              <HeadsetDetails
+                selected={selected[item.id] !== undefined}
+                item={item}
+                compareMode={compareMode}
+                onClick={(id) => this.toggleSelected(id)}
+                compareResult={compareResult}
+              />
+
+            </div>
+          )))}
+        </div>
+      </ReactCSSTransitionGroup>
+
+    );
   }
 
   render() {
@@ -122,10 +207,13 @@ class HeadsetList extends React.Component {
           <ButtonDrawer />
         </div>
         <Layout>
+
+          {this.displayListOfHeadsets(items, isFiltered, compareMode, compareResult, selected)}
+          {/*
           <List
             grid={{
               gutter: 16,
-              column: compareMode ? 2 : 4,
+              column: compareMode ? 2 : 5,
               sm: 2,
               lg: compareMode ? 2 : 3,
             }}
@@ -169,6 +257,7 @@ class HeadsetList extends React.Component {
               </ReactCSSTransitionGroup>
             )}
           </List>
+                  */}
         </Layout>
         <BackTopCustom onClick={doClear} icon={compareMode ? <DeleteOutlined /> : null} />
       </Layout.Content>

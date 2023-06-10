@@ -115,6 +115,32 @@
     }
   }
 }
+
+.grid-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 16px;
+  @include xl {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+  @media screen and (max-width: 1100px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    @include lg {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  @include md {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.grid-container-compare {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 16px;
+}
+
 .ant-divider-horizontal.ant-divider-with-text {
   &::before,
   &::after {

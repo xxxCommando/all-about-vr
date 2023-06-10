@@ -15,10 +15,10 @@ const fov = `
   FOV mean Field Of View, it's the extent of the observable world that is seen at any given moment. The most common FOV on VR headsets is 110°.
 `;
 const refreshrate = `
-The refresh rate is the number of times the monitor updates with new images each second. The higher the refresh rate, the smoother the delivered visuals and the powerfull you're computer must be.
+The refresh rate is the number of times the monitor updates with new images each second. The higher the refresh rate, the smoother the delivered visuals and the powerful you're computer must be.
 `;
 const resolution = `
-The display resolution of a display device is the number of distinct pixels in each dimension that can be displayed. It is usually quoted as width × height, with the units in pixels: for example, 1024 × 768 means the width is 1024 pixels and the height is 768 pixels. The higher the resolution, the higher the delivered visuals details and the powerfull you're computer must be.
+The display resolution of a display device is the number of distinct pixels in each dimension that can be displayed. It is usually quoted as width × height, with the units in pixels: for example, 1024 × 768 means the width is 1024 pixels and the height is 768 pixels. The higher the resolution, the higher the delivered visuals details and the powerful you're computer must be.
 `;
 const pixeldensity = `
 Pixels per inch (ppi) and pixels per centimetre (ppcm or pixels/cm) are measurements of the pixel density of an electronic image device. PPI (monitor) = Number of Pixels / Size in inches
@@ -29,6 +29,8 @@ const screen = `
 const ipd = `
   IPD stands for interpupillary distance—which simply means the distance between the center of your eyes. Some headsets provide mechanical IPD adjustment and others software adjustable ipd adjustement. In our comparator we considere that only the mechanical IPD adjustment is valid.
 `;
+const diopter = `
+The adjustable diopter feature enables you to customize the focal length of the lenses, providing the convenience of wearing the headset without the need for glasses.`;
 const flipup = `
   Flipup mean that you can lift the front part of the VR Headset without removing the headset.
 `;
@@ -42,16 +44,16 @@ const eye = `
   Eye tracking mean that the VR Headset have an internal system to track the position of your eyes. This technology can improve your experience in VR.
 `;
 const facial = `
-Facial recognition means that a camera will track your facial expressions which can be used in-game, specially social games.
+Face tracking means that a camera will track your facial expressions which can be used in-game, specially social games.
 `;
 const wireless = `
- Wireless mean that the VR Headset can natively be use without cable (example: Oculus Quest).
+ Wireless mean that the VR Headset can be use without cable natively or with an external device (example: Oculus Quest).
 `;
 const standalone = `
   Standalone mean that the VR headset can work without computer because he have internal hardware and battery (example : Oculus Quest). Some standalone VR headset can be linked to a computer to profit of the power of the computer.
 `;
 const pc = `
-  PC Requirement come from manufacturer of the VR headset. But we strongly recommend you to have better specs than the requirement. VR headsets have screen(s) with big resolution and high refresh rate, you need to have a powerfull GPU and CPU and a least 8GB of ram.
+  PC Requirement come from manufacturer of the VR headset. But we strongly recommend you to have better specs than the requirement. VR headsets have screen(s) with big resolution and high refresh rate, you need to have a powerful GPU and CPU and a least 8GB of ram.
 `;
 
 class Wiki extends React.Component {
@@ -110,6 +112,10 @@ class Wiki extends React.Component {
               <p>{ipd}</p>
             </Panel>
             <Divider />
+            <Panel id="diopter" header="What is Adjustable Diopter ?" key="diopter">
+              <p>{diopter}</p>
+            </Panel>
+            <Divider />
             <Panel id="flipup" header="What are Flip-Up Headsets ?" key="flipup">
               <p>{flipup}</p>
             </Panel>
@@ -126,7 +132,7 @@ class Wiki extends React.Component {
               <p>{eye}</p>
             </Panel>
             <Divider />
-            <Panel id="facial" header="What is facial recognition ?" key="facial">
+            <Panel id="facial" header="What is face tracking ?" key="facial">
               <p>{facial}</p>
             </Panel>
             <Divider />
