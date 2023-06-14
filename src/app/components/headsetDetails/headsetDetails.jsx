@@ -38,8 +38,8 @@ const HeadsetDetails = (props) => {
   };
 
   const getHeadsetAudience = (audience) => {
-    if (audience === 1) return 'Public';
-    if (audience === 2) return 'Enterprise';
+    if (audience === 1) return 'Consumer';
+    if (audience === 2) return 'Business';
     return '';
   };
 
@@ -380,6 +380,9 @@ const HeadsetDetails = (props) => {
 
                   case 'playstation':
                     return <Icon component={Playstation} className="headset-card-details-logo" id={platform} />;
+
+                  case 'macos':
+                    return <AppleOutlined className="headset-card-details-logo" id={platform} />;
 
                   default:
                     return 'N/A';

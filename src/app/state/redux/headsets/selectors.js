@@ -17,12 +17,20 @@ const getVisibleHeadsets = createSelector(
     if (!visibilityFilter.comingSoon) {
       filtredHeadsets = filtredHeadsets.filter((h) => h.status !== 1);
     }
+    // consumer
+    if (!visibilityFilter.consumer) {
+      filtredHeadsets = filtredHeadsets.filter((h) => h.audience !== 1);
+    }
+    // business
+    if (!visibilityFilter.business) {
+      filtredHeadsets = filtredHeadsets.filter((h) => h.audience !== 2);
+    }
     // audience
     if (visibilityFilter.audience !== 'all') {
-      if (visibilityFilter.audience === 'public') {
+      if (visibilityFilter.audience === 'consumer') {
         filtredHeadsets = filtredHeadsets.filter((h) => h.audience === 1);
       }
-      if (visibilityFilter.audience === 'enterprise') {
+      if (visibilityFilter.audience === 'business') {
         filtredHeadsets = filtredHeadsets.filter((h) => h.audience === 2);
       }
     }

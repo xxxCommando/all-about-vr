@@ -129,8 +129,8 @@ const Filters = (props) => {
         <span>Audience</span>
         <Select defaultValue="all" value={audience} onChange={(value) => onChangeAudience(value)}>
           <Select.Option value="all">All</Select.Option>
-          <Select.Option value="enterprise">Enterprise</Select.Option>
-          <Select.Option value="public">Public</Select.Option>
+          <Select.Option value="business">Business</Select.Option>
+          <Select.Option value="consumer">Consumer</Select.Option>
         </Select>
       </Col>
       <Col className="inline">

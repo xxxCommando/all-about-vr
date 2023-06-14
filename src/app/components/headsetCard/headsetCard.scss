@@ -48,9 +48,9 @@
     }
     color: inherit;
     position: absolute;
-    top: 0;
+    top: 60px;
     right: 0;
-    padding: 22px;
+    padding: 10px;
     transition: color 0.7s ease;
     &:hover {
       color: $light-main-hover;

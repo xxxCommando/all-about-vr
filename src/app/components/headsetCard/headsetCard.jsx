@@ -19,7 +19,7 @@ const HeadsetCard = (props) => {
   const isHeadsetPage = location.pathname.split('/')[1] === 'headsets';
 
   const getHeadsetStatus = (status) => {
-    if (status === 1) return '- Coming Soon';
+    if (status === 1) return ' Coming Soon';
     if (status === 3) return '- Outdated';
     return '';
   };

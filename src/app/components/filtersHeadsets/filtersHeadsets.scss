@@ -1,0 +1,88 @@
+@import '../../../assets/scss/global.scss';
+@import '../../../assets/scss/mixin.scss';
+
+.ant-popover{
+    @include lg {
+      display: none;
+    }
+}
+
+.checkbox-group-custom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ant-checkbox-group {
+  text-align: left;
+}
+
+.filters{
+  &-container{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+  }
+  &-price{
+    max-width: 100px;
+  }
+  &-button{
+    & > button{
+      width: 200px;
+      margin: 0px 10px 0px 10px;
+      border-radius: 10px;
+      color: rgba(0, 0, 0, 0.45);
+      background-color: #fdfdfd;
+        @include lg {
+          display: none;
+        }
+    }
+  }
+  &-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      grid-column-gap: 0px;
+      grid-row-gap: 0px;  
+      margin-left:25px;
+  &-label{
+    min-width: 100px;
+  }
+      & > div{
+        padding: 3px;
+        text-align: left;       
+      }
+  }
+}
+
+
+
+@include dark {
+  #popover{
+    background-color: $dark-main;
+  }
+  .filters {
+    .ant-switch-checked {
+      background-color: $dark-main-hover;
+      box-shadow: none;
+    }
+    .ant-checkbox-wrapper {
+      &:hover {
+        .ant-checkbox {
+          .ant-checkbox-inner {
+            border-color: $dark-main-hover;
+          }
+          &:after {
+            border: 1px solid $dark-main-hover;
+          }
+        }
+      }
+      .ant-checkbox-checked {
+        .ant-checkbox-inner {
+          background-color: $dark-main-hover;
+          border-color: $dark-main-hover;
+        }
+      }
+    }
+  }
+}
