@@ -62,7 +62,7 @@ class Wiki extends React.Component {
     const { hash } = props.location;
     const newHash = hash.substring(1);
     this.state = {
-      selector: newHash || ['comparison', 'fov', 'refreshrate', 'resolution', 'pixeldensity', 'screen', 'ipd', 'flipup', 'tracking', 'hand', 'eye', 'facial', 'wireless', 'standalone', 'pc'],
+      selector: newHash || ['comparison', 'fov', 'refreshrate', 'resolution', 'pixeldensity', 'screen', 'ipd', 'flipup', 'tracking', 'hand', 'eye', 'facial', 'wireless', 'standalone', 'pc', 'diopter'],
     };
   }
 

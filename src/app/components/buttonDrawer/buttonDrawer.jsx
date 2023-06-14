@@ -45,7 +45,7 @@ class buttonDrawer extends React.Component {
           {isFiltered ? (
             <Button
               type="text"
-              className="button-custom"
+              className="button-custom-clear"
               onClick={() => this.doClear()}
               disabled={compareMode}
             >

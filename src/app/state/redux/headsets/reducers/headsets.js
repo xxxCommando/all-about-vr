@@ -16,6 +16,8 @@ const initialState = {
   visibilityFilter: {
     outDatated: true,
     comingSoon: true,
+    consumer: true,
+    business: true,
     brands: [],
     platforms: [],
     audience: 'all',

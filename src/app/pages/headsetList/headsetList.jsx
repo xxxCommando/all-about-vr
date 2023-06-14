@@ -14,6 +14,7 @@ import HeadsetDetails from '../../components/headsetDetails';
 import AutoCompleteHeadset from '../../components/autoCompleteHeadset';
 import BackTopCustom from '../../components/backTopCustom';
 import ButtonDrawer from '../../components/buttonDrawer';
+import FiltersHeadsets from '../../components/filtersHeadsets';
 
 import { MAX_SELECT } from '../../state/redux/compare/reducers/compare';
 
@@ -195,7 +196,10 @@ class HeadsetList extends React.Component {
             </Col>
           </Row>
         </Layout>
-
+        <Divider className="filters-divider" orientation="left">Filters</Divider>
+        <div className="filters">
+          <FiltersHeadsets />
+        </div>
         <Divider orientation="left">
           {compareMode ? 'Compare mode' : 'Select 2 headsets to compare'}
         </Divider>

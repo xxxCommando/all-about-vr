@@ -20,7 +20,7 @@ const HeadsetCard = (props) => {
 
   const getHeadsetStatus = (status) => {
     if (status === 1) return '- Coming Soon';
-    if (status === 3) return '- Outdated';
+    if (status === 3) return 'Outdated';
     return '';
   };
 

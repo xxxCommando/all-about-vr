@@ -40,7 +40,6 @@
 }
 @include dark {
   .filters {
-    background-color: $dark-main;
     .ant-switch-checked {
       background-color: $dark-main-hover;
       box-shadow: none;
