@@ -26,7 +26,7 @@
   }
 }
 
-@media only screen and (min-width: 876px) {
+@include lg {
   .layout-content {
     .filter {
       display: none;
@@ -34,7 +34,7 @@
   }
 }
 
-@media only screen and (max-width: 875px) {
+@include lg {
   .sider {
     display: none;
   }

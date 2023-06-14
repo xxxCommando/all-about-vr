@@ -153,6 +153,7 @@ class HeadsetsTab extends React.Component {
         {
           title: 'FOV',
           dataIndex: 'fov',
+          ellipsis: true,
           width: 100,
           align: 'center',
           sorter: (a, b) => {

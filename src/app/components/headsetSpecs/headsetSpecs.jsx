@@ -37,8 +37,8 @@ const HeadsetSpecs = (props) => {
   };
 
   const getHeadsetAudience = (audience) => {
-    if (audience === 1) return 'Public';
-    if (audience === 2) return 'Enterprise';
+    if (audience === 1) return 'Consumer';
+    if (audience === 2) return 'Business';
     return '';
   };
 
