@@ -153,6 +153,7 @@ class HeadsetsTab extends React.Component {
         {
           title: 'FOV',
           dataIndex: 'fov',
+          ellipsis: true,
           width: 100,
           align: 'center',
           sorter: (a, b) => {
@@ -192,7 +193,7 @@ class HeadsetsTab extends React.Component {
       price: `${item.price} $`,
       resolution: `${item.resolution.x}x${item.resolution.y}`,
       refreshrate: `${item.refreshrate} Hz`,
-      fov: `V${item.fovv}/H${item.fovh} °`,
+      fov: `V${item.fovv} H${item.fovh} °`,
     }));
 
     const { columns } = this.state;
