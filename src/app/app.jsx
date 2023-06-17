@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Layout } from 'antd';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import ReactGa from 'react-ga';
 
 import './app.scss';
 
@@ -22,15 +21,16 @@ import ScrollToTop from './components/scrollToTop';
 class App extends React.Component {
   componentDidMount() {
     const { fetchHeadsets, fetchGames, darkMode } = this.props;
+
     fetchHeadsets();
+
     fetchGames();
+
     document.body.classList = darkMode ? ['dark'] : [];
+
     const metaThemeColor = document.querySelector('meta[name=theme-color]');
+
     metaThemeColor.setAttribute('content', !darkMode ? '#1890ff' : '#503D4D');
-    if (process.env.NODE_ENV === 'production') {
-      ReactGa.initialize(process.env.REACT_APP_GOOGLEANALYTICS);
-      ReactGa.pageview(window.location.pathname + window.location.search);
-    }
   }
 
   render() {
