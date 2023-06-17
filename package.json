@@ -48,7 +48,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "postbuild": "gzipper compress ./build/static",
-    "test": "react-scripts test",
+    "test": "react-scripts test; node .github/setup.js",
     "eject": "react-scripts eject",
     "precommit": "pretty-quick --staged",
     "add-game": "node src/scripts/add-empty-game.js",
